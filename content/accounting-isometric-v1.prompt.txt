@@ -1,0 +1,8 @@
+Use case: stylized-concept
+Asset type: transparent illustration for the hero of a Russian accounting consulting website.
+Input image: the latest attached purple isometric accounting illustration is a STYLE REFERENCE ONLY. Create a new original composition with the same clear isometric perspective, crisp thin dark outlines, flat white planes and bold extruded shadows. Adapt it to a mature professional brand.
+Primary request: a coherent compact still-life of a desktop calculator in the foreground, neatly stacked accounting ledger sheets behind it with simple ruled rows, two modest stacks of coins with a ruble symbol ₽, one small tidy pie-chart disk, and a slim pen along the lower right. Make the paperwork more prominent than in the reference; express orderly accounting.
+Composition: square, fully visible silhouette, centered, all objects inside the canvas with generous 8% transparent margin. Calculator lower left, ledger sheets upper left, coins upper right, pie chart between coins and calculator; consistent orthographic isometric geometry.
+Color palette: white and very pale mint faces, turquoise #18b8bd and deep teal #087d88 accents, deep navy #203451 outlines and extruded side faces. Do not use purple, orange, metallic gold, photographic textures or glossy gradients.
+Details: plausible evenly arranged numeric keypad on the calculator, neutral blank display, neat abstract document lines. Only use ₽ and simple calculator digits/symbols as markings. No dollar signs, floating income tags, arrows, percentage signs, slogans, logos or watermark.
+Background: genuinely transparent alpha, no colored rectangle, no scenery, no background shadow. Sharp clean edges, refined editorial vector-like raster illustration with slight dimensionality.

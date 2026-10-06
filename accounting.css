@@ -1,0 +1,155 @@
+/* Preserve the supplied eye engraving's warm banknote colors. */
+.accounting-hero{position:relative;isolation:isolate;overflow:hidden;background:#161616;color:#fff;border-radius:18px}
+.accounting-hero-image{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(.94) contrast(1.06)}
+.accounting-hero-shade{position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#0009 0%,#0006 23%,#0000 62%),linear-gradient(0deg,#000b 0%,#0003 28%,#0000 70%),radial-gradient(ellipse at 55% 44%,transparent 25%,#0005 100%)}
+.accounting-hero-inner{position:relative;display:flex;flex-direction:column;min-height:clamp(620px,44vw,710px);padding-top:27px;padding-bottom:22px}
+.accounting-hero .breadcrumbs{margin-bottom:39px;color:#e1e1e1;font-size:12px}
+.accounting-hero-copy{max-width:540px;padding-bottom:43px}
+.accounting-hero-copy .eyebrow{font-size:11px;letter-spacing:1.4px;color:#eee}
+.accounting-hero h1{font-weight:700;margin:23px 0 17px;color:#fff}
+.accounting-title-prefix{display:block;font-size:27px;line-height:1.3;font-weight:500;letter-spacing:.9px;text-transform:uppercase}
+.accounting-title-main{display:block;font-size:clamp(90px,8.7vw,132px);line-height:1.08;letter-spacing:-6px;text-transform:uppercase;margin-top:5px}
+.accounting-title-dot{color:#fff}
+.accounting-hero-copy>p{font-size:18px;line-height:1.65;color:#efefef;letter-spacing:0}
+.accounting-hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:29px;margin-top:24px}
+.accounting-hero-actions .button-white{background:transparent;color:#fff;border:0;border-bottom:1px solid #fffb;border-radius:0;font-size:14px;min-height:43px;padding:5px 0;gap:27px}
+.accounting-hero-actions .button-white:hover{background:transparent;color:#fff;border-color:#fff;transform:translateY(-2px)}
+.accounting-hero-link{display:flex;gap:16px;align-items:center;font-size:13px;color:#eee;min-height:43px}
+.accounting-hero-link:hover{color:#fff}
+.accounting-hero-link>span{font-size:21px;font-weight:400}
+.accounting-hero-foot{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;margin-top:auto;position:relative}
+.accounting-hero-topic{position:relative;color:#fff;padding:13px 17px 9px 0;border-top:1px solid #ffffff54;display:flex;flex-direction:column;gap:10px;transition:border-color .25s,transform .25s}
+.accounting-topic-number{font-size:27px;font-weight:600;line-height:1.2;letter-spacing:-1px}
+.accounting-topic-title{font-size:12px;font-weight:600;line-height:1.6;letter-spacing:.4px;text-transform:uppercase}
+.accounting-topic-arrow{position:absolute;right:0;top:17px;font-size:17px;color:#ccc;transition:transform .25s,color .25s}
+.accounting-hero-topic:hover{border-color:#fff;transform:translateY(-3px)}
+.accounting-hero-topic:hover .accounting-topic-arrow{transform:translate(2px,-2px);color:#fff}
+.accounting-hero-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:22px}
+.accounting-hero-bottom>a{display:flex;gap:19px;align-items:center;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;min-height:30px}
+.accounting-service,#result{scroll-margin-top:115px}
+.accounting-intro{display:grid;grid-template-columns:1fr 1.5fr;gap:65px;align-items:start}
+.accounting-intro .eyebrow{margin-bottom:20px}
+.accounting-intro h2{font-size:35px;line-height:1.4;letter-spacing:-1.1px}
+.accounting-intro-copy p{font-size:17px;color:#657185;line-height:1.9;margin-bottom:19px}
+.accounting-intro-copy .accounting-intro-lead{font-size:21px;line-height:1.8;color:#354c66;font-weight:500}
+.accounting-service h3{font-size:22px;max-width:330px}
+.accounting-service p{font-size:16px;line-height:1.9}
+.accounting-work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px}
+.accounting-work{display:flex;align-items:flex-start;gap:24px;padding:28px 0;border-top:1px solid #d3e0e4;min-width:0}
+.accounting-work-number{flex-shrink:0;color:#18a7ae;font-size:33px;font-weight:400;line-height:1.2;letter-spacing:-1px}
+.accounting-work h3{font-size:23px;line-height:1.5;letter-spacing:-.5px;color:#324962;margin-bottom:19px}
+.accounting-work ul{list-style:none;margin:0;padding:0}
+.accounting-work li{position:relative;padding-left:21px;font-size:16px;line-height:1.85;color:#667588;margin:12px 0}
+.accounting-work li::before{content:'✓';position:absolute;left:0;color:#159ba5;font-size:14px;top:1px}
+.accounting-result{position:relative;overflow:hidden;background:linear-gradient(120deg,#283f67,#146e79);color:#fff}
+.accounting-result::before{content:'';position:absolute;width:480px;height:480px;border:1px solid #65dad626;border-radius:50%;left:-240px;bottom:-340px;box-shadow:0 0 0 35px #5acbc80a,0 0 0 75px #5acbc80a,0 0 0 120px #5acbc80a}
+.accounting-result-inner{position:relative;padding-block:64px;display:grid;grid-template-columns:1fr 1.15fr;gap:75px;align-items:start}
+.accounting-result h2{font-size:36px;line-height:1.4;letter-spacing:-1.1px;margin-top:22px}
+.accounting-result-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.accounting-result-tags>span{font-size:12px;line-height:1.5;color:#cceeed;border:1px solid #b3eee93d;border-radius:30px;padding:8px 13px}
+.accounting-result-copy p{font-size:17px;color:#d9ecee;line-height:1.9;margin-bottom:20px}
+.accounting-result-copy strong{font-size:20px;line-height:1.8;color:#fff;font-weight:600}
+.accounting-result-copy .button{margin-top:8px;font-size:15px}
+.accounting-result+.page-process{margin-top:65px}
+.accounting-next{padding-block:60px 20px;display:flex;align-items:center;justify-content:space-between;gap:45px}
+.accounting-next h2{font-size:27px;line-height:1.5;letter-spacing:-.6px;margin:15px 0}
+.accounting-next p{font-size:16px;line-height:1.8;color:#657185;max-width:650px}
+.accounting-next .text-link{flex-shrink:0;font-size:15px}
+.motion-enabled .accounting-hero-copy>*{animation:heroEntrance .8s both}
+.motion-enabled .accounting-hero-copy>h1{animation-delay:.1s}
+.motion-enabled .accounting-hero-copy>p{animation-delay:.2s}
+.motion-enabled .accounting-hero-actions{animation-delay:.3s}
+@media(max-width:1100px){
+.accounting-title-prefix{font-size:24px}
+.accounting-title-main{font-size:96px}
+.accounting-hero-copy{max-width:460px}
+.accounting-hero-foot{gap:16px}
+.accounting-topic-title{font-size:11px;letter-spacing:0}
+.accounting-intro{gap:35px}
+.accounting-result-inner{gap:40px}
+.accounting-next{align-items:start}
+.accounting-next .text-link{flex-shrink:1}}
+@media(max-width:760px){
+.accounting-hero{border-radius:14px}
+.accounting-hero-inner{min-height:730px;padding:21px 0 20px}
+.accounting-hero .breadcrumbs{margin-bottom:36px;font-size:10px;gap:6px}
+.accounting-hero-image{object-position:53% 50%}
+.accounting-hero-shade{background:linear-gradient(90deg,#0008,#0002),linear-gradient(0deg,#000d 0%,#0004 48%,#0004 100%)}
+.accounting-hero-copy{padding-bottom:35px}
+.accounting-hero-copy .eyebrow{font-size:9px;letter-spacing:.5px}
+.accounting-hero h1{margin:24px 0 20px}
+.accounting-title-prefix{font-size:21px;letter-spacing:.5px}
+.accounting-title-main{font-size:clamp(77px,22vw,105px);letter-spacing:-4px;margin-top:8px}
+.accounting-hero-copy>p{font-size:16px;line-height:1.75}
+.accounting-hero-actions{gap:20px;margin-top:22px}
+.accounting-hero-actions .button-white{font-size:13px;gap:17px}
+.accounting-hero-link{font-size:12px;gap:10px}
+.accounting-hero-foot{grid-template-columns:repeat(2,1fr);gap:15px 24px}
+.accounting-hero-topic{padding-top:11px;padding-bottom:6px;gap:6px}
+.accounting-topic-number{font-size:24px}
+.accounting-topic-title{font-size:11px}
+.accounting-topic-arrow{top:12px;font-size:16px}
+.accounting-hero-bottom{margin-top:16px}
+.accounting-hero-bottom>a{font-size:10px}
+.accounting-service,#result{scroll-margin-top:94px}
+.accounting-intro{grid-template-columns:1fr;gap:27px}
+.accounting-intro h2{font-size:29px}
+.accounting-intro-copy .accounting-intro-lead{font-size:18px}
+.accounting-intro-copy p{font-size:16px}
+.accounting-service h3{font-size:22px}
+.accounting-service p{font-size:15px}
+.accounting-work-grid{grid-template-columns:1fr;gap:0}
+.accounting-work{gap:19px;padding:25px 0}
+.accounting-work h3{font-size:21px}
+.accounting-work li{font-size:15px}
+.accounting-work-number{font-size:29px}
+.accounting-result-inner{grid-template-columns:1fr;gap:28px;padding-block:43px}
+.accounting-result h2{font-size:29px}
+.accounting-result-tags{margin-top:24px}
+.accounting-result-copy strong{font-size:18px}
+.accounting-result-copy p{font-size:16px}
+.accounting-result+.page-process{margin-top:40px}
+.accounting-next{display:block;padding-block:45px 10px}
+.accounting-next h2{font-size:24px}
+.accounting-next p{font-size:15px}
+.accounting-next .text-link{margin-top:20px;display:inline-flex;font-size:14px}}
+@media(prefers-reduced-motion:reduce){
+.motion-enabled .accounting-hero-copy>*{animation:none}}
+/* Isometric accounting illustration shares the site's mint, teal and navy palette. */
+.bookkeeping-hero{background:radial-gradient(ellipse at 84% 36%,#c6eeee 0%,transparent 52%),#f2f8f7;color:#203451}
+.bookkeeping-hero .accounting-hero-inner{min-height:660px}
+.bookkeeping-hero .accounting-hero-image{z-index:0;inset:auto;right:-12px;top:60px;width:43%;height:calc(100% - 235px);filter:none;object-fit:contain;object-position:center;pointer-events:none}
+.bookkeeping-hero .accounting-hero-shade{background:none}
+.bookkeeping-hero .breadcrumbs{color:#617789}
+.bookkeeping-hero .breadcrumbs>span:last-child{color:#203451}
+.bookkeeping-hero .breadcrumbs a:hover{color:#087d88}
+.bookkeeping-hero .accounting-hero-copy{position:relative;z-index:1;max-width:730px;width:59%;padding-bottom:48px}
+.bookkeeping-hero .accounting-hero-copy .eyebrow{color:#087d88}
+.bookkeeping-hero h1{font-size:clamp(42px,3.65vw,60px);line-height:1.27;font-weight:700;letter-spacing:-1.8px;color:#203451;margin:29px 0 24px}
+.bookkeeping-hero .accounting-hero-copy>p{font-size:18px;line-height:1.8;color:#526b7e}
+.bookkeeping-hero .accounting-hero-actions .button-white{background:#087d88;color:#fff;border:1px solid #087d88;border-radius:30px;padding:13px 23px;min-height:49px}
+.bookkeeping-hero .accounting-hero-actions .button-white:hover{background:#056670;color:#fff;border-color:#056670}
+.bookkeeping-hero .accounting-hero-link{color:#526b7e}
+.bookkeeping-hero .accounting-hero-link:hover{color:#087d88}
+.bookkeeping-hero .accounting-hero-topic{color:#203451;border-color:#a9cecf}
+.bookkeeping-hero .accounting-hero-topic:hover{border-color:#087d88}
+.bookkeeping-hero .accounting-topic-arrow{color:#087d88}
+.bookkeeping-hero .accounting-hero-topic:hover .accounting-topic-arrow{color:#056670}
+.bookkeeping-hero .accounting-hero-bottom{color:#087d88}
+.motion-enabled .bookkeeping-hero .accounting-hero-image{animation:accountingIllustration .9s .18s both cubic-bezier(.2,.8,.2,1)}
+@keyframes accountingIllustration{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:none}}
+@media(min-width:1500px){
+.bookkeeping-hero .accounting-hero-inner{min-height:710px}}
+@media(max-width:1100px) and (min-width:761px){
+.bookkeeping-hero h1{font-size:38px;letter-spacing:-1.3px}
+.bookkeeping-hero .accounting-hero-copy{width:60%}
+.bookkeeping-hero .accounting-hero-actions{gap:20px}
+.bookkeeping-hero .accounting-hero-image{right:-18px;width:42%}}
+@media(max-width:760px){
+.bookkeeping-hero .accounting-hero-inner{min-height:0}
+.bookkeeping-hero .accounting-hero-copy{width:100%;max-width:none;padding-bottom:35px}
+.bookkeeping-hero h1{font-size:clamp(29px,7.8vw,36px);letter-spacing:-.8px;line-height:1.35;margin:28px 0 22px}
+.bookkeeping-hero .accounting-hero-copy>p{font-size:16px;line-height:1.8}
+.bookkeeping-hero .accounting-hero-image{position:static;width:100%;height:270px;margin:0 auto 25px;object-position:center}
+.bookkeeping-hero .accounting-hero-actions .button-white{font-size:13px;gap:18px;padding:12px 18px}
+.bookkeeping-hero .accounting-hero-shade{background:none}}

@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: transparent hero illustration for the Russian business consulting page Маркетинг и PR-продвижение.
+Primary request: an original polished isometric cartoon scene about promotion and communication, matching a business website's accounting and HR illustrations.
+Subject: a prominent professional megaphone in the foreground, behind it a tilted content-planning panel with neat abstract post tiles and a simple campaign calendar. Two restrained speech bubbles and a small target with a single arrow connect the idea of PR communication, content and reaching an audience. One cohesive compact composition; objects should be instantly recognizable, not a collection of random icons.
+Style: crisp vector-like raster illustration, gentle dimensionality, matte clean broad planes, restrained navy outlines. Friendly and professional rather than childish.
+Palette: pale mint and white faces, turquoise #18b8bd, deep teal #087d88, dark navy #203451 outlines and side faces. Same calm visual family as isometric ruble calculator and personnel-card illustrations. Avoid purple, orange, gold, neon, photorealism and noisy textures.
+Composition: square, fully visible objects with 10% transparent margin, megaphone diagonally across lower left, content board at back right, target beside it, balanced compact silhouette for placement to the right of a headline.
+Markings: no words, letters, numbers, logos, brand names, promises, fake performance metrics or social network trademarks. Use abstract rows and small neutral content rectangles only.
+Background: genuine transparent alpha, no colored rectangle, no scenery, no shadow outside the object group.

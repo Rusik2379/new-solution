@@ -1,0 +1,12 @@
+Use case: logo-brand
+Asset type: decorative typographic illustration for the HoReCa consulting page of the Russian business consulting website Новые решения. This is a hero illustration, not a replacement for the company's header logo.
+Input image: the latest attached stacked HORECA mark is a visual reference for the typographic idea and hospitality motifs only. Create a new original design. Do not reproduce the Bidfood wordmark, bottom signature, green swoosh or company name.
+Primary request: a bold compact stacked typographic illustration reading exactly:
+HO
+RE
+CA
+Three rows, exactly two uppercase letters per row, six letters total. Oversized geometric heavy sans-serif lettering, carefully aligned on an invisible square grid, balanced spacing and exceptional legibility.
+Integrate a small white chef's hat silhouette as a negative-space motif inside the O, a subtle fork silhouette in the R, and a bottle silhouette as negative space within the A. Preserve recognizable complete letter shapes; no extra icons or text outside the six letters. Original refined forms and clean typography rather than a traced copy.
+Palette: deep navy #203451 for the main letterforms, selectively use dark teal #087d88 and turquoise #18b8bd as subtle accents on the E or C. White negative spaces are transparent holes in the design where practical. Flat crisp vector-like raster graphic, no outlines, no photography, no 3D, no gradients, no glossy highlights, no mockup.
+Composition: square, centered vertical three-row block, all glyphs completely visible with about 10% transparent margin. Designed to read clearly at 350 pixels tall beside a heading.
+Background: genuine transparent alpha, no white rectangle, no colored panel, no shadow. Text only HO / RE / CA as specified; no trademark signature, no slogan, no company name, no watermark.
