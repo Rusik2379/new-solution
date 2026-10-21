@@ -36,11 +36,11 @@
 .accounting-service p{font-size:16px;line-height:1.9}
 .accounting-work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px}
 .accounting-work{display:flex;align-items:flex-start;gap:24px;padding:28px 0;border-top:1px solid #d3e0e4;min-width:0}
-.accounting-work-number{flex-shrink:0;color:#18a7ae;font-size:33px;font-weight:400;line-height:1.2;letter-spacing:-1px}
-.accounting-work h3{font-size:23px;line-height:1.5;letter-spacing:-.5px;color:#324962;margin-bottom:19px}
+.accounting-work-number{flex-shrink:0;color:#1f9e9a;font-size:33px;font-weight:400;line-height:1.2;letter-spacing:-1px}
+.accounting-work h3{font-size:23px;line-height:1.5;letter-spacing:-.5px;color:#1f2430;margin-bottom:19px}
 .accounting-work ul{list-style:none;margin:0;padding:0}
 .accounting-work li{position:relative;padding-left:21px;font-size:16px;line-height:1.85;color:#667588;margin:12px 0}
-.accounting-work li::before{content:'✓';position:absolute;left:0;color:#159ba5;font-size:14px;top:1px}
+.accounting-work li::before{content:'✓';position:absolute;left:0;color:#1f9e9a;font-size:14px;top:1px}
 .accounting-result{position:relative;overflow:hidden;background:linear-gradient(120deg,#283f67,#146e79);color:#fff}
 .accounting-result::before{content:'';position:absolute;width:480px;height:480px;border:1px solid #65dad626;border-radius:50%;left:-240px;bottom:-340px;box-shadow:0 0 0 35px #5acbc80a,0 0 0 75px #5acbc80a,0 0 0 120px #5acbc80a}
 .accounting-result-inner{position:relative;padding-block:64px;display:grid;grid-template-columns:1fr 1.15fr;gap:75px;align-items:start}
@@ -116,26 +116,26 @@
 @media(prefers-reduced-motion:reduce){
 .motion-enabled .accounting-hero-copy>*{animation:none}}
 /* Isometric accounting illustration shares the site's mint, teal and navy palette. */
-.bookkeeping-hero{background:radial-gradient(ellipse at 84% 36%,#c6eeee 0%,transparent 52%),#f2f8f7;color:#203451}
+.bookkeeping-hero{background:radial-gradient(ellipse at 84% 36%,#c6eeee 0%,transparent 52%),#f2f8f7;color:#1f2430}
 .bookkeeping-hero .accounting-hero-inner{min-height:660px}
 .bookkeeping-hero .accounting-hero-image{z-index:0;inset:auto;right:-12px;top:60px;width:43%;height:calc(100% - 235px);filter:none;object-fit:contain;object-position:center;pointer-events:none}
 .bookkeeping-hero .accounting-hero-shade{background:none}
 .bookkeeping-hero .breadcrumbs{color:#617789}
-.bookkeeping-hero .breadcrumbs>span:last-child{color:#203451}
-.bookkeeping-hero .breadcrumbs a:hover{color:#087d88}
+.bookkeeping-hero .breadcrumbs>span:last-child{color:#1f2430}
+.bookkeeping-hero .breadcrumbs a:hover{color:#187a77}
 .bookkeeping-hero .accounting-hero-copy{position:relative;z-index:1;max-width:730px;width:59%;padding-bottom:48px}
-.bookkeeping-hero .accounting-hero-copy .eyebrow{color:#087d88}
-.bookkeeping-hero h1{font-size:clamp(42px,3.65vw,60px);line-height:1.27;font-weight:700;letter-spacing:-1.8px;color:#203451;margin:29px 0 24px}
+.bookkeeping-hero .accounting-hero-copy .eyebrow{color:#187a77}
+.bookkeeping-hero h1{font-size:clamp(42px,3.65vw,60px);line-height:1.27;font-weight:700;letter-spacing:-1.8px;color:#1f2430;margin:29px 0 24px}
 .bookkeeping-hero .accounting-hero-copy>p{font-size:18px;line-height:1.8;color:#526b7e}
-.bookkeeping-hero .accounting-hero-actions .button-white{background:#087d88;color:#fff;border:1px solid #087d88;border-radius:30px;padding:13px 23px;min-height:49px}
+.bookkeeping-hero .accounting-hero-actions .button-white{background:#187a77;color:#fff;border:1px solid #187a77;border-radius:30px;padding:13px 23px;min-height:49px}
 .bookkeeping-hero .accounting-hero-actions .button-white:hover{background:#056670;color:#fff;border-color:#056670}
 .bookkeeping-hero .accounting-hero-link{color:#526b7e}
-.bookkeeping-hero .accounting-hero-link:hover{color:#087d88}
-.bookkeeping-hero .accounting-hero-topic{color:#203451;border-color:#a9cecf}
-.bookkeeping-hero .accounting-hero-topic:hover{border-color:#087d88}
-.bookkeeping-hero .accounting-topic-arrow{color:#087d88}
+.bookkeeping-hero .accounting-hero-link:hover{color:#187a77}
+.bookkeeping-hero .accounting-hero-topic{color:#1f2430;border-color:#a9cecf}
+.bookkeeping-hero .accounting-hero-topic:hover{border-color:#187a77}
+.bookkeeping-hero .accounting-topic-arrow{color:#187a77}
 .bookkeeping-hero .accounting-hero-topic:hover .accounting-topic-arrow{color:#056670}
-.bookkeeping-hero .accounting-hero-bottom{color:#087d88}
+.bookkeeping-hero .accounting-hero-bottom{color:#187a77}
 .motion-enabled .bookkeeping-hero .accounting-hero-image{animation:accountingIllustration .9s .18s both cubic-bezier(.2,.8,.2,1)}
 @keyframes accountingIllustration{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:none}}
 @media(min-width:1500px){

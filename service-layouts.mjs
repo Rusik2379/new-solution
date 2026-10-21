@@ -28,9 +28,9 @@ function visual(s,layout,esc){
   if(s.id==='horeca')return '<div class="horeca-typographic-art"><img src="assets/horeca-typographic-v1.png" width="1024" height="1024" alt="" fetchpriority="high"></div>';
   if(s.id==='marketing')return '<div class="marketing-isometric-art"><img src="assets/marketing-isometric-v1.png" width="1254" height="1254" alt="Мегафон, план публикаций и цель — продвижение и коммуникации" fetchpriority="high"></div>';
   if(s.id==='it')return '<div class="it-workspace-art"><img src="assets/it-workspace-v1.png" width="1254" height="1254" alt="Единое цифровое пространство: сайт, чат-бот, серверы и учетная система" fetchpriority="high"><ul class="it-directions" aria-label="Направления IT"><li>Сайты</li><li>Чат-боты</li><li>Системное администрирование</li><li>1С</li></ul></div>';
-  const titles=s.features.slice(0,3).map(([title])=>title);
+  const titles=s.heroTopics||s.features.slice(0,3).map(([title])=>title);
   if(layout==='systems')return `<div class="system-map" aria-label="Направления работы"><div class="system-hub">${esc(s.id==='it'?'Ваш бизнес':s.title)}</div><div class="system-nodes">${titles.map((title,i)=>`<div><span>${n(i)}</span>${esc(title)}</div>`).join('')}</div></div>`;
-  if(layout==='document')return `<div class="hero-dossier"><span class="dossier-tab">${esc(s.category)}</span><div class="dossier-title">В деталях<br>всё имеет значение.</div>${titles.map((title,i)=>`<div class="dossier-line"><span>${n(i)}</span>${esc(title)}<i aria-hidden="true">✓</i></div>`).join('')}</div>`;
+  if(layout==='document')return `<div class="hero-dossier"><span class="dossier-tab">${esc(s.category)}</span><div class="dossier-title">В деталях<br>всё имеет значение</div>${titles.map((title,i)=>`<div class="dossier-line"><span>${n(i)}</span>${esc(title)}<i aria-hidden="true">✓</i></div>`).join('')}</div>`;
   if(layout==='team')return `<div class="team-map"><span class="team-map-center">${esc(s.id==='people'?'Команда':'Организация')}</span>${titles.map((title,i)=>`<div class="team-node team-node-${i+1}"><span>${n(i)}</span>${esc(title)}</div>`).join('')}</div>`;
   return `<div class="hero-index"><span class="hero-index-label">${esc(s.category)}</span><span class="hero-index-mark" aria-hidden="true">${layout==='editorial'?'↗':layout==='journey'?'→':layout==='analysis'?'∑':'+'}</span><strong>${profile[layout].hero}</strong><div class="hero-index-topics">${titles.map(title=>`<span>${esc(title)}</span>`).join('')}</div></div>`;
 }
@@ -41,7 +41,7 @@ function serviceHero(s,layout,esc){
 
 function situation(s,layout,esc,heading){
   const entries=s.needs.map((text,i)=>`<article class="situation-item" data-reveal="${i%2?'right':motion[layout]}"><span>${n(i)}</span><p>${esc(text)}</p></article>`).join('');
-  return `<section class="section container situation situation-${layout}"><div class="situation-heading">${heading('ВАША СИТУАЦИЯ',layout==='focus'?'Что нужно<br>решить сейчас?':'Узнаете<br>свою ситуацию?',s.intro||'Начнем с вашей ситуации и согласуем конкретный объем работы.')}</div><div class="situation-list">${entries}</div></section>`;
+  return `<section class="section container situation situation-${layout}"><div class="situation-heading">${heading('ВАША СИТУАЦИЯ',layout==='focus'?'Что нужно<br>решить сейчас?':'Узнаете<br>свою ситуацию?',s.hideSituationIntro?'':s.intro||'Начнем с вашей ситуации и согласуем конкретный объем работы.')}</div><div class="situation-list">${entries}</div></section>`;
 }
 
 function scope(s,layout,esc,heading){

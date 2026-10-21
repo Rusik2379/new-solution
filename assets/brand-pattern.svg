@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480" fill="#e5e1d8">
+  <path opacity=".65" d="M0 0h120A120 120 0 0 1 0 120Z"/>
+  <path opacity=".35" d="M240 0v120A120 120 0 0 1 120 0Z"/>
+  <path opacity=".65" d="M240 120V0A120 120 0 0 1 360 120Z"/>
+  <path opacity=".3" d="M480 120H360A120 120 0 0 1 480 0Z"/>
+  <path opacity=".3" d="M120 120v120A120 120 0 0 1 0 120Z"/>
+  <path opacity=".65" d="M120 240V120A120 120 0 0 1 240 240Z"/>
+  <path opacity=".35" d="M360 240H240A120 120 0 0 1 360 120Z"/>
+  <path opacity=".65" d="M360 120h120A120 120 0 0 1 360 240Z"/>
+  <path opacity=".65" d="M0 360V240A120 120 0 0 1 120 360Z"/>
+  <path opacity=".3" d="M240 360H120A120 120 0 0 1 240 240Z"/>
+  <path opacity=".65" d="M240 240h120A120 120 0 0 1 240 360Z"/>
+  <path opacity=".35" d="M480 240v120A120 120 0 0 1 360 240Z"/>
+  <path opacity=".35" d="M120 480H0A120 120 0 0 1 120 360Z"/>
+  <path opacity=".65" d="M120 360h120A120 120 0 0 1 120 480Z"/>
+  <path opacity=".3" d="M360 360v120A120 120 0 0 1 240 360Z"/>
+  <path opacity=".65" d="M360 480V360A120 120 0 0 1 480 480Z"/>
+</svg>

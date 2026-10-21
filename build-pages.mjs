@@ -6,6 +6,7 @@ import {managementPage} from './management-page.mjs';
 import {serviceLayouts,servicePage,serviceProcess} from './service-layouts.mjs';
 import {companyHero} from './company-layouts.mjs';
 import {peoplePage} from './people-page.mjs';
+import {applyEditorialChanges,cleanCopyHTML} from './editorial.mjs';
 
 const esc = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const lines = (await readFile('content/word-source.txt','utf8')).split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
@@ -21,9 +22,10 @@ for (const [i,s] of core.entries()) {
   s.features=s.groups.map(([title,a,b])=>[title,items.slice(a,b)]);
   if(s.groups.flatMap(([,a,b])=>items.slice(a,b)).length!==items.length) throw Error(`Incomplete scope ${s.id}: ${items.length}`);
 }
+applyEditorialChanges(core);
 const services=[...core,...additional];
 const byId=Object.fromEntries(services.map(s=>[s.id,s]));
-let home=await readFile('index.html','utf8');
+let home=cleanCopyHTML(await readFile('index.html','utf8'));
 home=home.replace(/<button([^>]*?)data-service="([^"]+)"([^>]*?)>([\s\S]*?)<\/button>/g,(_,a,id,b,inside)=>`<a class="${a.includes('service-card')?'service-card':'mega-link'}" href="${byId[id].path}"${b}>${inside}</a>`);
 const routes={'#about':'o-kompanii.html','#process':'kak-my-rabotaem.html','#prices':'ceny.html','#contacts':'kontakty.html','#services':'uslugi.html'};
 const routeLinks=html=>html.replace(/href="(#[^"]+)"/g,(m,hash)=>routes[hash]?`href="${routes[hash]}"`:m);
@@ -32,8 +34,6 @@ home=home.replace(/<footer[\s\S]*?<\/footer>/,m=>routeLinks(m).replace('class="f
 home=home.replace(/\s*<dialog id="service-dialog"[\s\S]*?<\/dialog>/,'');
 home=home.replace('href="#about">Знакомьтесь','href="o-kompanii.html">Знакомьтесь');
 if(!home.includes('class="catalog-link"'))home=home.replace('<div class="audience-strip">','<div class="catalog-link"><p>Регистрация, восстановление учета, 1С и отраслевые решения — в полном каталоге.</p><a class="button button-outline" href="uslugi.html">Все услуги <span aria-hidden="true">↗</span></a></div><div class="audience-strip">');
-const options='<option value="">Помогите определиться</option>'+services.map(s=>`<option>${esc(s.title)}</option>`).join('');
-home=home.replace(/(<select name="service" id="service-select">)[\s\S]*?(<\/select>)/,`$1${options}$2`);
 await writeFile('index.html',home);
 const header=home.match(/<header[\s\S]*?<\/header>/)[0].replace(/href="#([^"]+)" data-home-section="([^"]+)"/g,(_,hash,section)=>`href="index.html#${hash}" data-home-section="${section}"`)+'<div class="nav-backdrop" aria-hidden="true"></div>';
 const footer=home.match(/<footer[\s\S]*?<\/footer>/)[0];
@@ -52,14 +52,14 @@ function catalogCard(s,i=0){return `<a class="catalog-card" href="${s.path}" dat
 async function page(file,title,lead,body,selected=''){
  const base=file.includes('/')?'../':'';
  let contacts=contact;
- if(selected)contacts=contacts.replace(`<option>${esc(selected)}</option>`,`<option selected>${esc(selected)}</option>`).replace('С чего начнем?','Обсудим вашу задачу');
+ if(selected)contacts=contacts.replace('С чего начнем?','Обсудим вашу задачу');
  let h=header.replace(new RegExp(`href="${file.replaceAll('.','\\.')}"(?! aria-current)`,'g'),`href="${file}" aria-current="page"`);
- const html=`<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#25345e"><title>${esc(title)} — Новые решения</title><meta name="description" content="${esc(lead)}"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="pages.css"><script src="script.js" defer></script></head><body class="inner-page"><a class="skip-link" href="#main">Перейти к содержанию</a>${h}<main id="main">${body}${contacts}</main>${footer}${policy}</body></html>`;
+ const html=`<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#F7F5EF"><title>${esc(title)} — Новые решения</title><meta name="description" content="${esc(lead)}"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="pages.css"><link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin><script src="script.js" defer></script></head><body class="inner-page"><a class="skip-link" href="#main">Перейти к содержанию</a>${h}<main id="main">${body}${contacts}</main>${footer}${policy}</body></html>`;
  const themes={'buhgalterskiy-uchet.html':['accounting.css'],'upravlencheskiy-uchet.html':['accounting.css','management.css'],'personal-i-kadry.html':['people.css']};
  const service=services.find(s=>s.path===file);
  const pageClass=service?`service-page service--${service.id} layout-${serviceLayouts[service.id]}`:`company-page page-${file.replace('.html','')}`;
- const themedHtml=html.replace('class="inner-page"',`class="inner-page ${pageClass}"`).replace('</head>',['service-layouts.css',...(themes[file]||[])].map(css=>`<link rel="stylesheet" href="${css}">`).join('')+'</head>');
- await mkdir(path.dirname(file),{recursive:true});await writeFile(file,relative(themedHtml,base));
+const themedHtml=html.replace('class="inner-page"',`class="inner-page ${pageClass}"`).replace('</head>',['service-layouts.css',...(themes[file]||[]),'brand.css'].map(css=>`<link rel="stylesheet" href="${css}">`).join('')+'</head>');
+ await mkdir(path.dirname(file),{recursive:true});await writeFile(file,relative(cleanCopyHTML(themedHtml),base));
 }
 for(const s of services){
  if(s.id==='people'){

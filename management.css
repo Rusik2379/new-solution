@@ -1,22 +1,22 @@
 /* Cartoon banknote on the shared light financial hero. */
 .service--management main{overflow-x:clip}
 .management-hero .accounting-hero-image{filter:none}
-.management-hero .accounting-title-dot{color:#18b8bd}
+.management-hero .accounting-title-dot{color:#1f9e9a}
 .management-hero .accounting-title-main{font-size:clamp(90px,8.7vw,132px)}
 .management-hero .accounting-hero-foot{grid-template-columns:repeat(5,1fr)}
 .management-report-grid{display:grid}
 .management-report{display:flex;flex-direction:column;border-radius:16px;border:1px solid #dce7e9;background:linear-gradient(150deg,#f3f8f8,#f4f6fa);padding:29px;min-width:0}
 .management-report-label{font-size:10px;letter-spacing:1.2px;line-height:1.8;color:#60818e;font-weight:700;min-height:36px}
-.management-report-mark{display:block;font-size:65px;letter-spacing:-3px;line-height:1.2;color:#158a95;font-weight:600;margin:20px 0 25px}
+.management-report-mark{display:block;font-size:65px;letter-spacing:-3px;line-height:1.2;color:#187a77;font-weight:600;margin:20px 0 25px}
 .management-report-mark-small{font-size:40px;letter-spacing:-1.4px;min-height:78px;display:flex;align-items:center}
-.management-report h3{font-size:22px;letter-spacing:-.5px;line-height:1.5;color:#344c65;margin-bottom:17px}
+.management-report h3{font-size:22px;letter-spacing:-.5px;line-height:1.5;color:#1f2430;margin-bottom:17px}
 .management-report p{font-size:16px;line-height:1.9;color:#627486;margin-bottom:23px;flex:1}
 .management-report-lines{border-top:1px solid #d8e5e7;padding-top:14px;display:flex;flex-wrap:wrap;gap:8px 17px}
 .management-report-lines span{font-size:12px;line-height:1.8;color:#548089}
 .management-report-lines span::before{content:'＋';margin-right:5px;color:#16a7ae}
 .management-services{display:block;border-top:1px solid #d4e2e6}
 .management-services .service-feature{display:grid;grid-template-columns:55px 1fr 1.4fr;gap:28px;padding:29px 0;background:transparent;border:0;border-bottom:1px solid #d4e2e6;border-radius:0;box-shadow:none}
-.management-services .feature-number{align-items:start;justify-content:start;margin:0;font-size:25px;letter-spacing:-1px;color:#168d98}
+.management-services .feature-number{align-items:start;justify-content:start;margin:0;font-size:25px;letter-spacing:-1px;color:#187a77}
 .management-services .feature-number i{display:none}
 .management-services .service-feature h3{margin:0;padding-top:3px}
 .management-services .service-feature ul{margin:0}

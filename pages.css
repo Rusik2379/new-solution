@@ -39,7 +39,7 @@ html{scroll-padding-top:94px}
 .service-feature:hover{border-color:#a7d8d9;box-shadow:0 12px 30px #25476208}
 .feature-number{display:flex;justify-content:space-between;align-items:center;color:#6c979e;font-size:13px;letter-spacing:1px;margin-bottom:29px}
 .feature-number i{font-style:normal;font-size:24px;color:#729ba2;font-weight:400}
-.service-feature h3{font-size:21px;line-height:1.45;letter-spacing:-.5px;margin-bottom:17px;color:#2d435e}
+.service-feature h3{font-size:21px;line-height:1.45;letter-spacing:-.5px;margin-bottom:17px;color:#1f2430}
 .service-feature p,.service-feature li{font-size:15px;color:#626e80;line-height:1.85}
 .service-feature ul{list-style:none;padding:0;margin:0}
 .service-feature li{position:relative;padding-left:15px;margin:11px 0}
@@ -82,7 +82,7 @@ html{scroll-padding-top:94px}
 .catalog-filters{display:flex;flex-wrap:wrap;gap:9px}
 .filter-button{font-size:14px;border:1px solid #d4e1e4;background:#fff;color:#557080;border-radius:30px;padding:10px 17px;transition:background .25s,color .25s}
 .filter-button:hover{background:#edf7f7}
-.filter-button.active{background:#087f8c;color:#fff;border-color:#087f8c}
+.filter-button.active{background:#187a77;color:#fff;border-color:#187a77}
 .catalog-count{font-size:14px;color:#798794;margin-bottom:22px}
 .catalog-empty{padding:50px 25px;border:1px dashed #bad8db;border-radius:15px;background:#f4f8f8;text-align:center}
 .catalog-empty h3{font-size:23px}
