@@ -207,5 +207,5 @@ function initializeRibbon() {
 }
 
 // Wait for the static fallback and the other deferred scripts to finish first.
-if (document.readyState === 'complete') initializeRibbon();
+if (document.readyState !== 'loading') initializeRibbon();
 else document.addEventListener('DOMContentLoaded', initializeRibbon, {once: true});
