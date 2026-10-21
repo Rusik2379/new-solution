@@ -1,4 +1,4 @@
-import {buildRibbonMesh, ribbonRotation, ribbonProjection} from './ribbon-geometry.js';
+import {buildRibbonMesh, ribbonProjection} from './ribbon-geometry.js?v=surface-flow-1';
 
 function initializeRibbon() {
   const original = document.querySelector('#hero-art');
@@ -15,23 +15,44 @@ function initializeRibbon() {
 
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let paused = reducedMotion.matches, visible = true, disposed = false;
-  let angle = 0, animation = 0, previousTime = 0, paintedTime = 0;
+  let phase = 0, animation = 0, previousTime = 0, paintedTime = 0;
   let width = 0, height = 0, ratio = 0, observer, resizeObserver, program;
   let resize = () => {}, updateAnimation = () => {};
   const buffers = [];
   const vertexSource = `
-    attribute vec3 aPosition;
-    attribute vec3 aNormal;
-    attribute float aWarmth;
-    uniform mat3 uRotation;
+    attribute vec2 aSurface;
+    uniform float uPhase;
+    uniform vec4 uBounds;
     uniform mat4 uProjection;
     varying vec3 vPosition;
     varying vec3 vNormal;
     varying float vWarmth;
+    vec3 pose(vec3 point) {
+      float tiltedY = point.y * cos(0.97) - point.z * sin(0.97);
+      return vec3(
+        (point.x * cos(-0.6) - tiltedY * sin(-0.6)) * 1.3,
+        -(point.x * sin(-0.6) + tiltedY * cos(-0.6)) * 1.64,
+        point.y * sin(0.97) + point.z * cos(0.97)
+      );
+    }
     void main() {
-      vPosition = uRotation * aPosition;
-      vNormal = uRotation * aNormal;
-      vWarmth = aWarmth;
+      float u = aSurface.x, v = aSurface.y;
+      float cu = cos(u), su = sin(u), cv = cos(v), sv = sin(v);
+      float flow = v - uPhase;
+      float major = 170.0 + sin(2.0 * u + 0.7) * 28.0;
+      float minor = 93.0 + sin(3.0 * u) * 13.0 + cos(flow * 55.0) * 2.4;
+      float majorU = cos(2.0 * u + 0.7) * 56.0;
+      float minorU = cos(3.0 * u) * 39.0;
+      float minorV = -sin(flow * 55.0) * 132.0;
+      float radial = major + minor * cv;
+      float radialU = majorU + minorU * cv;
+      float radialV = minorV * cv - minor * sv;
+      vec3 point = vec3(radial * cu, radial * su, minor * sv + sin(2.0 * u) * 38.0);
+      vec3 tangentU = vec3(radialU * cu - radial * su, radialU * su + radial * cu, minorU * sv + cos(2.0 * u) * 76.0);
+      vec3 tangentV = vec3(radialV * cu, radialV * su, minorV * sv + minor * cv);
+      vPosition = (pose(point) - uBounds.xyz) * uBounds.w;
+      vNormal = normalize(cross(pose(tangentV), pose(tangentU)));
+      vWarmth = pow(0.5 + 0.5 * cos(flow - 0.6), 6.0) * 0.14;
       gl_Position = uProjection * vec4(vPosition + vec3(0.0, 0.0, -4.0), 1.0);
     }
   `;
@@ -100,27 +121,26 @@ function initializeRibbon() {
     buffers.push(vertexBuffer, indexBuffer);
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, mesh.vertices, gl.STATIC_DRAW);
-    for (const [name, count, offset] of [['aPosition', 3, 0], ['aNormal', 3, 12], ['aWarmth', 1, 24]]) {
-      const location = gl.getAttribLocation(program, name);
-      gl.enableVertexAttribArray(location); gl.vertexAttribPointer(location, count, gl.FLOAT, false, 28, offset);
-    }
+    const surface = gl.getAttribLocation(program, 'aSurface');
+    gl.enableVertexAttribArray(surface); gl.vertexAttribPointer(surface, 2, gl.FLOAT, false, 8, 0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, mesh.indices, gl.STATIC_DRAW);
     gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE);
     gl.clearColor(0, 0, 0, 0);
-    const rotation = gl.getUniformLocation(program, 'uRotation');
+    const flowPhase = gl.getUniformLocation(program, 'uPhase');
+    gl.uniform4fv(gl.getUniformLocation(program, 'uBounds'), mesh.bounds);
     const projection = gl.getUniformLocation(program, 'uProjection');
     const indexCount = mesh.indices.length;
     function draw() {
       if (disposed || !width || !height) return;
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-      gl.uniformMatrix3fv(rotation, false, ribbonRotation(angle));
+      gl.uniform1f(flowPhase, phase);
       gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
     }
     function frame(time) {
       animation = 0;
       if (disposed || paused || !visible || document.hidden) return;
-      if (previousTime) angle = (angle + Math.min(time - previousTime, 100) * .00014) % (Math.PI * 2);
+      if (previousTime) phase = (phase + Math.min(time - previousTime, 100) * .00018) % (Math.PI * 2);
       previousTime = time;
       // Thirty rendered frames per second keep decorative movement inexpensive.
       if (!paintedTime || time - paintedTime >= 1000 / 30 - 1) { draw(); paintedTime = time; }
@@ -167,7 +187,7 @@ function initializeRibbon() {
   }
 
   function updateButton() {
-    const label = paused ? 'Запустить вращение' : 'Приостановить вращение';
+    const label = paused ? 'Запустить движение' : 'Приостановить движение';
     toggle.setAttribute('aria-label', label); toggle.title = label;
     toggle.dataset.paused = String(paused);
   }
