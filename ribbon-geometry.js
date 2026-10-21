@@ -2,12 +2,15 @@
 const TAU = Math.PI * 2;
 
 export function ribbonSurface(u, v, phase = 0) {
-  const major = 170 + Math.sin(u * 2 + .7) * 28;
-  const minor = 93 + Math.sin(u * 3) * 13 + Math.cos((v - phase) * 55) * 2.4;
+  const breathing = Math.sin(phase), wave = Math.sin(phase * 2);
+  const major = 170 + Math.sin(u * 2 + .7) * 28 + Math.cos(u - .3) * breathing * 15;
+  const minor = 93 + Math.sin(u * 3) * 13 + Math.sin(u + .5) * wave * 9
+    + breathing * 3 + Math.cos((v - phase) * 55) * 2.4;
   const radius = major + minor * Math.cos(v);
   const x = radius * Math.cos(u), y = radius * Math.sin(u);
-  const z = minor * Math.sin(v) + Math.sin(u * 2) * 38;
-  // Preserve the original sculpture's tilted, asymmetric silhouette.
+  const z = minor * Math.sin(v) + Math.sin(u * 2) * 38
+    + Math.sin(u + .6) * breathing * 20 + Math.cos(u * 3) * wave * 10;
+  // Keep the camera pose fixed while the tube itself gently changes shape.
   const tiltedY = y * Math.cos(.97) - z * Math.sin(.97);
   return [
     (x * Math.cos(-.6) - tiltedY * Math.sin(-.6)) * 1.3,
@@ -36,9 +39,10 @@ export function buildRibbonMesh(majorSegments = 144, minorSegments = 440) {
   }
   const center = minimum.map((value, axis) => (value + maximum[axis]) / 2);
   let radius = 0;
-  for (let i = 0; i < vertices.length; i += 2) {
-    const point = ribbonSurface(vertices[i], vertices[i + 1]);
-    radius = Math.max(radius, Math.hypot(...point.map((value, axis) => value - center[axis])));
+  // Frame the entire morph cycle once; do not zoom the camera as the shape breathes.
+  for (let phase = 0; phase < 32; phase++) for (let i = 0; i <= 96; i++) for (let j = 0; j <= 64; j++) {
+    const point = ribbonSurface(i / 96 * TAU, j / 64 * TAU, phase / 32 * TAU);
+    radius = Math.max(radius, Math.hypot(point[0] - center[0], point[1] - center[1], point[2] - center[2]));
   }
   offset = 0;
   const stride = minorSegments + 1;
@@ -47,8 +51,8 @@ export function buildRibbonMesh(majorSegments = 144, minorSegments = 440) {
     indices.set([a, a + 1, b, a + 1, b + 1, b], offset);
     offset += 6;
   }
-  // Allow up to 8 model units for moving ribs while keeping a fixed camera.
-  return {vertices, indices, bounds: new Float32Array([...center, 1 / (radius + 9)])};
+  // Extra room covers rib peaks and the spaces between envelope samples.
+  return {vertices, indices, bounds: new Float32Array([...center, 1 / (radius + 12)])};
 }
 
 export function ribbonProjection(aspect) {

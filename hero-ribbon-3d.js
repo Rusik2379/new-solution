@@ -1,4 +1,4 @@
-import {buildRibbonMesh, ribbonProjection} from './ribbon-geometry.js?v=surface-flow-1';
+import {buildRibbonMesh, ribbonProjection} from './ribbon-geometry.js?v=matte-morph-1';
 
 function initializeRibbon() {
   const original = document.querySelector('#hero-art');
@@ -26,7 +26,7 @@ function initializeRibbon() {
     uniform mat4 uProjection;
     varying vec3 vPosition;
     varying vec3 vNormal;
-    varying float vWarmth;
+    varying vec2 vTint;
     vec3 pose(vec3 point) {
       float tiltedY = point.y * cos(0.97) - point.z * sin(0.97);
       return vec3(
@@ -39,20 +39,27 @@ function initializeRibbon() {
       float u = aSurface.x, v = aSurface.y;
       float cu = cos(u), su = sin(u), cv = cos(v), sv = sin(v);
       float flow = v - uPhase;
-      float major = 170.0 + sin(2.0 * u + 0.7) * 28.0;
-      float minor = 93.0 + sin(3.0 * u) * 13.0 + cos(flow * 55.0) * 2.4;
-      float majorU = cos(2.0 * u + 0.7) * 56.0;
-      float minorU = cos(3.0 * u) * 39.0;
+      float breathing = sin(uPhase), wave = sin(2.0 * uPhase);
+      float major = 170.0 + sin(2.0 * u + 0.7) * 28.0 + cos(u - 0.3) * breathing * 15.0;
+      float minor = 93.0 + sin(3.0 * u) * 13.0 + sin(u + 0.5) * wave * 9.0
+        + breathing * 3.0 + cos(flow * 55.0) * 2.4;
+      float majorU = cos(2.0 * u + 0.7) * 56.0 - sin(u - 0.3) * breathing * 15.0;
+      float minorU = cos(3.0 * u) * 39.0 + cos(u + 0.5) * wave * 9.0;
       float minorV = -sin(flow * 55.0) * 132.0;
+      float spine = sin(2.0 * u) * 38.0 + sin(u + 0.6) * breathing * 20.0 + cos(3.0 * u) * wave * 10.0;
+      float spineU = cos(2.0 * u) * 76.0 + cos(u + 0.6) * breathing * 20.0 - sin(3.0 * u) * wave * 30.0;
       float radial = major + minor * cv;
       float radialU = majorU + minorU * cv;
       float radialV = minorV * cv - minor * sv;
-      vec3 point = vec3(radial * cu, radial * su, minor * sv + sin(2.0 * u) * 38.0);
-      vec3 tangentU = vec3(radialU * cu - radial * su, radialU * su + radial * cu, minorU * sv + cos(2.0 * u) * 76.0);
+      vec3 point = vec3(radial * cu, radial * su, minor * sv + spine);
+      vec3 tangentU = vec3(radialU * cu - radial * su, radialU * su + radial * cu, minorU * sv + spineU);
       vec3 tangentV = vec3(radialV * cu, radialV * su, minorV * sv + minor * cv);
       vPosition = (pose(point) - uBounds.xyz) * uBounds.w;
       vNormal = normalize(cross(pose(tangentV), pose(tangentU)));
-      vWarmth = pow(0.5 + 0.5 * cos(flow - 0.6), 6.0) * 0.14;
+      vTint = vec2(
+        0.5 + 0.5 * sin(u + flow + 0.9 * breathing),
+        0.5 + 0.5 * cos(2.0 * u - flow + uPhase)
+      );
       gl_Position = uProjection * vec4(vPosition + vec3(0.0, 0.0, -4.0), 1.0);
     }
   `;
@@ -60,7 +67,7 @@ function initializeRibbon() {
     precision mediump float;
     varying vec3 vPosition;
     varying vec3 vNormal;
-    varying float vWarmth;
+    varying vec2 vTint;
     void main() {
       vec3 normal = normalize(vNormal);
       vec3 view = normalize(vec3(0.0, 0.0, 4.0) - vPosition);
@@ -68,14 +75,18 @@ function initializeRibbon() {
       vec3 fill = normalize(vec3(1.0, -0.25, 1.0));
       vec3 teal = vec3(0.122, 0.620, 0.604);
       vec3 graphite = vec3(0.122, 0.141, 0.188);
-      vec3 material = mix(teal, vec3(0.784, 0.647, 0.416), vWarmth);
+      vec3 mint = vec3(0.53, 0.77, 0.70);
+      vec3 gold = vec3(0.784, 0.647, 0.416);
+      vec3 material = mix(teal, mint, (1.0 - vTint.y) * 0.38);
+      material = mix(material, gold, smoothstep(0.60, 1.0, vTint.x) * 0.78);
+      material = mix(material, graphite, smoothstep(0.65, 1.0, vTint.y) * 0.32);
       float diffuse = max(dot(normal, key), 0.0);
       float secondary = max(dot(normal, fill), 0.0);
-      vec3 color = mix(graphite * 0.7, material, 0.28 + diffuse * 0.72);
-      color *= 0.84 + secondary * 0.28;
-      float specular = pow(max(dot(normal, normalize(key + view)), 0.0), 38.0) * 0.34;
-      float edge = pow(1.0 - max(dot(normal, view), 0.0), 3.0) * 0.13;
-      color += vec3(0.78, 0.91, 0.87) * specular + teal * edge;
+      vec3 color = material * (0.62 + diffuse * 0.32 + secondary * 0.12);
+      // Broad, tinted light gives the surface a matte finish without white glare.
+      float specular = pow(max(dot(normal, normalize(key + view)), 0.0), 8.0) * 0.055;
+      float edge = pow(1.0 - max(dot(normal, view), 0.0), 3.0) * 0.03;
+      color += mix(material, mint, 0.5) * specular + teal * edge;
       gl_FragColor = vec4(color, 1.0);
     }
   `;
