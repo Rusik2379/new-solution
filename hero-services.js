@@ -5,10 +5,13 @@ function initializeServiceCarousel() {
   const stage = carousel.querySelector('.hero-service-stage');
   const slides = [...track.children];
   const more = carousel.querySelector('.hero-service-more');
+  const hero = carousel.closest('.home-hero-services');
+  const description = hero?.querySelector('.hero-service-description');
+  const order = hero?.querySelector('.hero-service-order');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const interval = 1200, duration = 500, offset = 2;
   let current = 0, timer = 0, finishTimer = 0, visible = true, hovering = false, focused = false;
-  let moving = false;
+  let moving = false, ordering = false, orderFocused = false;
   function clone(slide) {
     const copy = slide.cloneNode(true);
     copy.setAttribute('aria-hidden','true'); copy.inert = true;
@@ -21,7 +24,7 @@ function initializeServiceCarousel() {
   function stop() { clearTimeout(timer);timer = 0;carousel.dataset.running = 'false'; }
   function schedule() {
     stop();
-    if (reduced.matches || hovering || focused || moving || !visible || document.hidden) return;
+    if (reduced.matches || hovering || focused || ordering || orderFocused || moving || !visible || document.hidden) return;
     carousel.dataset.running = 'true'; timer = setTimeout(()=>select(current+1),interval);
   }
   function position(index,animated) {
@@ -35,6 +38,14 @@ function initializeServiceCarousel() {
     if (more) {
       more.href = slides[current].querySelector('a').getAttribute('href');
       more.setAttribute('aria-label',`Об услуге: ${slides[current].dataset.serviceName}`);
+    }
+    if (hero) hero.dataset.serviceIndex = String(current);
+    if (description) {
+      description.textContent = slides[current].dataset.serviceDescription;
+      if (!reduced.matches && typeof description.animate === 'function') {
+        description.getAnimations().forEach(animation=>animation.cancel());
+        description.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
+      }
     }
   }
   function select(index) {
@@ -58,6 +69,19 @@ function initializeServiceCarousel() {
   carousel.addEventListener('pointerleave',()=>{hovering = false;schedule();});
   carousel.addEventListener('focusin',()=>{focused = true;schedule();});
   carousel.addEventListener('focusout',event=>{if(!carousel.contains(event.relatedTarget)){focused = false;schedule();}});
+  if (order) {
+    // Keep the chosen direction steady while a visitor reaches for the order button.
+    order.addEventListener('pointerenter',event=>{if(event.pointerType !== 'touch'){ordering = true;schedule();}});
+    order.addEventListener('pointerleave',()=>{ordering = false;schedule();});
+    order.addEventListener('focusin',()=>{orderFocused = true;schedule();});
+    order.addEventListener('focusout',()=>{orderFocused = false;schedule();});
+    order.addEventListener('click',()=>{
+      const message = document.querySelector('#message');
+      if (!message) return;
+      const previous = message.value.replace(/^Услуга: [^\n]*\n?/, '');
+      message.value = `Услуга: ${slides[current].dataset.serviceName}\n${previous}`;
+    });
+  }
   document.addEventListener('visibilitychange',schedule);
   reduced.addEventListener('change',resize);
   if ('IntersectionObserver' in window) {
