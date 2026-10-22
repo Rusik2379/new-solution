@@ -6,7 +6,7 @@ function initializeServiceCarousel() {
   const slides = [...track.children];
   const more = carousel.querySelector('.hero-service-more');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const interval = 1800, duration = 600, offset = 2;
+  const interval = 1200, duration = 500, offset = 2;
   let current = 0, timer = 0, finishTimer = 0, visible = true, hovering = false, focused = false;
   let moving = false;
   function clone(slide) {

@@ -14,6 +14,6 @@ if (hero) {
   } else if (variant === 'pillars') {
     await import('./hero-pillars.js?v=pillars-1');
   } else {
-    await import('./hero-services.js?v=services-3');
+    await import('./hero-services.js?v=services-4');
   }
 }
