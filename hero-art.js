@@ -1,12 +1,19 @@
-// Keep the ring available as a complete alternative to the four rising pillars.
-const hero = document.querySelector('.hero-brand-art');
+// The service carousel is the default; both sculptures remain available by URL.
+const hero = document.querySelector('.home-hero');
 if (hero) {
-  const ring = new URLSearchParams(location.search).get('hero') === 'ring';
-  hero.dataset.variant = ring ? 'ring' : 'pillars';
-  if (ring) {
+  const variant = new URLSearchParams(location.search).get('hero');
+  if (variant === 'ring' || variant === 'pillars') {
+    const template = document.querySelector('#hero-sculpture-template');
+    hero.replaceChildren(template.content.cloneNode(true));
+    hero.classList.remove('home-hero-services');
+    hero.querySelector('.hero-brand-art').dataset.variant = variant;
+  }
+  if (variant === 'ring') {
     await import('./hero-ribbon.js');
     await import('./hero-ribbon-3d.js?v=matte-morph-2');
-  } else {
+  } else if (variant === 'pillars') {
     await import('./hero-pillars.js?v=pillars-1');
+  } else {
+    await import('./hero-services.js?v=services-2');
   }
 }

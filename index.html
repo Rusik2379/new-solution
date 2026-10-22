@@ -11,12 +11,14 @@
   <link rel="stylesheet" href="pages.css">
   <link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="brand.css?v=hero-pillars-1">
+  <link rel="stylesheet" href="hero-services.css?v=services-2">
   <script src="script.js" defer></script>
+  <link rel="modulepreload" href="hero-services.js?v=services-2">
   <link rel="modulepreload" href="hero-pillars.js?v=pillars-1">
   <link rel="modulepreload" href="hero-ribbon.js">
   <link rel="modulepreload" href="hero-ribbon-3d.js?v=matte-morph-2">
   <link rel="modulepreload" href="ribbon-geometry.js?v=matte-morph-1">
-  <script src="hero-art.js?v=pillars-1" type="module"></script>
+  <script src="hero-art.js?v=services-2" type="module"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -56,17 +58,39 @@
   </header>
   <div class="nav-backdrop" aria-hidden="true"></div>
   <main id="main">
-    <section class="hero home-hero wide" aria-labelledby="hero-title">
+    <section class="hero home-hero home-hero-services wide" aria-labelledby="hero-title">
       <div class="container home-hero-inner">
         <div class="hero-content">
           <div class="eyebrow">ЦЕНТР СОПРОВОЖДЕНИЯ БИЗНЕСА</div>
-          <h1 id="hero-title"><span>Находим ясность</span><span>Создаем систему</span><span class="hero-title-accent">Развиваем бизнес</span></h1>
-          <p class="home-hero-lead">Наводим порядок в финансах, процессах и работе команды, чтобы ваш бизнес мог расти уверенно</p>
-          <div class="hero-actions"><a class="button" href="#request">Обсудить задачу <span aria-hidden="true">↗</span></a><a class="hero-about" href="#pillars">Наш подход <span aria-hidden="true">⟶</span></a></div>
+          <h1 id="hero-title"><span>Возьмём</span><span class="hero-title-accent">на себя</span></h1>
+          <p class="home-hero-lead">А вы сосредоточьтесь<br>на развитии бизнеса</p>
+          <div class="hero-actions hero-services-actions"><a class="button" href="#request">Заказать услугу <span aria-hidden="true">↗</span></a><a class="button button-outline" href="uslugi.html">Все услуги <span aria-hidden="true">⟶</span></a></div>
+          <p class="hero-services-note">От отдельной задачи<br>до комплексного сопровождения</p>
         </div>
-        <div class="hero-brand-art hero-ribbon"><canvas class="hero-ribbon-canvas" id="hero-art" width="480" height="480" aria-hidden="true"></canvas><button class="ribbon-motion-toggle" type="button" aria-label="Приостановить движение" title="Приостановить движение" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><g class="ribbon-icon-pause"><path d="M9 6v12M15 6v12"/></g><path class="ribbon-icon-play" d="m9 6 9 6-9 6Z"/></svg></button></div>
+        <div class="hero-service-carousel" role="region" aria-roledescription="карусель" aria-label="Направления услуг">
+          <div class="hero-service-stage" aria-live="off"><div class="hero-service-track">
+            <article class="hero-service-slide is-current" role="group" aria-roledescription="направление" aria-label="1 из 7" data-service-name="Бухгалтерский учет"><a class="hero-service-link" href="buhgalterskiy-uchet.html"><h2>Бухгалтерский<br>учет</h2><span class="hero-service-arrow" aria-hidden="true">↗</span></a></article>
+            <article class="hero-service-slide" role="group" aria-roledescription="направление" aria-label="2 из 7" aria-hidden="true" inert data-service-name="Управленческий учет"><a class="hero-service-link" href="upravlencheskiy-uchet.html"><h2>Управленческий<br>учет</h2><span class="hero-service-arrow" aria-hidden="true">↗</span></a></article>
+            <article class="hero-service-slide" role="group" aria-roledescription="направление" aria-label="3 из 7" aria-hidden="true" inert data-service-name="Персонал и кадровый учет"><a class="hero-service-link" href="personal-i-kadry.html"><h2>Персонал<br>и кадровый учет</h2><span class="hero-service-arrow" aria-hidden="true">↗</span></a></article>
+            <article class="hero-service-slide" role="group" aria-roledescription="направление" aria-label="4 из 7" aria-hidden="true" inert data-service-name="Маркетинг и PR"><a class="hero-service-link" href="marketing-i-pr.html"><h2>Маркетинг<br>и PR</h2><span class="hero-service-arrow" aria-hidden="true">↗</span></a></article>
+            <article class="hero-service-slide" role="group" aria-roledescription="направление" aria-label="5 из 7" aria-hidden="true" inert data-service-name="Юридическая поддержка"><a class="hero-service-link" href="yuridicheskaya-podderzhka.html"><h2>Юридическую<br>поддержку</h2><span class="hero-service-arrow" aria-hidden="true">↗</span></a></article>
+            <article class="hero-service-slide" role="group" aria-roledescription="направление" aria-label="6 из 7" aria-hidden="true" inert data-service-name="IT и автоматизация"><a class="hero-service-link" href="it-i-avtomatizaciya.html"><h2>IT и автоматизацию<br>бизнеса</h2><span class="hero-service-arrow" aria-hidden="true">↗</span></a></article>
+            <article class="hero-service-slide" role="group" aria-roledescription="направление" aria-label="7 из 7" aria-hidden="true" inert data-service-name="Консалтинг для HoReCa"><a class="hero-service-link" href="horeca.html"><h2>Консалтинг<br>для HoReCa</h2><span class="hero-service-arrow" aria-hidden="true">↗</span></a></article>
+          </div></div>
+          <div class="hero-service-footer">
+            <a class="hero-service-more" href="buhgalterskiy-uchet.html">Об услуге <span aria-hidden="true">⟶</span></a>
+            <div class="hero-service-controls" hidden><span class="hero-service-counter">01 / 07</span><button class="hero-service-prev" type="button" aria-label="Предыдущее направление"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><button class="hero-service-toggle" type="button" aria-label="Приостановить смену услуг"><svg viewBox="0 0 24 24" aria-hidden="true"><g class="service-icon-pause"><path d="M9 6v12M15 6v12"/></g><path class="service-icon-play" d="m9 6 9 6-9 6Z"/></svg></button><button class="hero-service-next" type="button" aria-label="Следующее направление"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <template id="hero-sculpture-template">
+      <div class="container home-hero-inner">
+        <div class="hero-content"><div class="eyebrow">ЦЕНТР СОПРОВОЖДЕНИЯ БИЗНЕСА</div><h1 id="hero-title"><span>Находим ясность</span><span>Создаем систему</span><span class="hero-title-accent">Развиваем бизнес</span></h1><p class="home-hero-lead">Наводим порядок в финансах, процессах и работе команды, чтобы ваш бизнес мог расти уверенно</p><div class="hero-actions"><a class="button" href="#request">Обсудить задачу <span aria-hidden="true">↗</span></a><a class="hero-about" href="#pillars">Наш подход <span aria-hidden="true">⟶</span></a></div></div>
+        <div class="hero-brand-art hero-ribbon"><canvas class="hero-ribbon-canvas" id="hero-art" width="480" height="480" aria-hidden="true"></canvas><button class="ribbon-motion-toggle" type="button" aria-label="Приостановить движение" title="Приостановить движение" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><g class="ribbon-icon-pause"><path d="M9 6v12M15 6v12"/></g><path class="ribbon-icon-play" d="m9 6 9 6-9 6Z"/></svg></button></div>
+      </div>
+    </template>
 
     <section class="section container pillars-section" id="pillars" aria-labelledby="pillars-title">
       <div class="section-heading"><div><div class="eyebrow">ОСНОВА НАШЕГО ПОДХОДА</div><h2 id="pillars-title">Четыре опоры<br> устойчивого бизнеса</h2></div><p class="section-intro">Связываем финансы, процессы, людей и развитие в единую систему</p></div>
