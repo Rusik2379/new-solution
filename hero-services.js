@@ -32,8 +32,10 @@ function initializeServiceCarousel() {
   function highlight(index) { rows.forEach((row,i)=>row.classList.toggle('is-current',i === index)); }
   function updateLinks() {
     slides.forEach((slide,i)=>{slide.setAttribute('aria-hidden',String(i !== current));slide.inert = i !== current;});
-    more.href = slides[current].querySelector('a').getAttribute('href');
-    more.setAttribute('aria-label',`Об услуге: ${slides[current].dataset.serviceName}`);
+    if (more) {
+      more.href = slides[current].querySelector('a').getAttribute('href');
+      more.setAttribute('aria-label',`Об услуге: ${slides[current].dataset.serviceName}`);
+    }
   }
   function select(index) {
     if (moving) return;
