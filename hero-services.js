@@ -88,6 +88,15 @@ function initializeServiceCarousel() {
     const observer = new IntersectionObserver(entries=>{visible = entries[0].isIntersecting;schedule();},{threshold:0});observer.observe(carousel);
   }
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(stage);
+  if (hero) {
+    let artVisible = true;
+    const updateArt = ()=>{hero.dataset.artRunning = String(artVisible && !document.hidden);};
+    document.addEventListener('visibilitychange',updateArt);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries=>{artVisible = entries[0].isIntersecting;updateArt();},{threshold:0}).observe(hero);
+    }
+    updateArt();
+  }
   window.addEventListener('resize',resize,{passive:true});
   updateLinks();resize();
 }
