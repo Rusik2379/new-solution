@@ -71,24 +71,32 @@ body{background:var(--surface);font-family:var(--font);color:var(--ink)}
 .pillar h3{font-size:25px;font-weight:650;letter-spacing:-.7px;margin-bottom:17px}
 .pillar p{font-size:15px;line-height:1.8;color:var(--muted);flex:1;margin-bottom:25px}
 .pillar .text-link{font-size:13px;gap:12px;justify-content:space-between}
-.problems-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.35fr);background:#f3f5f4;border:1px solid var(--line);border-radius:24px;overflow:hidden}
-.problems-intro{display:flex;flex-direction:column;align-items:flex-start;padding:44px 38px;background:var(--ink);color:#fff}
-.problems-intro .eyebrow{color:var(--gold);font-size:11px;letter-spacing:1px;margin-bottom:23px}
-.problems-intro h2{font-size:clamp(30px,2.7vw,38px);letter-spacing:-1.3px;line-height:1.2}
-.problems-intro h2>span{color:#e2d0ac}
-.problems-intro>p{font-size:16px;line-height:1.75;color:#d6dddd;margin-block:24px 30px;max-width:370px}
-.problems-intro .button{margin-top:auto}
-.problems-body{padding:15px 34px 27px;min-width:0}
-.problems .problem-grid{grid-template-columns:1fr;gap:0}
-.problems .problem{display:grid;grid-template-columns:44px minmax(0,1fr);gap:19px;padding-block:25px;border-top:1px solid var(--line)}
-.problems .problem:first-child{border-top:0}
-.problem-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#e0edeb;color:var(--turquoise-dark)}
-.problem-icon svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.problems .problem h3{font-size:20px;letter-spacing:-.4px;line-height:1.35;margin:0 0 9px}
-.problems .problem p{max-width:none;font-size:15px;line-height:1.75;color:#606970}
-.problems .problem-caption{display:block;background:none;border-top:1px solid var(--line);border-radius:0;padding:22px 0 0;margin:0}
-.problems .problem-caption p{font-size:14px;font-weight:500;line-height:1.7;max-width:440px}
-.problems .problem-caption .text-link{display:inline-flex;margin-top:15px;font-size:14px}
+/* One shared question, followed by three visual business problems. */
+.problems-heading{max-width:900px;margin:0 auto 42px;text-align:center}
+.problems-heading h2{font-size:clamp(30px,3.2vw,44px);font-weight:600;letter-spacing:-1.6px;line-height:1.18;text-wrap:balance}
+.problems-heading>p{max-width:670px;margin:20px auto 0;font-size:16px;line-height:1.75;color:var(--muted);text-wrap:pretty}
+.problems .problem-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.problems .problem{display:flex;flex-direction:column;min-width:0;padding:0;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 8px 28px #1e555607;overflow:hidden}
+.problem-visual{position:relative;display:grid;place-items:center;height:190px;flex-shrink:0;background:radial-gradient(ellipse at 50% 65%,#deeeed 0,#f6faf9 58%,#fff 100%);isolation:isolate;overflow:hidden}
+.problem-visual::before{content:"";position:absolute;z-index:-1;right:-24px;top:-40px;width:160px;height:160px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.22;transform:rotate(90deg)}
+.problem-visual--finance::before{right:auto;left:-38px;transform:none}
+.problem-visual--growth::before{top:-36px;transform:rotate(180deg)}
+.problem-visual svg{display:block;width:min(100%,320px);height:170px;overflow:visible;transition:transform .35s ease}
+.problem-connections{stroke:#79aaa8;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.problem-node{fill:#ffffffc9;stroke:#c2d9d6;stroke-width:1.2;filter:drop-shadow(0 5px 6px #275c5a0d)}
+.problem-details{stroke:#81aaa7;stroke-width:1.8;stroke-linecap:round}
+.problem-focus{fill:#187a77;stroke:#ffffffc2;stroke-width:2;filter:drop-shadow(0 7px 9px #187a7733)}
+.problem-person{stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.problem-copy{padding:24px 27px 29px}
+.problems .problem h3{min-height:2.7em;font-size:21px;font-weight:600;letter-spacing:-.5px;line-height:1.35;margin:0 0 14px;text-wrap:balance}
+.problems .problem p{max-width:none;font-size:15px;line-height:1.75;color:var(--muted)}
+.problems-next{display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid var(--line);margin-top:32px;padding-top:28px}
+.problems-next>p{font-size:17px;font-weight:500;line-height:1.6;letter-spacing:-.3px}
+.problems-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:26px}
+.problems-actions .text-link{font-size:14px;gap:16px;white-space:nowrap}
+.problems-actions .button{white-space:nowrap}
+@media(hover:hover) and (pointer:fine){.problem:hover .problem-visual svg{transform:translateY(-4px)}}
+@media(prefers-reduced-motion:reduce){.problem-visual svg{transition:none}}
 .section-tile{background:var(--ink)}
 .section-tile .eyebrow{color:#d4c19d}
 .approach{background:var(--ink)}
@@ -177,9 +185,11 @@ input:not([type=checkbox]),select,textarea{background:var(--paper);border-color:
   .pillars-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pillar:nth-child(2){border-right:0}.pillar:nth-child(3){padding-left:0}
   .pillar:nth-child(n+3){border-top:1px solid var(--line)}
-  .problems-layout{grid-template-columns:1fr}
-  .problems-intro{padding:34px}
-  .problems-intro>p{max-width:620px}
+  .problems .problem-grid{gap:14px}
+  .problem-copy{padding:22px 19px 25px}
+  .problems .problem h3{font-size:19px}
+  .problems-next{align-items:flex-start}
+  .problems-actions{gap:16px}
 }
 @media(max-width:760px){
   .brand{flex-basis:180px}.brand img{width:180px;height:auto}
@@ -197,14 +207,18 @@ input:not([type=checkbox]),select,textarea{background:var(--paper);border-color:
   .pillar:nth-child(n+3){border-top:1px solid var(--line)}
   .pillar h3{font-size:23px}.pillar p{font-size:15px}.pillar .text-link{font-size:13px}
   .pillar-shape{width:48px;height:48px}.pillar-top{margin-bottom:22px}
-  .problems-layout{grid-template-columns:1fr;border-radius:18px}
-  .problems-intro{padding:29px 24px}
-  .problems-intro h2{font-size:30px;letter-spacing:-.9px}
-  .problems-intro>p{font-size:15px;margin-block:21px 25px}
-  .problems-body{padding:3px 22px 24px}
-  .problems .problem{grid-template-columns:36px minmax(0,1fr);gap:13px;padding-block:23px}
-  .problem-icon{width:36px;height:36px;border-radius:10px}.problem-icon svg{width:24px;height:24px}
-  .problems .problem h3{font-size:18px}.problems .problem p{font-size:14px}
+  .problems-heading{margin-bottom:28px;text-align:left}
+  .problems-heading h2{font-size:30px;letter-spacing:-1px}
+  .problems-heading>p{font-size:15px;margin-top:17px}
+  .problems .problem-grid{grid-template-columns:1fr;gap:18px}
+  .problem-visual{height:165px}
+  .problem-visual svg{height:155px}
+  .problem-copy{padding:21px 24px 27px}
+  .problems .problem h3{min-height:0;font-size:21px;text-wrap:pretty}
+  .problems-next{align-items:flex-start;flex-direction:column;gap:22px;margin-top:26px;padding-top:24px}
+  .problems-next>p{font-size:16px}
+  .problems-next>p br{display:none}
+  .problems-actions{width:100%;justify-content:space-between;gap:22px}
   .approach-top{grid-template-columns:1fr;gap:29px}
   .team-photo{height:250px}.approach-story{padding:0 5px}
   .approach-story h3{font-size:28px}.approach-story p{font-size:15px}
