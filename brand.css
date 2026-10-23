@@ -146,6 +146,51 @@ body{background:var(--surface);font-family:var(--font);color:var(--ink)}
 .step{background:var(--ivory)}
 .step h3{color:var(--ink)}
 .step>span{color:#a38248}
+/* Homepage process: a light, connected path without a team photograph. */
+.process-section{background:#fff;color:var(--ink);padding:64px 0;border-block:1px solid var(--line)}
+.process-section::before{content:none}
+.process-section .approach-inner{width:min(1224px,calc(100% - 80px))}
+.process-intro{position:relative;isolation:isolate;display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:60px;margin-bottom:52px}
+.process-intro::before{content:"";position:absolute;z-index:-1;right:-25px;top:-40px;width:180px;height:180px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.18;pointer-events:none}
+.process-intro h2{font-size:clamp(30px,3.2vw,44px);line-height:1.18;font-weight:550;letter-spacing:-1.4px;text-wrap:pretty}
+.process-intro h2>span{color:var(--turquoise-dark)}
+.process-intro>p{max-width:490px;font-size:16px;line-height:1.8;color:var(--muted)}
+.process-path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px;list-style:none;padding:0;margin:0}
+.process-path li{position:relative;min-width:0}
+.process-path li:not(:last-child)::after{content:"";position:absolute;left:20px;top:20px;width:calc(100% + 30px);height:1px;background:#cbded9;pointer-events:none}
+.process-step-number{position:relative;z-index:1;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid #a8cdca;background:#fff;color:var(--turquoise-dark);font-size:13px;font-weight:500;box-shadow:0 0 0 7px #fff}
+.process-path h3{min-height:2.6em;margin:25px 0 14px;font-size:22px;font-weight:550;line-height:1.3;letter-spacing:-.5px}
+.process-path p{max-width:250px;color:var(--muted);font-size:15px;line-height:1.8}
+.process-start{display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid var(--line);padding-top:28px;margin-top:40px}
+.process-start>p{font-size:17px;font-weight:450;line-height:1.6;letter-spacing:-.3px}
+.process-start .button{flex-shrink:0;white-space:nowrap}
+@media(max-width:980px) and (min-width:761px){
+  .process-intro{grid-template-columns:1fr;gap:22px}
+  .process-intro>p{max-width:650px}
+  .process-path{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:38px}
+  .process-path li:nth-child(2)::after{display:none}
+  .process-path h3{min-height:0}
+}
+@media(max-width:760px){
+  .process-section{padding:42px 0}
+  .process-section .approach-inner{width:calc(100% - 20px)}
+  .process-intro{grid-template-columns:1fr;gap:20px;margin-bottom:36px}
+  .process-intro h2{font-size:31px;letter-spacing:-1px}
+  .process-intro h2 br{display:none}
+  .process-intro>p{font-size:15px}
+  .process-intro::before{right:-15px;top:-25px;width:140px;height:140px;opacity:.13}
+  .process-path{grid-template-columns:1fr;gap:28px}
+  .process-path li{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:22px;align-items:start}
+  .process-path li:not(:last-child)::after{left:20px;top:20px;width:1px;height:calc(100% + 28px)}
+  .process-step-number{grid-row:1 / 3}
+  .process-path h3{grid-column:2;min-height:0;margin:4px 0 10px;font-size:21px}
+  .process-path h3 br{display:none}
+  .process-path p{grid-column:2;max-width:none;font-size:15px}
+  .process-start{flex-direction:column;align-items:flex-start;gap:22px;margin-top:32px;padding-top:24px}
+  .process-start>p{font-size:16px}
+  .process-start>p br{display:none}
+  .process-start .button{font-size:13px;gap:16px}
+}
 .service-card{background:#f2f4f5}
 .service-card:hover{background:#e7ebe6}
 .service-card.service-help{background:var(--ink);color:#fff}
