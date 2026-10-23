@@ -191,16 +191,46 @@ body{background:var(--surface);font-family:var(--font);color:var(--ink)}
   .process-start>p br{display:none}
   .process-start .button{font-size:13px;gap:16px}
 }
-.service-card{background:#f2f4f5}
-.service-card:hover{background:#e7ebe6}
-.service-card.service-help{background:var(--ink);color:#fff}
-.service-card.service-help:hover{background:#2b3540}
-.service-help h3{color:#fff}
-.service-help .eyebrow{color:#dfc698}
-.service-help .help-spark{color:#1f9e9a55}
-.service-help p{color:#e1e5e2}
-.service-help .card-bottom,.service-help:hover .card-bottom{color:#fff;border-color:#ffffff40}
-.service-help:hover .card-bottom>span{border-color:#a3d4ce;background:#187a77;color:#fff}
+/* The existing service cards keep their content and icons, in the light brand style. */
+.services-section .section-heading h2{font-size:clamp(30px,3.2vw,44px);font-weight:550;line-height:1.18;letter-spacing:-1.3px}
+.services-section .section-heading h2 .muted{color:var(--turquoise-dark)}
+.services-section .service-card{isolation:isolate;padding:24px 23px 19px;background:#fff;color:var(--ink);border:1px solid #dfe9e6;border-radius:22px;box-shadow:0 6px 24px #173f3c08;transition:border-color .25s,transform .25s,box-shadow .25s}
+.services-section .service-card::before{content:"";position:absolute;z-index:-1;right:-30px;top:-32px;width:160px;height:160px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.16;pointer-events:none}
+.services-section .service-card:nth-child(2n)::before{transform:rotate(90deg)}
+.services-section .service-top>span{color:var(--turquoise-dark);font-size:10px;font-weight:550;letter-spacing:.6px}
+.services-section .service-icon{stroke:var(--turquoise-dark);stroke-width:1.45}
+.services-section .service-card h3{font-size:21px;font-weight:550;line-height:1.35;letter-spacing:-.5px;color:var(--ink)}
+.services-section .service-card p{color:var(--muted);font-size:14px;line-height:1.75}
+.services-section .card-bottom{color:var(--turquoise-dark);border-color:#dfe9e6;font-weight:500}
+.services-section .card-bottom>span{width:32px;height:32px;border-color:#c8ded8;background:#f4faf8;color:var(--turquoise-dark);transition:background .2s,border-color .2s,color .2s}
+.services-section .service-card.service-help{background:linear-gradient(140deg,#fff 35%,#eff8f5);border-color:#b6d5ce;color:var(--ink)}
+.services-section .service-help::before{width:175px;height:175px;right:-35px;top:-35px;background-image:url('assets/glass-quarter-finance-v2.webp');opacity:.24;transform:rotate(90deg)}
+.services-section .service-help .eyebrow{font-size:10px;font-weight:550;letter-spacing:.6px;color:var(--turquoise-dark)}
+.services-section .service-help .card-bottom{min-height:46px;color:var(--turquoise-dark);border-color:#c8ded8}
+.services-section .service-help .card-bottom>span{background:var(--turquoise-dark);color:#fff;border-color:var(--turquoise-dark)}
+.services-section a.service-card:focus-visible,.services-section .service-help .card-bottom:focus-visible{outline:2px solid var(--turquoise-dark);outline-offset:4px}
+.services-section .audience-tags span{background:#fff;border:1px solid #dce8e4;color:#546a64}
+@media(hover:hover) and (pointer:fine){
+  .services-section .service-card:hover{background:#fff;border-color:#a7cdc5;box-shadow:0 14px 32px #173f3c12;transform:translateY(-5px)}
+  .services-section .service-card:hover .card-bottom>span{background:var(--turquoise-dark);color:#fff;border-color:var(--turquoise-dark)}
+  .services-section .service-card.service-help:hover{background:linear-gradient(140deg,#fff 35%,#e6f5f0)}
+}
+@media(max-width:760px){
+  .services-section .section-heading h2{font-size:31px;letter-spacing:-1px}
+  .services-section .service-card{border-radius:20px}
+}
+@media(max-width:540px){
+  .services-section .service-card{padding:25px 24px 20px}
+  .services-section .service-top>span,.services-section .service-help .eyebrow{font-size:11px}
+  .services-section .service-card h3{font-size:23px}
+  .services-section .service-card p{font-size:15px}
+  .services-section .service-card::before{width:145px;height:145px}
+}
+@media(hover:none),(prefers-reduced-motion:reduce){
+  .services-section .service-card,.services-section .service-icon{transition:none}
+  .services-section .service-card:hover,.motion-enabled .services-section .service-card.reveal.is-visible:hover{transform:none}
+  .services-section .service-card:hover .service-icon{transform:translate(3px,6px)}
+}
 .expertise-tags span,.audience-tags span{background:#f0f4f4;color:#515b5c;border-color:#d7e2e2}
 .prices-section{background:#f2f4f5}
 .price-card{background:var(--paper)}
