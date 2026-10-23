@@ -1,0 +1,135 @@
+/* Homepage: work formats, contact form and a full service directory in the footer. */
+.prices-home{position:relative;isolation:isolate;background:#fff;border:1px solid var(--line);border-radius:26px;padding:64px 0 36px}
+.prices-home>.container{width:min(1224px,calc(100% - 80px))}
+.prices-home .section-heading{align-items:flex-end}
+.prices-home .section-heading h2,.contact-home .contact-copy h2{font-size:clamp(30px,3.2vw,44px);font-weight:550;line-height:1.18;letter-spacing:-1.3px}
+.prices-home .section-heading h2 .muted,.contact-home .contact-copy h2 .muted{color:var(--turquoise-dark)}
+.prices-home .eyebrow,.contact-home .eyebrow{font-size:11px;font-weight:550;letter-spacing:.9px;color:var(--turquoise-dark)}
+.prices-home .price-grid{gap:22px}
+.prices-home .price-card{position:relative;isolation:isolate;overflow:hidden;background:#fff;color:var(--ink);border:1px solid #dfe9e6;border-radius:22px;padding:30px 27px 27px;box-shadow:0 6px 24px #173f3c08}
+.prices-home .price-card.featured{background:linear-gradient(150deg,#fff 38%,#eef8f4);border-color:#a9d0c5;color:var(--ink)}
+.prices-home .price-card.featured::before{content:"";position:absolute;z-index:-1;right:-32px;top:-35px;width:185px;height:185px;background:url('assets/glass-quarter-finance-v2.webp') center/contain no-repeat;opacity:.14;pointer-events:none}
+.prices-home .price-type,.prices-home .featured .price-type{color:var(--turquoise-dark);font-size:10px;font-weight:550;letter-spacing:.7px;line-height:1.6}
+.prices-home .price-card h3,.prices-home .featured h3{color:var(--ink);font-size:27px;font-weight:550;letter-spacing:-.7px;line-height:1.25;margin-top:19px}
+.prices-home .price-card>p,.prices-home .price-card li{color:var(--muted);font-size:15px;line-height:1.8}
+.prices-home .price-card>p{min-height:81px;max-width:none;margin-top:16px}
+.prices-home .price-card ul{margin:24px 0 28px}
+.prices-home .price-card li{margin:11px 0;padding-left:20px}
+.prices-home .price-card li::before{color:var(--turquoise-dark)}
+.prices-home .price-value,.prices-home .featured .price-value{color:var(--turquoise-dark);border-color:#d5e5df;font-size:20px;font-weight:500;line-height:1.5;padding-top:20px}
+.prices-home .price-card .button{font-size:13px;min-height:48px;padding-inline:17px;gap:16px}
+.prices-home .price-note{color:var(--muted);font-size:14px;line-height:1.8;max-width:760px;margin:26px auto 0}
+
+.contact-home{gap:56px;padding-block:90px;align-items:start}
+.contact-home .contact-copy{min-width:0}
+.contact-home .contact-copy .eyebrow{margin-bottom:24px}
+.contact-home .contact-copy>p{color:var(--muted);font-size:16px;line-height:1.8;max-width:490px;margin:26px 0 30px}
+.contact-home .contact-phone{font-size:clamp(25px,2.5vw,32px);font-weight:500;letter-spacing:-.7px;line-height:1.4;min-height:44px;max-width:420px;color:var(--turquoise-dark)}
+.contact-home .contact-email{color:var(--turquoise-dark);font-size:18px;line-height:1.5;padding-block:6px;overflow-wrap:anywhere}
+.contact-home .office{margin-top:30px}
+.contact-home .office p{font-size:16px;line-height:1.8}
+.contact-home .office>div>span{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.8px}
+.contact-home .social-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.contact-home .social-links a{display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:9px 14px;border:1px solid #d5e5df;border-radius:24px;color:var(--turquoise-dark);font-size:13px;background:#fff}
+.contact-home .request-card{position:relative;isolation:isolate;min-width:0;overflow:hidden;scroll-margin-top:110px;padding:34px;background:#fff;border:1px solid #dce8e4;border-radius:24px;box-shadow:0 16px 40px #16433e0c}
+.contact-home .request-card::before{content:"";position:absolute;z-index:-1;right:-35px;top:-45px;width:185px;height:185px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.2;pointer-events:none}
+.contact-home .request-card h3{font-size:32px;font-weight:550;line-height:1.2;letter-spacing:-1px;margin-top:13px}
+.contact-home .request-description{color:var(--muted);font-size:15px;line-height:1.7;margin:12px 0 26px;max-width:360px}
+.contact-home .form-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.contact-home form label{min-width:0;font-size:14px;color:var(--ink);font-weight:500;line-height:1.6;margin-bottom:19px}
+.contact-home input:not([type=checkbox]),.contact-home textarea{font-size:16px;line-height:1.5;min-height:52px;border:1px solid #d6e3dd;border-radius:11px;background:#f8fbfa;color:var(--ink);padding:13px 14px;margin-top:8px;transition:border-color .2s,box-shadow .2s}
+.contact-home textarea{min-height:118px;resize:vertical}
+.contact-home input::placeholder,.contact-home textarea::placeholder{color:#747d78;opacity:1}
+.contact-home input:focus-visible,.contact-home textarea:focus-visible{outline:2px solid #187a7760;outline-offset:2px;border-color:var(--turquoise-dark);background:#fff}
+.contact-home form .consent{font-size:12px;font-weight:400;line-height:1.7;color:var(--muted);margin-block:2px 22px;gap:10px}
+.contact-home .consent input{width:17px;height:17px;margin-top:3px}
+.contact-home .submit-button{font-size:14px;min-height:52px}
+.contact-home .form-note{font-size:12px;color:var(--muted);line-height:1.8;margin-top:15px}
+.contact-home .form-status{font-size:14px;line-height:1.7;overflow-wrap:anywhere}
+.contact-home .form-status button{padding:9px 15px;border-color:#c6ded4;min-height:44px}
+.policy-dialog{background:#fff;border-color:#d6e5de;border-radius:24px}
+
+.footer-home{position:relative;isolation:isolate;overflow:hidden;background:#fff;color:var(--ink);padding-top:64px;border-top:1px solid #dce8e2}
+.footer-home::before{content:"";position:absolute;z-index:-1;top:-95px;right:-70px;width:320px;height:320px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.12;pointer-events:none}
+.footer-home .footer-top{display:grid;grid-template-columns:280px minmax(0,1fr) auto;align-items:center;gap:48px;padding-bottom:40px;border-color:#dce8e2}
+.footer-home .footer-brand{display:block;width:280px;max-width:100%}
+.footer-home .footer-top p{order:0;width:auto;font-size:23px;font-weight:450;line-height:1.45;letter-spacing:-.5px;color:var(--ink)}
+.footer-home .footer-top p>span{color:var(--turquoise-dark)}
+.footer-home .back-top{display:inline-flex;align-items:center;gap:13px;font-size:14px;line-height:1.5;min-height:44px;color:var(--turquoise-dark);white-space:nowrap}
+.footer-home .back-top>span{display:grid;place-items:center;width:42px;height:42px;border:1px solid #c8ddd3;border-radius:50%;font-size:22px;background:#fff}
+.footer-home .footer-main{display:grid;grid-template-columns:275px minmax(0,1fr);gap:56px;padding-block:44px 50px}
+.footer-home .footer-contact{display:flex;flex-direction:column;gap:30px;min-width:0}
+.footer-home .footer-label{font-size:11px;font-weight:550;letter-spacing:.8px;line-height:1.6;color:var(--muted);margin-bottom:16px}
+.footer-home .footer-phone{display:block;font-size:25px;font-weight:500;letter-spacing:-.6px;line-height:1.5;color:var(--turquoise-dark);white-space:nowrap}
+.footer-home .footer-email{display:inline-block;font-size:17px;line-height:1.6;padding-block:7px;color:var(--turquoise-dark);overflow-wrap:anywhere}
+.footer-home .footer-contact-details>p{font-size:15px;line-height:1.8;color:var(--muted);margin-top:12px}
+.footer-home .footer-social{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.footer-home .footer-social a{display:inline-flex;align-items:center;gap:16px;min-height:36px;font-size:15px;line-height:1.6;color:var(--ink)}
+.footer-home .footer-social a>span{color:var(--turquoise-dark)}
+.footer-home .footer-contact .button{font-size:13px;min-height:48px;gap:16px;margin-top:22px;padding-inline:18px}
+.footer-home .footer-directory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:34px 26px;min-width:0}
+.footer-home .footer-directory nav{min-width:0}
+.footer-home .footer-directory h3{font-size:17px;font-weight:550;line-height:1.4;letter-spacing:-.3px;color:var(--ink);margin-bottom:15px}
+.footer-home .footer-directory ul{list-style:none;padding:0;margin:0}
+.footer-home .footer-directory a{display:inline-block;max-width:100%;font-size:15px;line-height:1.65;color:var(--muted);padding-block:5px;text-decoration:none;overflow-wrap:break-word}
+.footer-home .footer-bottom{border-color:#dce8e2;font-size:12px;line-height:1.7;color:var(--muted);padding-block:24px 28px;gap:24px}
+.footer-home a:focus-visible,.footer-home .policy-trigger:focus-visible,.contact-home .policy-trigger:focus-visible{outline:2px solid var(--turquoise-dark);outline-offset:4px;border-radius:4px}
+.footer-home a:hover{color:var(--turquoise-dark)}
+.footer-home .button-outline:hover{color:#fff}
+@media(hover:hover) and (pointer:fine){
+  .footer-home .footer-directory a:hover{text-decoration:underline;text-underline-offset:4px}
+  .contact-home .social-links a:hover{background:#f0f8f4;border-color:#b0d2c4}
+}
+@media(max-width:1100px){
+  .contact-home{gap:32px}
+  .contact-home .form-row{grid-template-columns:1fr;gap:0}
+  .footer-home .footer-top{grid-template-columns:250px minmax(0,1fr) auto;gap:32px}
+  .footer-home .footer-brand{width:250px}
+  .footer-home .footer-main{grid-template-columns:245px minmax(0,1fr);gap:34px}
+}
+@media(max-width:980px){
+  .prices-home .price-grid{grid-template-columns:1fr}
+  .prices-home .price-card>p{min-height:0;max-width:650px}
+  .prices-home .price-card ul{margin-block:21px}
+  .contact-home{grid-template-columns:1fr;gap:38px;padding-block:70px}
+  .contact-home .contact-copy>p{max-width:650px}
+  .contact-home .form-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .footer-home .footer-top{grid-template-columns:240px minmax(0,1fr);gap:26px}
+  .footer-home .back-top{grid-column:2;justify-self:end}
+  .footer-home .footer-main{grid-template-columns:1fr;gap:42px}
+  .footer-home .footer-contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+}
+@media(max-width:760px){
+  .prices-home{padding:40px 0 28px;border-radius:22px}
+  .prices-home>.container{width:calc(100% - 20px)}
+  .prices-home .section-heading h2,.contact-home .contact-copy h2{font-size:31px;letter-spacing:-1px}
+  .prices-home .price-card{padding:27px 24px;border-radius:20px}
+  .prices-home .price-card h3{font-size:26px}
+  .prices-home .price-note{text-align:left;font-size:13px}
+  .contact-home{display:grid;padding-block:62px;gap:32px}
+  .contact-home .contact-copy>p{font-size:15px}
+  .contact-home .request-card{padding:28px 24px;border-radius:22px;scroll-margin-top:94px}
+  .contact-home .request-card h3{font-size:30px}
+  .contact-home .form-row{grid-template-columns:1fr;gap:0}
+  .footer-home{padding-top:42px}
+  .footer-home .footer-top{grid-template-columns:minmax(0,1fr) auto;gap:24px 16px;padding-bottom:30px}
+  .footer-home .footer-brand{width:230px}
+  .footer-home .footer-top p{grid-column:1 / -1;grid-row:2;font-size:22px;max-width:590px}
+  .footer-home .back-top{grid-column:2;grid-row:1;gap:9px;font-size:13px}
+  .footer-home .back-top>span{width:38px;height:38px}
+  .footer-home .footer-directory{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}
+  .footer-home .footer-directory a,.footer-home .footer-social a{min-height:44px}
+  .footer-home .footer-bottom{flex-direction:column;align-items:flex-start;gap:15px;padding-block:24px}
+  .footer-home .footer-bottom>span:last-child{display:block}
+}
+@media(max-width:540px){
+  .footer-home .footer-main{padding-block:34px 38px}
+  .footer-home .footer-contact,.footer-home .footer-directory{grid-template-columns:1fr;gap:32px}
+  .footer-home .footer-directory h3{font-size:19px;margin-bottom:12px}
+  .footer-home .footer-directory a{display:block;font-size:16px;padding-block:8px}
+  .footer-home .footer-phone{font-size:26px}
+  .footer-home .footer-contact .button{width:100%;justify-content:space-between}
+}
+@media(prefers-reduced-motion:reduce){
+  .contact-home input:not([type=checkbox]),.contact-home textarea{transition:none}
+}
