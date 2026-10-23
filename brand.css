@@ -76,27 +76,19 @@ body{background:var(--surface);font-family:var(--font);color:var(--ink)}
 .problems-heading h2{font-size:clamp(30px,3.2vw,44px);font-weight:600;letter-spacing:-1.6px;line-height:1.18;text-wrap:balance}
 .problems-heading>p{max-width:670px;margin:20px auto 0;font-size:16px;line-height:1.75;color:var(--muted);text-wrap:pretty}
 .problems .problem-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.problems .problem{display:flex;flex-direction:column;min-width:0;padding:0;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 8px 28px #1e555607;overflow:hidden}
-.problem-visual{position:relative;display:grid;place-items:center;height:190px;flex-shrink:0;background:radial-gradient(ellipse at 50% 65%,#deeeed 0,#f6faf9 58%,#fff 100%);isolation:isolate;overflow:hidden}
-.problem-visual::before{content:"";position:absolute;z-index:-1;right:-24px;top:-40px;width:160px;height:160px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.22;transform:rotate(90deg)}
-.problem-visual--finance::before{right:auto;left:-38px;transform:none}
-.problem-visual--growth::before{top:-36px;transform:rotate(180deg)}
-.problem-visual svg{display:block;width:min(100%,320px);height:170px;overflow:visible;transition:transform .35s ease}
-.problem-connections{stroke:#79aaa8;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.problem-node{fill:#ffffffc9;stroke:#c2d9d6;stroke-width:1.2;filter:drop-shadow(0 5px 6px #275c5a0d)}
-.problem-details{stroke:#81aaa7;stroke-width:1.8;stroke-linecap:round}
-.problem-focus{fill:#187a77;stroke:#ffffffc2;stroke-width:2;filter:drop-shadow(0 7px 9px #187a7733)}
-.problem-person{stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.problem-copy{padding:24px 27px 29px}
-.problems .problem h3{min-height:2.7em;font-size:21px;font-weight:600;letter-spacing:-.5px;line-height:1.35;margin:0 0 14px;text-wrap:balance}
-.problems .problem p{max-width:none;font-size:15px;line-height:1.75;color:var(--muted)}
+.problems .problem{position:relative;display:flex;flex-direction:column;min-width:0;padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(155deg,#fff 40%,#f6faf9);box-shadow:0 8px 28px #1e555607;overflow:hidden;isolation:isolate}
+.problems .problem::before{content:"";position:absolute;z-index:-1;right:-26px;top:-34px;width:164px;height:164px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.25;pointer-events:none}
+.problems .problem--finance::before{transform:rotate(90deg)}
+.problems .problem--growth::before{transform:rotate(180deg)}
+.problem-topic{display:block;align-self:flex-start;color:var(--turquoise-dark);font-size:13px;font-weight:500;letter-spacing:.2px;line-height:1.5;margin-bottom:42px}
+.problems .problem h3{min-height:2.24em;font-size:clamp(28px,2.6vw,36px);font-weight:550;letter-spacing:-1px;line-height:1.12;margin:0 0 22px;text-wrap:pretty}
+.problems .problem h3 span{color:var(--turquoise-dark)}
+.problems .problem p{max-width:none;font-size:15px;line-height:1.75;color:var(--muted);margin-top:auto}
 .problems-next{display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid var(--line);margin-top:32px;padding-top:28px}
 .problems-next>p{font-size:17px;font-weight:500;line-height:1.6;letter-spacing:-.3px}
 .problems-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:26px}
 .problems-actions .text-link{font-size:14px;gap:16px;white-space:nowrap}
 .problems-actions .button{white-space:nowrap}
-@media(hover:hover) and (pointer:fine){.problem:hover .problem-visual svg{transform:translateY(-4px)}}
-@media(prefers-reduced-motion:reduce){.problem-visual svg{transition:none}}
 .section-tile{background:var(--ink)}
 .section-tile .eyebrow{color:#d4c19d}
 .approach{background:var(--ink)}
@@ -186,8 +178,8 @@ input:not([type=checkbox]),select,textarea{background:var(--paper);border-color:
   .pillar:nth-child(2){border-right:0}.pillar:nth-child(3){padding-left:0}
   .pillar:nth-child(n+3){border-top:1px solid var(--line)}
   .problems .problem-grid{gap:14px}
-  .problem-copy{padding:22px 19px 25px}
-  .problems .problem h3{font-size:19px}
+  .problems .problem{padding:25px 20px}
+  .problems .problem h3{font-size:27px;min-height:3.36em}
   .problems-next{align-items:flex-start}
   .problems-actions{gap:16px}
 }
@@ -211,10 +203,9 @@ input:not([type=checkbox]),select,textarea{background:var(--paper);border-color:
   .problems-heading h2{font-size:30px;letter-spacing:-1px}
   .problems-heading>p{font-size:15px;margin-top:17px}
   .problems .problem-grid{grid-template-columns:1fr;gap:18px}
-  .problem-visual{height:165px}
-  .problem-visual svg{height:155px}
-  .problem-copy{padding:21px 24px 27px}
-  .problems .problem h3{min-height:0;font-size:21px;text-wrap:pretty}
+  .problems .problem{padding:27px 25px}
+  .problem-topic{margin-bottom:34px}
+  .problems .problem h3{min-height:0;font-size:32px;max-width:380px;margin-bottom:22px}
   .problems-next{align-items:flex-start;flex-direction:column;gap:22px;margin-top:26px;padding-top:24px}
   .problems-next>p{font-size:16px}
   .problems-next>p br{display:none}
