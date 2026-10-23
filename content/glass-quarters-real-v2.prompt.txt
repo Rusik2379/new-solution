@@ -1,0 +1,11 @@
+Use case: precise-object-edit
+Asset type: production 2-by-2 sprite of four isolated photorealistic glass quarter-circle objects, transparent PNG.
+Input image 1 is the AUTHORITATIVE GEOMETRY and orientation template. Input image 2 is a MATERIAL reference only.
+Replace the four flat coloured sectors in image 1 with real thick optical glass objects. Preserve the EXACT four silhouettes, exact 2-by-2 placement, equal sizes, axis alignment, large separating gutters and colours from image 1. No other objects.
+TOP LEFT: translucent turquoise #1F9E9A; its perfectly square 90-degree corner is at TOP LEFT. Straight horizontal top and vertical left edges, one convex circular quarter-arc across its bottom-right.
+TOP RIGHT: smoked graphite glass #1F2430; its square 90-degree corner is at TOP RIGHT. Straight top and right edges.
+BOTTOM LEFT: nearly colourless pale frosted clear glass; its square 90-degree corner is at BOTTOM LEFT. Straight bottom and left edges.
+BOTTOM RIGHT: light champagne-gold glass #C8A56A; its square 90-degree corner is at BOTTOM RIGHT. Straight bottom and right edges.
+These are 90-degree SECTORS OF A CIRCLE, NOT squares with one rounded corner, NOT lenses, NOT leaves, NOT semicircles. Silhouette matching is mandatory: each object has two straight perpendicular radial edges of equal length and exactly one convex quarter-circle arc. Do not rotate or tilt anything relative to the template.
+Material: convincingly real, thick cast glass, polished bevelled edges, realistic optical refraction through the entire solid body, subtle internal reflections and caustics like the real glass material of image 2. A high-end macro product photograph / physically based ray-traced material study. NOT an outlined vector drawing, NOT a cartoon, NOT flat gradients, NOT painted wavy white stripes. Subtle physically plausible depth along the edges, controlled softbox highlights, crisp but natural.
+Camera: orthographic, exactly overhead. All objects fully visible, no cropping, no perspective skew. 1024 x 1024 square canvas with each sector occupying the same cell and margin as image 1. Keep all empty space fully alpha-transparent. No black or white rectangle backdrop, no typography, no logo words, no extra shards. Use image 2 ONLY to judge glass realism, ignore its leaf-shaped objects and grid arrangement.

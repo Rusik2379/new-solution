@@ -1,14 +1,18 @@
 /* White editorial panel over the generated glass interpretation of the brand pattern. */
-.home-hero-services{background:#fff;border:1px solid #edf2f1}
+.home-hero-services{background:#fff;border:1px solid #e0e9e8;margin-top:22px}
 .home-hero-services::before{display:none}
-.hero-service-art{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:#f5f9f9}
-.hero-pattern-image{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;transform-origin:70% 50%;animation:patternBreathe 24s ease-in-out infinite alternate;will-change:transform}
+.hero-service-art{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:#f8fbfb}
+.hero-service-art::after{content:"";position:absolute;inset:0;z-index:2;box-shadow:inset 0 12px 34px #123e3c26,inset 0 -8px 24px #123e3c1c,inset 6px 0 22px #123e3c12;pointer-events:none}
+.hero-glass-grid{position:absolute;left:50%;top:50%;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:7px;width:max(100%,130svh);transform:translate(-50%,-50%);animation:patternBreathe 24s ease-in-out infinite alternate;will-change:transform}
+.glass-pattern-quarter{display:block;aspect-ratio:1;min-width:0}
+.glass-pattern-quarter img{display:block;width:100%;height:100%;object-fit:contain;transform:rotate(var(--quarter-angle))}
+.glass-pattern-quarter--soft{opacity:.55}
 .hero-pattern-sheen{position:absolute;top:-40%;left:0;width:25%;height:180%;background:linear-gradient(90deg,#fff0,#ffffff59,#fff0);transform:translateX(-150%) skewX(-20deg);animation:patternSheen 18s ease-in-out infinite}
-.home-hero-services[data-art-running="false"] .hero-pattern-image,.home-hero-services[data-art-running="false"] .hero-pattern-sheen{animation-play-state:paused}
-@keyframes patternBreathe{from{transform:scale(1.01) translateX(0)}to{transform:scale(1.055) translateX(-.7%)}}
+.home-hero-services[data-art-running="false"] .hero-glass-grid,.home-hero-services[data-art-running="false"] .hero-pattern-sheen{animation-play-state:paused}
+@keyframes patternBreathe{from{transform:translate(-50%,-50%) scale(1.01)}to{transform:translate(-50%,-50%) scale(1.045)}}
 @keyframes patternSheen{0%,20%{transform:translateX(-150%) skewX(-20deg);opacity:0}30%{opacity:.6}70%{opacity:.4}85%,100%{transform:translateX(560%) skewX(-20deg);opacity:0}}
-.home-hero-services .home-hero-inner{display:flex;align-items:stretch;justify-content:flex-start;width:100%;min-height:calc(100svh - 111px);padding:18px}
-.home-hero-services .hero-content{display:flex;flex-direction:column;justify-content:center;width:49%;max-width:690px;min-width:0;padding:clamp(32px,3.3vw,62px);text-align:left;background:#fff;border:1px solid #e8eeee;border-radius:14px;box-shadow:0 12px 40px #16464408}
+.home-hero-services .home-hero-inner{display:flex;align-items:stretch;justify-content:flex-start;width:100%;min-height:calc(100svh - 133px);padding:18px}
+.home-hero-services .hero-content{display:flex;flex-direction:column;justify-content:center;width:49%;max-width:690px;min-width:0;padding:clamp(32px,3.3vw,62px);text-align:left;background:#fff;border:1px solid #e8eeee;border-radius:14px;box-shadow:0 18px 45px #153a3b29,0 3px 10px #153a3b12}
 .home-hero-services h1{font-size:clamp(32px,3vw,48px);font-weight:500;line-height:1.15;letter-spacing:-1.7px;margin:0;color:var(--ink)}
 .home-hero-services h1>span{white-space:normal}
 .hero-sentence-start,.hero-sentence-end{display:block}
@@ -33,9 +37,10 @@
   .home-hero-services .hero-services-actions .button{padding-inline:16px;gap:14px}
 }
 @media(max-width:760px){
-  .home-hero-services .home-hero-inner{display:block;width:100%;min-height:calc(100svh - 94px);padding:10px 10px 175px}
+  .home-hero-services{margin-top:14px}
+  .home-hero-services .home-hero-inner{display:block;width:100%;min-height:calc(100svh - 108px);padding:10px 10px 175px}
   .home-hero-services .hero-content{width:100%;max-width:none;min-height:calc(100svh - 300px);padding:30px 24px;border-radius:12px}
-  .hero-pattern-image{object-position:65% center}
+  .hero-glass-grid{left:54%}
   .home-hero-services h1{font-size:clamp(28px,7.5vw,42px);letter-spacing:-1.1px;line-height:1.2}
   .home-hero-services .hero-service-carousel{--service-row-height:132px;margin-block:6px}
   .hero-service-name{font-size:clamp(29px,8vw,44px);line-height:1.16;letter-spacing:-.8px}
@@ -54,5 +59,5 @@
 }
 @media(prefers-reduced-motion:reduce){
   .hero-service-track,.hero-service-slide{transition:none}
-  .hero-pattern-image,.hero-pattern-sheen{animation:none;will-change:auto}
+  .hero-glass-grid,.hero-pattern-sheen{animation:none;will-change:auto}
 }

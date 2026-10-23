@@ -63,11 +63,11 @@ body{background:var(--surface);font-family:var(--font);color:var(--ink)}
 .pillar:first-child{padding-left:0}.pillar:last-child{padding-right:0;border-right:0}
 .pillar-top{display:flex;align-items:flex-start;justify-content:flex-end;margin-bottom:26px}
 .pillar-shape{display:block;width:64px;height:64px;background:center/contain no-repeat;transition:transform .35s ease}
-.pillar-shape--finance{background-image:url('assets/pillar-finance-glass.svg')}
-.pillar-shape--process{background-image:url('assets/pillar-process-glass.svg')}
-.pillar-shape--people{background-image:url('assets/pillar-people-glass.svg')}
-.pillar-shape--growth{background-image:url('assets/pillar-growth-glass.svg')}
-@media(hover:hover) and (pointer:fine){.pillar:hover .pillar-shape{transform:translateY(-3px) rotate(-3deg)}}
+.pillar-shape--finance{background-image:url('assets/glass-quarter-finance-v2.webp')}
+.pillar-shape--process{background-image:url('assets/glass-quarter-process-v2.webp')}
+.pillar-shape--people{background-image:url('assets/glass-quarter-people-v2.webp')}
+.pillar-shape--growth{background-image:url('assets/glass-quarter-growth-v2.webp')}
+@media(hover:hover) and (pointer:fine){.pillar:hover .pillar-shape{transform:translateY(-3px)}}
 .pillar h3{font-size:25px;font-weight:650;letter-spacing:-.7px;margin-bottom:17px}
 .pillar p{font-size:15px;line-height:1.8;color:var(--muted);flex:1;margin-bottom:25px}
 .pillar .text-link{font-size:13px;gap:12px;justify-content:space-between}
