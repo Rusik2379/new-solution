@@ -29,5 +29,5 @@ export function peoplePage(service,{esc,heading,catalogCard,byId}){
 
   ${serviceProcess('team',{esc,heading})}
   <section class="section container faq-section">${heading('ВОПРОСЫ И ОТВЕТЫ','Перед началом работы')}<div class="faq-list">${service.questions.map(([q,a])=>`<details class="faq"><summary>${esc(q)}<span aria-hidden="true">+</span></summary><p>${esc(a)}</p></details>`).join('')}</div></section>
-  <section class="section container related-section">${heading('СВЯЗАННЫЕ ЗАДАЧИ','Поддержка для вашей команды')}<div class="related-grid">${service.related.map(id=>catalogCard(byId[id])).join('')}</div></section>`;
+  `;
 }

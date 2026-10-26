@@ -82,10 +82,21 @@ document.querySelectorAll('dialog').forEach(dialog => {
 function goToRequest() {
   document.querySelector('#request').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
 }
+function requestMessageForService(previous,service) {
+  const message=previous.replace(/^Услуга: [^\n]*\n?/gm, '');
+  return `Услуга: ${service}\n${message}`;
+}
+document.querySelectorAll('[data-request-service]').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const message=document.querySelector('#message');
+    message.value=requestMessageForService(message.value,button.dataset.requestService);
+    goToRequest();
+  });
+});
 document.querySelectorAll('[data-format]').forEach(button => {
   button.addEventListener('click', () => {
     const message = document.querySelector('#message');
-    const previous = message.value.replace(/^Формат работы: [^\n]*\n?/, '');
+    const previous = message.value.replace(/^Формат работы: [^\n]*\n?/gm, '');
     message.value = `Формат работы: ${button.dataset.format}\n${previous}`;
     goToRequest();
   });

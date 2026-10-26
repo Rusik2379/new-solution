@@ -78,7 +78,7 @@ function initializeServiceCarousel() {
     order.addEventListener('click',()=>{
       const message = document.querySelector('#message');
       if (!message) return;
-      const previous = message.value.replace(/^Услуга: [^\n]*\n?/, '');
+      const previous = message.value.replace(/^Услуга: [^\n]*\n?/gm, '');
       message.value = `Услуга: ${slides[current].dataset.serviceName}\n${previous}`;
     });
   }

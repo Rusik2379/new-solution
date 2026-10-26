@@ -73,10 +73,9 @@ export function servicePage(s,{esc,heading,catalogCard,byId}){
   if(!profile[layout])throw Error('Missing service layout: '+s.id);
   const questions=[...s.questions,['Как определяется стоимость и формат работы?','Они зависят от объема задачи, состояния исходных данных и глубины сопровождения. После обсуждения согласуем разовую работу, проект или регулярную поддержку.']];
   const faq=`<section class="section container faq-section">${heading('ВОПРОСЫ И ОТВЕТЫ','Перед началом работы')}<div class="faq-list">${questions.map(([q,a])=>`<details class="faq"><summary>${esc(q)}<span aria-hidden="true">+</span></summary><p>${esc(a)}</p></details>`).join('')}</div></section>`;
-  const related=`<section class="section container related-section">${heading('СВЯЗАННЫЕ ЗАДАЧИ','Может пригодиться')}<div class="related-grid">${s.related.map(id=>catalogCard(byId[id])).join('')}</div><a class="text-link" href="uslugi.html">Все услуги <span aria-hidden="true">⟶</span></a></section>`;
   const subnav=`<nav class="page-subnav container" aria-label="На этой странице"><a href="#scope">Что входит в работу</a><a href="#result">Ваш результат</a><a href="ceny.html">Стоимость и форматы ↗</a><a href="#request">Оформить заявку</a></nav>`;
   const sections=[scope(s,layout,esc,heading),result(s,layout,esc),serviceProcess(layout,{esc,heading})];
   // Journey pages explain the route first, while analytical pages lead with the expected output.
   const order=layout==='journey'?[2,0,1]:layout==='analysis'?[1,0,2]:[0,1,2];
-  return serviceHero(s,layout,esc)+subnav+situation(s,layout,esc,heading)+order.map(i=>sections[i]).join('')+faq+related;
+  return serviceHero(s,layout,esc)+subnav+situation(s,layout,esc,heading)+order.map(i=>sections[i]).join('')+faq;
 }
