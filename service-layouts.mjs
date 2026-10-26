@@ -6,7 +6,7 @@ export const serviceLayouts = {
   marketing:'campaign', legal:'document', it:'systems',
   'vosstanovlenie-ucheta':'journey', tax:'analysis', marketplace:'systems',
   medical:'team', food:'editorial', 'biznes-klining':'analysis',
-  'razovye-uslugi':'focus', 'vnedrenie-1c':'systems',
+  'razovye-uslugi':'focus', 'vnedrenie-1c':'systems', 'sites-bots':'campaign',
   'registraciya-ip':'journey', 'registraciya-ooo':'document',
   'zakrytie-ip':'focus', 'likvidaciya-ooo':'journey', 'deklaraciya-3-ndfl':'document'
 };
@@ -25,9 +25,11 @@ const profile = {
 };
 
 function visual(s,layout,esc){
+  if(s.id==='sites-bots')return '<div class="digital-studio"><div class="studio-browser"><div class="studio-toolbar"><span></span><span></span><span></span><b>Сайт вашего бизнеса</b></div><div class="studio-screen"><strong>Понятный сайт.<br>Удобный сервис.</strong><div class="studio-lines"><i></i><i></i></div><a class="studio-action" href="#request">Обсудить задачу ↗</a></div></div><div class="studio-chat"><span>Чат-бот</span><p>Здравствуйте! Чем можем помочь?</p><p>Хочу узнать об услугах</p><div>Заявка · Запись · Поддержка</div></div></div>';
+  if(s.id==='vnedrenie-1c')return '<div class="one-c-workspace"><div class="one-c-mark">1С</div><p>Разработка<br>и сопровождение</p><ul><li>Доработки под ваши процессы</li><li>Обмен данными и интеграции</li><li>Поддержка пользователей</li></ul><a class="text-link" href="sozdanie-saytov-i-botov.html">Нужен сайт или бот? ⟶</a></div>';
   if(s.id==='horeca')return '<div class="horeca-typographic-art"><img src="assets/horeca-typographic-v1.png" width="1024" height="1024" alt="" fetchpriority="high"></div>';
   if(s.id==='marketing')return '<div class="marketing-isometric-art"><img src="assets/marketing-isometric-v1.png" width="1254" height="1254" alt="Мегафон, план публикаций и цель — продвижение и коммуникации" fetchpriority="high"></div>';
-  if(s.id==='it')return '<div class="it-workspace-art"><img src="assets/it-workspace-v1.png" width="1254" height="1254" alt="Единое цифровое пространство: сайт, чат-бот, серверы и учетная система" fetchpriority="high"><ul class="it-directions" aria-label="Направления IT"><li>Сайты</li><li>Чат-боты</li><li>Системное администрирование</li><li>1С</li></ul></div>';
+  if(s.id==='it')return '<div class="it-workspace-art"><img src="assets/it-workspace-v1.png" width="1254" height="1254" alt="Цифровая инфраструктура бизнеса" fetchpriority="high"><ul class="it-directions" aria-label="Отдельные IT-услуги"><li><a href="sozdanie-saytov-i-botov.html">Сайты и чат-боты ↗</a></li><li>Системное администрирование</li><li><a href="vnedrenie-1c.html">Разработка и сопровождение 1С ↗</a></li></ul></div>';
   const titles=s.heroTopics||s.features.slice(0,3).map(([title])=>title);
   if(layout==='systems')return `<div class="system-map" aria-label="Направления работы"><div class="system-hub">${esc(s.id==='it'?'Ваш бизнес':s.title)}</div><div class="system-nodes">${titles.map((title,i)=>`<div><span>${n(i)}</span>${esc(title)}</div>`).join('')}</div></div>`;
   if(layout==='document')return `<div class="hero-dossier"><span class="dossier-tab">${esc(s.category)}</span><div class="dossier-title">В деталях<br>всё имеет значение</div>${titles.map((title,i)=>`<div class="dossier-line"><span>${n(i)}</span>${esc(title)}<i aria-hidden="true">✓</i></div>`).join('')}</div>`;
@@ -46,7 +48,7 @@ function situation(s,layout,esc,heading){
 
 function scope(s,layout,esc,heading){
   const p=profile[layout];
-  const head=heading('СОСТАВ РАБОТЫ',p.scope,p.intro);
+  const head=heading('СОСТАВ РАБОТЫ',s.scopeTitle||p.scope,s.scopeIntro||p.intro);
   let blocks;
   if(layout==='document'||layout==='focus'){
     blocks=`<div class="scope-disclosures">${s.features.map(([title,body],i)=>`<details class="scope-disclosure"${i===0?' open':''} data-reveal="${motion[layout]}"><summary><span class="scope-order">${n(i)}</span><h3>${esc(title)}</h3><span class="scope-plus" aria-hidden="true">+</span></summary><div class="scope-disclosure-body">${content(body,esc)}</div></details>`).join('')}</div>`;
@@ -63,7 +65,7 @@ export function serviceProcess(layout,{esc,heading}){
 }
 
 function result(s,layout,esc){
-  return `<section class="service-outcome service-outcome-${layout} wide" id="result"><div class="container" data-reveal="${layout==='campaign'?'zoom':'soft'}"><div><div class="eyebrow">ВАШ РЕЗУЛЬТАТ</div><h2>${profile[layout].result}</h2></div><div class="outcome-copy"><p>${esc(s.result)}</p><a class="text-link" href="#request">Расскажите о вашей задаче <span aria-hidden="true">⟶</span></a></div></div></section>`;
+  return `<section class="service-outcome service-outcome-${layout} wide" id="result"><div class="container" data-reveal="${layout==='campaign'?'zoom':'soft'}"><div><div class="eyebrow">ВАШ РЕЗУЛЬТАТ</div><h2>${s.resultTitle||profile[layout].result}</h2></div><div class="outcome-copy"><p>${esc(s.result)}</p><a class="text-link" href="#request">Расскажите о вашей задаче <span aria-hidden="true">⟶</span></a></div></div></section>`;
 }
 
 export function servicePage(s,{esc,heading,catalogCard,byId}){

@@ -1,0 +1,118 @@
+/* Shared white surfaces and glass accents; individual service compositions stay intact. */
+.inner-page{--inner-line:#dfe9e5;--inner-soft:#f7faf9;background:#fff;color:var(--ink)}
+.inner-page .service-hero,.inner-page .company-cover,.inner-page .people-hero,.inner-page .bookkeeping-hero{position:relative;isolation:isolate;background:#fff;color:var(--ink);border:1px solid var(--inner-line);border-radius:26px;margin-top:22px;box-shadow:0 10px 36px #173f3c07}
+.inner-page .service-hero::after,.inner-page .company-cover::after,.inner-page .people-hero::after{content:"";position:absolute;z-index:-1;right:-35px;top:-40px;width:260px;height:260px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.15;pointer-events:none}
+.inner-page .service-hero h1,.inner-page .company-cover h1,.inner-page .people-hero h1{font-weight:550;color:var(--ink);font-size:clamp(36px,3.7vw,58px);line-height:1.15;letter-spacing:-1.7px}
+.inner-page .service-hero-copy>p,.inner-page .company-cover-copy>p,.inner-page .people-hero-copy>p{font-size:17px;color:var(--muted);line-height:1.8}
+.inner-page .breadcrumbs,.inner-page .breadcrumbs>span:last-child{color:#65706a}
+.inner-page .breadcrumbs a:hover{color:var(--turquoise-dark)}
+.inner-page .service-hero .eyebrow,.inner-page .company-cover .eyebrow,.inner-page .people-hero .eyebrow{color:var(--turquoise-dark);font-size:11px;font-weight:550}
+.inner-page .section-heading h2,.inner-page .situation-heading h2,.inner-page .service-outcome h2,.inner-page .people-result h2,.inner-page .accounting-result h2{font-weight:550;letter-spacing:-1px;line-height:1.25}
+.inner-page h2>.muted{color:var(--turquoise-dark)}
+.inner-page .section-intro,.inner-page .service-feature p,.inner-page .service-feature li,.inner-page .scope-item p,.inner-page .scope-item li,.inner-page .scope-disclosure-body p,.inner-page .scope-disclosure-body li{color:var(--muted)}
+.inner-page .page-subnav{gap:12px 26px;color:var(--turquoise-dark);border-color:var(--inner-line)}
+.inner-page .page-subnav a{padding-block:10px;min-height:44px;display:inline-flex;align-items:center}
+.inner-page .service-scope,.inner-page .scope-section,.inner-page .people-scope{background:#fff;border-block:1px solid var(--inner-line)}
+.inner-page .service-feature,.inner-page .catalog-card,.inner-page .management-report{background:#fff;border:1px solid var(--inner-line);border-radius:22px;box-shadow:0 8px 26px #173f3c07}
+.inner-page .catalog-card{position:relative;isolation:isolate;overflow:hidden}
+.inner-page .catalog-card::before{content:"";position:absolute;z-index:-1;right:-30px;top:-30px;width:135px;height:135px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.15;pointer-events:none}
+.inner-page .catalog-card h3,.inner-page .service-feature h3{font-weight:550;line-height:1.35}
+.inner-page .catalog-card p,.inner-page .catalog-card-top{color:var(--muted)}
+.inner-page .catalog-card-bottom{border-color:var(--inner-line);color:var(--turquoise-dark)}
+.inner-page .scope-campaign .scope-item,.inner-page .people-chapter{background:#fff;border:1px solid var(--inner-line);border-radius:22px;box-shadow:0 8px 26px #173f3c07}
+.inner-page .scope-campaign .scope-item:first-child,.inner-page .people-chapter:first-child,.inner-page .management-report:first-child{background:linear-gradient(145deg,#fff 45%,#eef8f4);border-color:#bdd9d0}
+.inner-page .scope-campaign .scope-item:nth-child(4),.inner-page .people-chapter:last-child{background:#fff;border-color:var(--inner-line)}
+.inner-page .scope-campaign .scope-item:nth-child(4) h3,.inner-page .people-chapter:last-child h3{color:var(--ink)}
+.inner-page .scope-campaign .scope-item:nth-child(4) p,.inner-page .scope-campaign .scope-item:nth-child(4) li,.inner-page .people-chapter:last-child li{color:var(--muted)}
+.inner-page .scope-campaign .scope-item:nth-child(4) .scope-order,.inner-page .people-chapter:last-child .people-chapter-number,.inner-page .people-chapter:last-child .people-chapter-heading>p{color:var(--turquoise-dark)}
+.inner-page .scope-systems{border-color:var(--inner-line);border-radius:22px;background:#fff}
+.inner-page .scope-disclosure{border-color:var(--inner-line)}
+.inner-page .scope-disclosure[open]{background:var(--inner-soft);border-radius:16px}
+.inner-page .hero-index,.inner-page .hero-dossier{background:linear-gradient(145deg,#fff,#f5faf8);color:var(--ink);border:1px solid var(--inner-line);border-radius:24px;box-shadow:0 16px 34px #173f3c0b}
+.inner-page .hero-index>strong,.inner-page .dossier-title{font-weight:500}
+.inner-page .hero-index{isolation:isolate;overflow:hidden}
+.inner-page .hero-index::after{content:"";position:absolute;z-index:-1;right:-30px;top:-30px;width:170px;height:170px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.18;pointer-events:none}
+.inner-page .hero-index>strong{margin-top:26px;font-size:30px}
+.inner-page .hero-index-mark{display:none}
+.inner-page .hero-index-topics>span,.inner-page .people-result-tags>span{color:var(--turquoise-dark);border-color:#cbded6;background:#fff}
+.inner-page .system-hub,.inner-page .system-nodes>div{color:var(--ink);background:#fff;border-color:#bcd9cf;box-shadow:0 8px 24px #173f3c09;border-radius:18px}
+.inner-page .system-nodes>div>span{color:var(--turquoise-dark)}
+.inner-page .it-directions li{color:var(--turquoise-dark);border-color:#c8ded6;background:#f6fbf8}
+.inner-page .it-directions a{display:inline-block;padding-block:2px;text-decoration:underline;text-underline-offset:4px}
+.inner-page .service-outcome,.inner-page .people-result,.inner-page .accounting-result{background:linear-gradient(145deg,#fff 30%,#f2f9f6);color:var(--ink);border:1px solid var(--inner-line);border-radius:24px}
+.inner-page .service-outcome h2,.inner-page .accounting-result-copy strong{color:var(--ink)}
+.inner-page .service-outcome .eyebrow,.inner-page .service-outcome .text-link,.inner-page .accounting-result .eyebrow{color:var(--turquoise-dark)}
+.inner-page .outcome-copy>p,.inner-page .accounting-result-copy p,.inner-page .people-result-copy p{color:#56665f;font-size:18px;line-height:1.85}
+.inner-page .accounting-result-tags>span{color:var(--turquoise-dark);background:#fff;border-color:#c3ddd2}
+.inner-page .accounting-result::before{display:none}
+.inner-page .accounting-result .button-white{background:var(--turquoise-dark);border-color:var(--turquoise-dark);color:#fff}
+.inner-page .bookkeeping-hero .accounting-title-main{font-weight:550}
+.inner-page .bookkeeping-hero .accounting-hero-copy>p{color:var(--muted)}
+.inner-page .bookkeeping-hero .accounting-hero-topic{border-color:var(--inner-line);color:var(--ink)}
+.inner-page .process-point h3,.inner-page .workflow-item h2{font-weight:550}
+.inner-page .process-point p,.inner-page .workflow-item p,.inner-page .workflow-item li{color:var(--muted)}
+.inner-page .faq,.inner-page .situation-item,.inner-page .workflow-item{border-color:var(--inner-line)}
+.inner-page .faq summary{font-weight:500}
+.inner-page .company-story{padding-block:60px;gap:60px}
+.company-brand-composition{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:min(100%,370px);margin:auto;filter:drop-shadow(0 20px 25px #173f3c10)}
+.company-brand-composition img{width:100%;height:auto;display:block}
+.company-principle{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--inner-line);border-radius:24px;background:#fff;padding:38px;min-height:320px;display:flex;flex-direction:column;justify-content:space-between;gap:30px}
+.company-principle::before{content:"";position:absolute;z-index:-1;right:-45px;bottom:-45px;width:230px;height:230px;background:url('assets/glass-quarter-finance-v2.webp') center/contain no-repeat;opacity:.2}
+.company-principle>span{color:var(--turquoise-dark);font-size:14px}
+.company-principle>strong{font-size:clamp(30px,3vw,42px);font-weight:500;line-height:1.2;letter-spacing:-1.2px;max-width:350px}
+.company-principle>p{font-size:13px;color:var(--muted);line-height:1.7}
+.inner-page .cover-formats,.inner-page .cover-contact{background:#fff;border:1px solid var(--inner-line);border-radius:24px;padding:30px;box-shadow:0 12px 32px #173f3c08}
+.inner-page .cover-formats>strong,.inner-page .cover-route strong{font-weight:500}
+.inner-page .cover-contact>a:first-of-type{font-weight:500;font-size:clamp(30px,3.4vw,48px)}
+.inner-page .cover-catalog>a{border-color:var(--inner-line)}
+.inner-page .contact-home{border-top:1px solid var(--inner-line)}
+.inner-page .filter-button{border-color:#cbded5;color:var(--turquoise-dark)}
+.inner-page .filter-button.active{color:#fff}
+.digital-studio{position:relative;isolation:isolate;min-width:0;padding:12px 10px 90px 0}
+.studio-browser{background:#fff;border:1px solid #cbded6;border-radius:22px;overflow:hidden;box-shadow:0 18px 40px #173f3c12}
+.studio-toolbar{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--line);padding:16px;background:#f7faf8}
+.studio-toolbar>span{width:6px;height:6px;border-radius:50%;background:#b4d5c6}
+.studio-toolbar>b{font-size:11px;font-weight:500;margin-left:8px;color:var(--muted)}
+.studio-screen{padding:32px 27px 40px;min-height:240px;background:radial-gradient(ellipse at 100% 50%,#e6f3ed,transparent 70%)}
+.studio-screen>strong{font-size:clamp(24px,2.5vw,36px);font-weight:500;line-height:1.2;letter-spacing:-1px}
+.studio-lines{display:grid;gap:7px;margin:23px 0}
+.studio-lines i{height:5px;background:#d9e9e1;border-radius:4px;width:78%}.studio-lines i+ i{width:56%}
+.studio-action{display:inline-block;background:var(--turquoise-dark);color:#fff;font-size:11px;border-radius:22px;padding:10px 15px}
+.studio-chat{position:absolute;right:-10px;bottom:0;width:76%;max-width:330px;background:#fff;border:1px solid #bcd9cd;border-radius:20px;box-shadow:0 14px 30px #173f3c15;padding:19px;font-size:13px;line-height:1.6}
+.studio-chat>span{color:var(--turquoise-dark);font-weight:500}
+.studio-chat>p{margin-top:12px;background:#f0f7f3;border-radius:12px;padding:10px}
+.studio-chat>p+p{background:#e3f1e9;margin-left:22px}
+.studio-chat>div{font-size:11px;color:var(--muted);margin-top:13px}
+.one-c-workspace{padding:32px;border:1px solid #d4e4dd;border-radius:24px;background:linear-gradient(145deg,#fff,#f1f8f4);box-shadow:0 16px 36px #173f3c0b}
+.one-c-mark{font-size:92px;font-weight:550;letter-spacing:-6px;line-height:1;color:var(--turquoise-dark)}
+.one-c-workspace>p{font-size:26px;line-height:1.3;letter-spacing:-.5px;margin-top:21px}
+.one-c-workspace>ul{list-style:none;padding:0;margin:24px 0;border-top:1px solid var(--line)}
+.one-c-workspace li{font-size:14px;color:var(--muted);padding:12px 0;border-bottom:1px solid var(--line)}
+.one-c-workspace .text-link{font-size:13px;min-height:44px;display:inline-flex;align-items:center}
+@media(hover:hover) and (pointer:fine){.inner-page .catalog-card:hover{background:#fff;border-color:#a7cdc0;box-shadow:0 14px 32px #173f3c11}}
+@media(max-width:1100px){
+  .inner-page .service-hero-grid,.inner-page .company-cover-grid{gap:32px}
+  .inner-page .service-hero h1,.inner-page .company-cover h1,.inner-page .people-hero h1{font-size:40px}
+  .digital-studio{padding-right:0}.studio-chat{right:0}
+}
+@media(max-width:760px){
+  .inner-page .service-hero,.inner-page .company-cover,.inner-page .people-hero,.inner-page .bookkeeping-hero{margin-top:14px;border-radius:22px}
+  .inner-page .service-hero h1,.inner-page .company-cover h1,.inner-page .people-hero h1{font-size:clamp(30px,8vw,42px);letter-spacing:-1px;line-height:1.2}
+  .inner-page .service-hero-copy>p,.inner-page .company-cover-copy>p,.inner-page .people-hero-copy>p{font-size:16px}
+  .inner-page .service-feature,.inner-page .catalog-card,.inner-page .management-report,.inner-page .scope-campaign .scope-item,.inner-page .people-chapter{border-radius:20px}
+  .inner-page .service-outcome,.inner-page .people-result,.inner-page .accounting-result{border-radius:22px}
+  .inner-page .outcome-copy>p,.inner-page .accounting-result-copy p,.inner-page .people-result-copy p{font-size:16px}
+  .company-brand-composition{max-width:280px;gap:6px}
+  .inner-page .company-story{gap:28px;padding-block:44px}
+  .company-principle{min-height:260px;padding:28px}
+  .company-principle>strong{font-size:32px}
+  .inner-page .cover-formats,.inner-page .cover-contact{padding:25px}
+  .inner-page .cover-contact>a:first-of-type{font-size:32px}
+  .studio-screen{padding:27px 22px 40px}.studio-screen>strong{font-size:28px}
+  .studio-chat{width:85%;max-width:320px;font-size:12px;padding:15px}
+  .one-c-workspace{padding:27px}.one-c-mark{font-size:78px}
+}
+@media(hover:none),(prefers-reduced-motion:reduce){
+  .inner-page .catalog-card{transition:none}
+  .inner-page .catalog-card:hover{transform:none}
+}

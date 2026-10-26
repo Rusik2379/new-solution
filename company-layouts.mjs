@@ -3,7 +3,7 @@ export function companyHero(title,lead,category,{esc,core}){
  if(!kind)throw Error('Missing company cover: '+category);
  const art={
   catalog:`<nav class="cover-catalog" aria-label="Основные направления">${core.map((s,i)=>`<a href="${s.path}"><span>0${i+1}</span>${esc(s.title)}<i aria-hidden="true">↗</i></a>`).join('')}</nav>`,
-  about:'<figure class="cover-photo"><img src="assets/team.jpg" width="900" height="600" alt="Команда компании Новые решения" fetchpriority="high"><figcaption>Разные специалисты. Общая цель.</figcaption></figure>',
+  about:'<div class="company-brand-composition" aria-hidden="true"><img src="assets/glass-quarter-finance-v2.webp" alt="" width="384" height="384"><img src="assets/glass-quarter-process-v2.webp" alt="" width="384" height="384"><img src="assets/glass-quarter-people-v2.webp" alt="" width="384" height="384"><img src="assets/glass-quarter-growth-v2.webp" alt="" width="384" height="384"></div>',
   work:`<div class="cover-route">${['Задача','Решение','Внедрение','Сопровождение'].map((label,i)=>`<div><span>0${i+1}</span><strong>${label}</strong></div>`).join('')}</div>`,
   prices:'<div class="cover-formats"><span>Под вашу ситуацию</span><strong>Задача.<br>Проект.<br>Сопровождение.</strong><p>Определим объем.<br>Согласуем стоимость.</p></div>',
   contacts:'<div class="cover-contact"><span>МЫ НА СВЯЗИ</span><a href="tel:+79628184499">+7 (962)<br>818-44-99 <i aria-hidden="true">↗</i></a><a href="mailto:t.zorina@nr-com.ru">t.zorina@nr-com.ru</a><p>Барнаул, ул. Ярных, 6</p></div>'

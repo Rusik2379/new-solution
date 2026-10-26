@@ -135,3 +135,7 @@
 @media(prefers-reduced-motion:reduce){
   .contact-home input:not([type=checkbox]),.contact-home textarea{transition:none}
 }
+/* Two independent development services join the homepage service grid. */
+@media(min-width:1101px){
+  .services-section .service-card-digital:nth-child(9),.services-section .service-help{grid-column:span 2}
+}
