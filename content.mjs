@@ -48,5 +48,10 @@ additional.push(extra('sites-bots','sozdanie-saytov-i-botov.html','Создан�
 core.find(service=>service.id==='it').related=['vnedrenie-1c','sites-bots','marketing','management'];
 Object.assign(additional.find(service=>service.id==='sites-bots'),{scopeTitle:'От задачи —<br>к работающему сайту или боту',scopeIntro:'Согласуем структуру, дизайн и функционал. Связываем разработку с реальными задачами вашей команды.',resultTitle:'Цифровой сервис<br>под задачи бизнеса'});
 Object.assign(additional.find(service=>service.id==='vnedrenie-1c'),{scopeTitle:'Разработка, интеграции<br>и ежедневная поддержка',resultTitle:'1С, которая работает<br>по вашим процессам'});
+// The former combined IT page is retained only for old URLs, not as an offered service.
+core.find(service=>service.id==='it').hiddenFromCatalog=true;
+for(const service of [...core,...additional]){
+  service.related=[...new Set(service.related.flatMap(id=>id==='it'?['vnedrenie-1c','sites-bots']:[id]))].filter(id=>id!==service.id).slice(0,4);
+}
 
 export const process = [['Разбираемся в задаче','Обсуждаем бизнес, цели и текущие процессы. Определяем, какие данные понадобятся для анализа.'],['Согласуем решение','Формируем объем работ, ожидаемый результат, формат взаимодействия и стоимость.'],['Внедряем изменения','Работаем с документами, процессами и инструментами. Подключаем нужных специалистов и команду клиента.'],['Сопровождаем результат','Помогаем пользоваться новой системой, контролировать показатели и решать возникающие вопросы.']];
