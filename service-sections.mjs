@@ -6,12 +6,6 @@ export function catalogCard(service){
   return `<a class="catalog-card" href="${service.path}" data-category="${esc(service.category)}" data-search="${esc(search)}"><div class="catalog-card-top"><span>${esc(service.category)}</span><i aria-hidden="true">↗</i></div><h3>${esc(service.title)}</h3><p>${esc(description)}</p><span class="catalog-card-bottom">Подробнее об услуге <span aria-hidden="true">⟶</span></span></a>`;
 }
 
-export function relatedTasks(ids,byId){
-  const services=[...new Set(ids)].map(id=>byId[id]).filter(service=>service&&!service.hiddenFromCatalog).slice(0,3);
-  if(!services.length)return '';
-  return `<section class="section container related-section" id="related-tasks" aria-labelledby="related-tasks-title"><div class="section-heading"><div><h2 id="related-tasks-title">Связанные задачи</h2></div><p class="section-intro">Услуги, которые дополняют решение и помогают связать работу бизнеса в единую систему</p></div><div class="related-grid">${services.map(catalogCard).join('')}</div><div class="related-actions"><a class="text-link" href="uslugi.html">Все услуги <span aria-hidden="true">⟶</span></a><a class="text-link" href="ceny.html#service-prices">Услуги и стоимость <span aria-hidden="true">⟶</span></a></div></section>`;
-}
-
 export function servicePriceList(services){
   const visible=services.filter(service=>!service.hiddenFromCatalog);
   const categories=[...new Set(visible.map(service=>service.category))];

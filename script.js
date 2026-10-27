@@ -117,12 +117,12 @@ form.addEventListener('submit', event => {
   }
   const data = new FormData(form);
   const body = `Заявка с сайта «Новые решения»\n\nИмя: ${data.get('name')}\nТелефон: ${data.get('phone')}\n\nЗадача:\n${data.get('message') || 'Хочу обсудить задачи моего бизнеса'}`;
-  const emailUrl = `mailto:t.zorina@nr-com.ru?subject=${encodeURIComponent('Заявка с сайта «Новые решения»')}&body=${encodeURIComponent(body)}`;
+  const emailUrl = `mailto:i.korkina@nr-com.ru?subject=${encodeURIComponent('Заявка с сайта «Новые решения»')}&body=${encodeURIComponent(body)}`;
   const link = document.createElement('a');
   link.href = emailUrl;
   link.click();
   const status = document.querySelector('#form-status');
-  status.textContent = 'Заявка подготовлена — отправьте письмо из почтового приложения\nЕсли оно не открылось, скопируйте текст и отправьте на t.zorina@nr-com.ru';
+  status.textContent = 'Заявка подготовлена — отправьте письмо из почтового приложения\nЕсли оно не открылось, скопируйте текст и отправьте на i.korkina@nr-com.ru';
   const copyButton = document.createElement('button');
   copyButton.type = 'button';
   copyButton.textContent = 'Скопировать текст заявки';

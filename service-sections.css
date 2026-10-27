@@ -1,8 +1,8 @@
-/* Service price directory and contextual tasks shared by all pages. */
+/* Service price directory shared by all pages. */
 .all-service-prices{display:flex;justify-content:center;margin-top:24px}
 .all-service-prices .button{font-size:14px;min-height:48px}
 .service-prices{scroll-margin-top:110px}
-.service-prices>.section-heading h2,.related-section>.section-heading h2{font-size:clamp(30px,3vw,42px);font-weight:550;line-height:1.2;letter-spacing:-1.2px}
+.service-prices>.section-heading h2{font-size:clamp(30px,3vw,42px);font-weight:550;line-height:1.2;letter-spacing:-1.2px}
 .service-price-groups{display:grid;gap:26px}
 .service-price-group{background:#fff;border:1px solid #dfe9e5;border-radius:22px;overflow:hidden;box-shadow:0 8px 28px #173f3c07;min-width:0}
 .service-price-group>h3{font-size:23px;font-weight:550;line-height:1.35;letter-spacing:-.5px;padding:25px 26px;background:linear-gradient(140deg,#fff,#f2f9f5);border-bottom:1px solid #dfe9e5}
@@ -17,29 +17,17 @@
 .service-price-request{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:44px;border:1px solid #c9dfd4;border-radius:24px;padding:10px 14px;font-size:12px;font-weight:500;line-height:1.5;color:var(--turquoise-dark);background:#f6fbf8}
 .service-price-request>span{font-size:18px}
 .service-prices-note{font-size:14px;color:var(--muted);line-height:1.8;margin-top:24px}
-.related-section{border-top:1px solid #dfe9e5}
-.related-section .related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.related-section .catalog-card{position:relative;isolation:isolate;overflow:hidden;background:#fff;border:1px solid #dfe9e5;border-radius:22px;box-shadow:0 8px 26px #173f3c07}
-.related-section .catalog-card::before{content:"";position:absolute;z-index:-1;right:-30px;top:-30px;width:135px;height:135px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.15;pointer-events:none}
-.related-section .catalog-card h3{font-weight:550;font-size:23px;line-height:1.35;letter-spacing:-.5px}
-.related-section .catalog-card p{color:var(--muted);font-size:15px;line-height:1.75}
-.related-actions{display:flex;align-items:center;flex-wrap:wrap;gap:20px 34px;margin-top:27px}
-.related-actions .text-link{font-size:14px;min-height:44px;display:inline-flex;align-items:center;gap:18px}
 .service-price-request:focus-visible,.service-price-row a:focus-visible{outline:2px solid var(--turquoise-dark);outline-offset:4px;border-radius:5px}
 @media(hover:hover) and (pointer:fine){
   .service-price-row>div:first-child>a:hover{color:var(--turquoise-dark)}
   .service-price-request:hover{background:var(--turquoise-dark);color:#fff;border-color:var(--turquoise-dark)}
-  .related-section .catalog-card:hover{background:#fff;border-color:#a7cdbf;box-shadow:0 14px 32px #173f3c12}
 }
 @media(max-width:980px) and (min-width:761px){
   .service-price-row,.service-price-head{grid-template-columns:minmax(0,1.3fr) minmax(140px,.8fr) 170px;gap:17px;padding-inline:22px}
-  .related-section .related-grid{gap:16px}
-  .related-section .catalog-card{padding:23px 20px}
-  .related-section .catalog-card h3{font-size:20px}
 }
 @media(max-width:760px){
   .service-prices{scroll-margin-top:94px}
-  .service-prices>.section-heading h2,.related-section>.section-heading h2{font-size:31px;letter-spacing:-1px}
+  .service-prices>.section-heading h2{font-size:31px;letter-spacing:-1px}
   .service-price-group{border-radius:20px}
   .service-price-group>h3{font-size:21px;padding:23px}
   .service-price-head{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);padding:0;white-space:nowrap}
@@ -47,10 +35,6 @@
   .service-price-row>div:first-child>a{font-size:19px;line-height:1.4}
   .service-price-value{font-size:14px}
   .service-price-request{font-size:13px;margin-top:2px;min-height:46px}
-  .related-section .related-grid{grid-template-columns:1fr;gap:18px}
-  .related-section .catalog-card{padding:26px 24px}
-  .related-actions{gap:10px 25px;margin-top:22px}
   .all-service-prices{justify-content:flex-start}
   .all-service-prices .button{font-size:13px;gap:15px;padding-inline:18px}
 }
-@media(hover:none),(prefers-reduced-motion:reduce){.related-section .catalog-card:hover{transform:none}}

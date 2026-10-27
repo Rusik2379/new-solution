@@ -7,7 +7,7 @@ import {serviceLayouts,servicePage,serviceProcess} from './service-layouts.mjs';
 import {companyHero} from './company-layouts.mjs';
 import {peoplePage} from './people-page.mjs';
 import {applyEditorialChanges,cleanCopyHTML} from './editorial.mjs';
-import {catalogCard,relatedTasks,servicePriceList} from './service-sections.mjs';
+import {catalogCard,servicePriceList} from './service-sections.mjs';
 
 const esc = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const lines = (await readFile('content/word-source.txt','utf8')).split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
@@ -52,19 +52,16 @@ function hero(title,lead,category='НОВЫЕ РЕШЕНИЯ',icon='',sub='Од�
 const heading=(n,title,desc='')=>`<div class="section-heading"><div><div class="eyebrow">${n}</div><h2>${title}</h2></div>${desc?`<p class="section-intro">${esc(desc)}</p>`:''}</div>`;
 const featureCards=features=>`<div class="feature-grid">${features.map(([title,body],i)=>`<article class="service-feature"><span class="feature-number">${String(i+1).padStart(2,'0')} <i aria-hidden="true">↗</i></span><h3>${esc(title)}</h3>${Array.isArray(body)?`<ul>${body.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:`<p>${esc(body)}</p>`}</article>`).join('')}</div>`;
 const processBlock=()=>serviceProcess('document',{esc,heading});
-const companyRelated={'uslugi.html':['accounting','management','vnedrenie-1c'],'o-kompanii.html':['accounting','people','sites-bots'],'kak-my-rabotaem.html':['biznes-klining','management','vnedrenie-1c'],'ceny.html':['razovye-uslugi','accounting','sites-bots'],'kontakty.html':['accounting','vnedrenie-1c','sites-bots']};
 async function page(file,title,lead,body,selected=''){
  const base=file.includes('/')?'../':'';
  const service=services.find(s=>s.path===file);
- const relatedIds=[...new Set([...(service?.related||companyRelated[file]||[]),'management','accounting','sites-bots'])].filter(id=>id!==service?.id);
- body+=relatedTasks(relatedIds,byId);
  let contacts=contact;
  if(selected)contacts=contacts.replace('С чего начнем?','Обсудим вашу задачу');
  let h=header.replace(new RegExp(`href="${file.replaceAll('.','\\.')}"(?! aria-current)`,'g'),`href="${file}" aria-current="page"`);
  const html=`<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#F7F5EF"><title>${esc(title)} — Новые решения</title><meta name="description" content="${esc(lead)}"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="pages.css"><link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin><script src="script.js" defer></script></head><body class="inner-page"><a class="skip-link" href="#main">Перейти к содержанию</a>${h}<main id="main">${body}${contacts}</main>${footer}${policy}</body></html>`;
  const themes={'buhgalterskiy-uchet.html':['accounting.css'],'upravlencheskiy-uchet.html':['accounting.css','management.css'],'personal-i-kadry.html':['people.css']};
  const pageClass=service?`service-page service--${service.id} layout-${serviceLayouts[service.id]}`:`company-page page-${file.replace('.html','')}`;
-const themedHtml=html.replace('class="inner-page"',`class="inner-page ${pageClass}"`).replace('src="script.js"','src="script.js?v=service-prices-1"').replace('</head>',['service-layouts.css',...(themes[file]||[]),'brand.css','home-bottom.css?v=4','inner-pages.css?v=1','service-sections.css?v=1'].map(css=>`<link rel="stylesheet" href="${css}">`).join('')+'</head>');
+const themedHtml=html.replace('class="inner-page"',`class="inner-page ${pageClass}"`).replace('src="script.js"','src="script.js?v=contact-korkina-1"').replace('</head>',['service-layouts.css',...(themes[file]||[]),'brand.css','home-bottom.css?v=4','inner-pages.css?v=1','service-sections.css?v=1'].map(css=>`<link rel="stylesheet" href="${css}">`).join('')+'</head>');
  await mkdir(path.dirname(file),{recursive:true});await writeFile(file,relative(cleanCopyHTML(themedHtml),base));
 }
 for(const s of services){
