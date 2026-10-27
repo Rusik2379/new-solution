@@ -53,14 +53,28 @@
 .inner-page .process-point p,.inner-page .workflow-item p,.inner-page .workflow-item li{color:var(--muted)}
 .inner-page .faq,.inner-page .situation-item,.inner-page .workflow-item{border-color:var(--inner-line)}
 .inner-page .faq summary{font-weight:500}
-.inner-page .company-story{padding-block:60px;gap:60px}
 .company-brand-composition{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:min(100%,370px);margin:auto;filter:drop-shadow(0 20px 25px #173f3c10)}
 .company-brand-composition img{width:100%;height:auto;display:block}
-.company-principle{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--inner-line);border-radius:24px;background:#fff;padding:38px;min-height:320px;display:flex;flex-direction:column;justify-content:space-between;gap:30px}
-.company-principle::before{content:"";position:absolute;z-index:-1;right:-45px;bottom:-45px;width:230px;height:230px;background:url('assets/glass-quarter-finance-v2.webp') center/contain no-repeat;opacity:.2}
-.company-principle>span{color:var(--turquoise-dark);font-size:14px}
-.company-principle>strong{font-size:clamp(30px,3vw,42px);font-weight:500;line-height:1.2;letter-spacing:-1.2px;max-width:350px}
-.company-principle>p{font-size:13px;color:var(--muted);line-height:1.7}
+.company-experience-heading{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:end;margin-bottom:36px}
+.company-experience-heading h2{font-size:clamp(30px,3.2vw,46px);font-weight:550;line-height:1.2;letter-spacing:-1.4px}
+.company-experience-heading h2>span{color:var(--turquoise-dark)}
+.company-experience-heading>p{max-width:510px;font-size:16px;line-height:1.8;color:var(--muted)}
+.company-specialists{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;padding:0;margin:0;border:1px solid var(--inner-line);border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 10px 32px #173f3c06}
+.company-specialists li{min-width:0;padding:28px 30px;border-right:1px solid var(--inner-line);border-bottom:1px solid var(--inner-line)}
+.company-specialists li:nth-child(3n){border-right:0}
+.company-specialists li:nth-child(n+4){border-bottom:0}
+.company-specialists h3{font-size:23px;font-weight:500;letter-spacing:-.5px;line-height:1.3;margin-bottom:10px}
+.company-specialists p{font-size:15px;line-height:1.7;color:var(--muted);max-width:270px}
+.company-experience-note{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center;padding:28px 30px;margin-top:20px;border-radius:22px;background:#f4f8f7}
+.company-experience-note h3{font-size:18px;font-weight:500;line-height:1.4;margin-bottom:10px}
+.company-experience-note p{font-size:14px;line-height:1.8;color:var(--muted)}
+.company-experience-note>p{padding-left:30px;border-left:1px solid #d3e2dc;color:var(--turquoise-dark);font-size:16px;max-width:370px}
+@media(max-width:1000px) and (min-width:761px){
+ .company-experience-heading{gap:30px;align-items:start}
+ .company-specialists li{padding:25px 22px}
+ .company-specialists h3{font-size:21px}
+ .company-experience-note{grid-template-columns:1.4fr 1fr;gap:25px}
+}
 .inner-page .cover-formats,.inner-page .cover-contact{background:#fff;border:1px solid var(--inner-line);border-radius:24px;padding:30px;box-shadow:0 12px 32px #173f3c08}
 .inner-page .cover-formats>strong,.inner-page .cover-route strong{font-weight:500}
 .inner-page .cover-contact>a:first-of-type{font-weight:500;font-size:clamp(30px,3.4vw,48px)}
@@ -103,14 +117,31 @@
   .inner-page .service-outcome,.inner-page .people-result,.inner-page .accounting-result{border-radius:22px}
   .inner-page .outcome-copy>p,.inner-page .accounting-result-copy p,.inner-page .people-result-copy p{font-size:16px}
   .company-brand-composition{max-width:280px;gap:6px}
-  .inner-page .company-story{gap:28px;padding-block:44px}
-  .company-principle{min-height:260px;padding:28px}
-  .company-principle>strong{font-size:32px}
+  .company-experience-heading{grid-template-columns:1fr;gap:20px;margin-bottom:28px}
+  .company-experience-heading h2{font-size:clamp(30px,6.8vw,40px);letter-spacing:-1px}
+  .company-experience-heading>p{font-size:15px}
+  .company-specialists{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:20px}
+  .company-specialists li{padding:24px 20px}
+  .company-specialists li:nth-child(3n){border-right:1px solid var(--inner-line)}
+  .company-specialists li:nth-child(n+4){border-bottom:1px solid var(--inner-line)}
+  .company-specialists li:nth-child(2n){border-right:0}
+  .company-specialists li:nth-last-child(-n+2){border-bottom:0}
+  .company-specialists h3{font-size:20px}
+  .company-specialists p{font-size:14px}
+  .company-experience-note{grid-template-columns:1fr;gap:20px;padding:25px 23px;border-radius:20px}
+  .company-experience-note>p{padding:20px 0 0;border-left:0;border-top:1px solid #d3e2dc;max-width:none;font-size:15px}
   .inner-page .cover-formats,.inner-page .cover-contact{padding:25px}
   .inner-page .cover-contact>a:first-of-type{font-size:32px}
   .studio-screen{padding:27px 22px 40px}.studio-screen>strong{font-size:28px}
   .studio-chat{width:85%;max-width:320px;font-size:12px;padding:15px}
   .one-c-workspace{padding:27px}.one-c-mark{font-size:78px}
+}
+@media(max-width:420px){
+ .company-specialists{grid-template-columns:1fr}
+ .company-specialists li,.company-specialists li:nth-child(3n){border-right:0}
+ .company-specialists li:nth-last-child(-n+2){border-bottom:1px solid var(--inner-line)}
+ .company-specialists li:last-child{border-bottom:0}
+ .company-specialists p{max-width:none}
 }
 @media(hover:none),(prefers-reduced-motion:reduce){
   .inner-page .catalog-card{transition:none}

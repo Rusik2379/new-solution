@@ -2,7 +2,7 @@
 @font-face{font-family:Inter;src:url('assets/fonts/inter-variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 :root{--navy:#1f2430;--ink:#1f2430;--blue:#187a77;--turquoise:#1f9e9a;--turquoise-dark:#187a77;--turquoise-pale:#e8f0ed;--gold:#c8a56a;--ivory:#f7f5ef;--surface:#fff;--paper:#fff;--pale:#f2f4f5;--muted:#64686f;--line:#e0e5e6;--font:Inter,Arial,sans-serif}
 body{background:var(--surface);font-family:var(--font);color:var(--ink)}
-.header{background:#fffffff5;box-shadow:0 1px 0 #1f243012}
+.header{background:#fff;box-shadow:0 1px 0 #1f243012}
 .header-inner{width:min(1540px,calc(100% - 40px))}
 .brand{flex-basis:214px}
 .brand img{width:214px;height:auto;object-fit:contain;filter:none;opacity:1}

@@ -1,3 +1,19 @@
+export function companyExpertise(){
+ const team=[
+  ['Бухгалтеры','Учет, налоги и отчетность'],
+  ['Экономисты','Управленческий учет и финансовый анализ'],
+  ['Юристы','Договоры и правовая поддержка'],
+  ['Маркетологи','Стратегия, продвижение и коммуникации'],
+  ['Технологи','Себестоимость, меню и процессы HoReCa'],
+  ['Программисты','1С, сайты, чат-боты и автоматизация']
+ ];
+ return `<section class="section container company-experience" id="expertise" aria-labelledby="expertise-title">
+  <div class="company-experience-heading"><h2 id="expertise-title">Разная экспертиза.<br><span>Общая картина бизнеса.</span></h2><p>Смотрим на цифры, людей и процессы вместе. Подключаем нужных специалистов к вашей задаче и работаем на общую цель — чтобы бизнесом было проще управлять.</p></div>
+  <ul class="company-specialists" aria-label="Наша команда">${team.map(([role,scope])=>`<li><h3>${role}</h3><p>${scope}</p></li>`).join('')}</ul>
+  <div class="company-experience-note"><div><h3>От предпринимателя до холдинга</h3><p>В нашем опыте — работа с индивидуальными предпринимателями с ежемесячной выручкой до 1 млн рублей, крупными компаниями и холдингами с оборотом в десятки миллионов.</p></div><p>Учитываем масштаб, структуру, текущие задачи и цели развития вашей компании.</p></div>
+ </section>`;
+}
+
 export function companyHero(title,lead,category,{esc,core}){
  const kind={'КАТАЛОГ УСЛУГ':'catalog','О КОМПАНИИ':'about','НАШ ПОДХОД':'work','СТОИМОСТЬ':'prices','МЫ НА СВЯЗИ':'contacts'}[category];
  if(!kind)throw Error('Missing company cover: '+category);
