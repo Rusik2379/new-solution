@@ -93,14 +93,6 @@ document.querySelectorAll('[data-request-service]').forEach(button=>{
     goToRequest();
   });
 });
-document.querySelectorAll('[data-format]').forEach(button => {
-  button.addEventListener('click', () => {
-    const message = document.querySelector('#message');
-    const previous = message.value.replace(/^Формат работы: [^\n]*\n?/gm, '');
-    message.value = `Формат работы: ${button.dataset.format}\n${previous}`;
-    goToRequest();
-  });
-});
 document.querySelectorAll('.policy-trigger').forEach(button => {
   button.addEventListener('click', () => document.querySelector('#policy-dialog').showModal());
 });

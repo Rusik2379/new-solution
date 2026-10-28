@@ -1,40 +1,60 @@
-/* Service price directory shared by all pages. */
-.all-service-prices{display:flex;justify-content:center;margin-top:24px}
-.all-service-prices .button{font-size:14px;min-height:48px}
-.service-prices{scroll-margin-top:110px}
-.service-prices>.section-heading h2{font-size:clamp(30px,3vw,42px);font-weight:550;line-height:1.2;letter-spacing:-1.2px}
-.service-price-groups{display:grid;gap:26px}
-.service-price-group{background:#fff;border:1px solid #dfe9e5;border-radius:22px;overflow:hidden;box-shadow:0 8px 28px #173f3c07;min-width:0}
-.service-price-group>h3{font-size:23px;font-weight:550;line-height:1.35;letter-spacing:-.5px;padding:25px 26px;background:linear-gradient(140deg,#fff,#f2f9f5);border-bottom:1px solid #dfe9e5}
-.service-price-row,.service-price-head{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(180px,.8fr) 190px;gap:24px;align-items:center;padding:21px 26px}
-.service-price-head{padding-block:14px;color:var(--muted);font-size:11px;font-weight:500;letter-spacing:.4px;border-bottom:1px solid #e5ede9}
-.service-price-row{border-bottom:1px solid #e5ede9}
-.service-price-row:last-child{border-bottom:0}
-.service-price-row>div{min-width:0}
-.service-price-row>div:first-child>a{font-size:16px;font-weight:500;line-height:1.6;color:var(--ink);text-decoration:none}
-.service-price-row>div:first-child>a>span{color:var(--turquoise-dark);margin-left:7px;white-space:nowrap}
-.service-price-value{font-size:14px;font-weight:450;line-height:1.7;color:var(--muted)}
-.service-price-request{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:44px;border:1px solid #c9dfd4;border-radius:24px;padding:10px 14px;font-size:12px;font-weight:500;line-height:1.5;color:var(--turquoise-dark);background:#f6fbf8}
-.service-price-request>span{font-size:18px}
-.service-prices-note{font-size:14px;color:var(--muted);line-height:1.8;margin-top:24px}
-.service-price-request:focus-visible,.service-price-row a:focus-visible{outline:2px solid var(--turquoise-dark);outline-offset:4px;border-radius:5px}
-@media(hover:hover) and (pointer:fine){
-  .service-price-row>div:first-child>a:hover{color:var(--turquoise-dark)}
-  .service-price-request:hover{background:var(--turquoise-dark);color:#fff;border-color:var(--turquoise-dark)}
-}
-@media(max-width:980px) and (min-width:761px){
-  .service-price-row,.service-price-head{grid-template-columns:minmax(0,1.3fr) minmax(140px,.8fr) 170px;gap:17px;padding-inline:22px}
+/* Shared service navigation, readable scope lists and a compact price section. */
+.service-topics{padding-block:34px 24px}
+.service-topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:22px}
+.service-topics-grid>a{position:relative;min-width:0;display:flex;flex-direction:column;gap:12px;padding:15px 22px 10px 0;border-top:1px solid #d4e2df;color:var(--ink)}
+.service-topic-number{font-size:27px;font-weight:500;line-height:1.2;letter-spacing:-1px}
+.service-topic-label{font-size:12px;font-weight:550;line-height:1.6}
+.service-topic-arrow{position:absolute;right:0;top:18px;font-size:17px;color:var(--turquoise-dark)}
+.service-topic-links{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:18px}
+.service-topic-links>a{min-height:44px;display:inline-flex;align-items:center;gap:12px;color:var(--turquoise-dark);font-size:13px}
+.service-scope-list{display:grid;gap:14px}
+.service-scope-row{display:grid;grid-template-columns:40px minmax(180px,.9fr) minmax(0,1.4fr);align-items:start;gap:24px;padding:28px 30px;border:1px solid #d9e6e1;border-radius:20px;background:#fff;box-shadow:0 5px 18px #173f3c04;scroll-margin-top:115px;min-width:0}
+.service-scope-number{font-size:26px;font-weight:400;line-height:1.4;color:var(--turquoise-dark);letter-spacing:-.8px}
+.service-scope-row h3{font-size:22px;font-weight:550;line-height:1.4;letter-spacing:-.5px;min-width:0}
+.service-scope-copy{min-width:0}
+.service-scope-copy p,.service-scope-copy li{font-size:16px;line-height:1.8;color:var(--muted)}
+.service-scope-copy ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.service-scope-copy li{position:relative;padding-left:16px}
+.service-scope-copy li::before{content:"";position:absolute;left:0;top:.8em;width:3px;height:3px;border-radius:50%;background:var(--turquoise)}
+.service-rate{scroll-margin-top:115px;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:24px;align-items:center;margin-block:50px;padding:30px;border:1px solid #d6e5de;border-radius:22px;background:#f5faf7}
+.service-rate h2{font-size:25px;font-weight:550;letter-spacing:-.6px;line-height:1.3;margin-bottom:8px}
+.service-rate p{font-size:14px;line-height:1.7;color:var(--muted)}
+.service-rate>strong{font-size:20px;font-weight:500;color:var(--turquoise-dark);line-height:1.4}
+.service-rate .button{font-size:13px;min-height:46px;white-space:nowrap}
+.service-topics a:focus-visible{outline:2px solid var(--turquoise-dark);outline-offset:4px;border-radius:4px}
+.people-result .container{display:block}
+.people-result-heading{display:flex;justify-content:space-between;align-items:center;gap:30px}
+.people-result .people-result-heading h2{font-size:clamp(30px,3.2vw,42px);font-weight:550;line-height:1.2;letter-spacing:-1.2px;margin-top:0}
+.people-result-heading h2>span{color:var(--turquoise-dark)}
+.people-result-points{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;list-style:none;padding:30px 0;margin:30px 0 0;border-top:1px solid #d4e3dc}
+.people-result-points h3{font-size:20px;font-weight:500;line-height:1.35;letter-spacing:-.4px;margin-bottom:10px}
+.people-result-points p,.people-result-summary{font-size:16px;line-height:1.8;color:var(--muted)}
+.people-result-summary{max-width:850px;padding-top:24px;border-top:1px solid #d4e3dc}
+@media(hover:hover) and (pointer:fine){.service-topics-grid>a:hover{border-color:var(--turquoise-dark)}.service-topics a:hover{color:var(--turquoise-dark)}}
+@media(max-width:1000px){
+ .service-scope-row{grid-template-columns:32px minmax(150px,.85fr) minmax(0,1.4fr);gap:19px;padding:25px}
+ .service-scope-row h3{font-size:21px}
+ .service-rate{grid-template-columns:1fr auto}
+ .service-rate .button{grid-column:1/-1;justify-self:start}
+ .people-result-points{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 }
 @media(max-width:760px){
-  .service-prices{scroll-margin-top:94px}
-  .service-prices>.section-heading h2{font-size:31px;letter-spacing:-1px}
-  .service-price-group{border-radius:20px}
-  .service-price-group>h3{font-size:21px;padding:23px}
-  .service-price-head{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);padding:0;white-space:nowrap}
-  .service-price-row{grid-template-columns:1fr;gap:13px;padding:24px 23px}
-  .service-price-row>div:first-child>a{font-size:19px;line-height:1.4}
-  .service-price-value{font-size:14px}
-  .service-price-request{font-size:13px;margin-top:2px;min-height:46px}
-  .all-service-prices{justify-content:flex-start}
-  .all-service-prices .button{font-size:13px;gap:15px;padding-inline:18px}
+ .service-topics{padding-block:26px 14px}
+ .service-topics-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}
+ .service-topic-number{font-size:24px}
+ .service-topic-links{gap:4px 22px;margin-top:14px}
+ .service-topic-links>a{font-size:12px}
+ .service-scope-row{grid-template-columns:30px minmax(0,1fr);gap:12px 14px;padding:24px 22px;border-radius:18px;scroll-margin-top:94px}
+ .service-scope-number{font-size:24px}
+ .service-scope-row h3{font-size:21px}
+ .service-scope-copy{grid-column:2}
+ .service-scope-copy p,.service-scope-copy li{font-size:15px}
+ .service-rate{grid-template-columns:1fr;gap:20px;margin-block:34px;padding:26px 24px;border-radius:20px;scroll-margin-top:94px}
+ .service-rate h2{font-size:24px}.service-rate>strong{font-size:21px}
+ .people-result-heading{display:block}.people-result-heading .button{margin-top:22px}
+ .people-result .people-result-heading h2{font-size:30px;letter-spacing:-1px}
+ .people-result-points{gap:24px 20px;padding-block:24px;margin-top:24px}
+ .people-result-points h3{font-size:18px}
+ .people-result-points p,.people-result-summary{font-size:15px}
 }
+@media(max-width:420px){.people-result-points{grid-template-columns:1fr}.service-scope-row{padding-inline:18px;column-gap:10px}}

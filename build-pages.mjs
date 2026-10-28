@@ -7,7 +7,7 @@ import {serviceLayouts,servicePage,serviceProcess} from './service-layouts.mjs';
 import {companyHero,companyExpertise} from './company-layouts.mjs';
 import {peoplePage} from './people-page.mjs';
 import {applyEditorialChanges,cleanCopyHTML} from './editorial.mjs';
-import {catalogCard,servicePriceList} from './service-sections.mjs';
+import {catalogCard,servicePrice} from './service-sections.mjs';
 
 const esc = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const lines = (await readFile('content/word-source.txt','utf8')).split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
@@ -35,7 +35,6 @@ webDevelopment.features=[webDevelopment.features[0],['Разработка са�
 const services=[...core,...additional];
 const catalogServices=services.filter(service=>!service.hiddenFromCatalog);
 const directions=[...core.filter(service=>!service.hiddenFromCatalog),...additional.filter(service=>['vnedrenie-1c','sites-bots'].includes(service.id))];
-const byId=Object.fromEntries(services.map(s=>[s.id,s]));
 const home=await readFile('index.html','utf8');
 /* The homepage is the source for shared chrome; rebuilding never rewrites it. */
 const header=home.match(/<header[\s\S]*?<\/header>/)[0].replace(/href="#([^"]+)" data-home-section="([^"]+)"/g,(_,hash,section)=>`href="index.html#${hash}" data-home-section="${section}"`)+'<div class="nav-backdrop" aria-hidden="true"></div>';
@@ -43,7 +42,6 @@ const footer=home.match(/<footer[\s\S]*?<\/footer>/)[0];
 const sectionById=id=>{const match=home.match(new RegExp('<section\\b[^>]*\\bid="'+id+'"[\\s\\S]*?<\\/section>'));if(!match)throw Error('Missing shared section '+id);return match[0];};
 const contact=sectionById('contacts');
 const policy=home.match(/<dialog id="policy-dialog"[\s\S]*?<\/dialog>/)[0];
-const prices=sectionById('prices');
 const icons=Object.fromEntries(core.map(s=>[s.id,home.match(new RegExp(`href="${s.path}"[^>]*><div class="service-top">[\\s\\S]*?(<svg[\\s\\S]*?<\\/svg>)`))?.[1]||'<span class="art-symbol" aria-hidden="true">↗</span>']));
 const relative=(html,base)=>html.replace(/(href|src)="(?!#|https?:|mailto:|tel:)([^"]+)"/g,(_,attr,url)=>`${attr}="${base}${url}"`);
 function hero(title,lead,category='НОВЫЕ РЕШЕНИЯ',icon='',sub='Одна команда для ваших задач') {
@@ -55,39 +53,40 @@ const processBlock=()=>serviceProcess('document',{esc,heading});
 async function page(file,title,lead,body,selected=''){
  const base=file.includes('/')?'../':'';
  const service=services.find(s=>s.path===file);
+ if(service)body+=servicePrice(service);
  let contacts=contact;
  if(selected)contacts=contacts.replace('С чего начнем?','Обсудим вашу задачу');
  let h=header.replace(new RegExp(`href="${file.replaceAll('.','\\.')}"(?! aria-current)`,'g'),`href="${file}" aria-current="page"`);
  const html=`<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#F7F5EF"><title>${esc(title)} — Новые решения</title><meta name="description" content="${esc(lead)}"><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="pages.css"><link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin><script src="script.js" defer></script></head><body class="inner-page"><a class="skip-link" href="#main">Перейти к содержанию</a>${h}<main id="main">${body}${contacts}</main>${footer}${policy}</body></html>`;
- const themes={'buhgalterskiy-uchet.html':['accounting.css'],'upravlencheskiy-uchet.html':['accounting.css','management.css'],'personal-i-kadry.html':['people.css']};
+ const themes={'buhgalterskiy-uchet.html':['accounting.css?v=nr-revisions-1'],'upravlencheskiy-uchet.html':['accounting.css?v=nr-revisions-1','management.css'],'personal-i-kadry.html':['people.css']};
  const pageClass=service?`service-page service--${service.id} layout-${serviceLayouts[service.id]}`:`company-page page-${file.replace('.html','')}`;
-const themedHtml=html.replace('class="inner-page"',`class="inner-page ${pageClass}"`).replace('src="script.js"','src="script.js?v=contact-korkina-1"').replace('</head>',['service-layouts.css',...(themes[file]||[]),'brand.css?v=opaque-header-1','home-bottom.css?v=4','inner-pages.css?v=company-experience-2','service-sections.css?v=1'].map(css=>`<link rel="stylesheet" href="${css}">`).join('')+'</head>');
+const themedHtml=html.replace('class="inner-page"',`class="inner-page ${pageClass}"`).replace('src="script.js"','src="script.js?v=nr-revisions-1"').replace('</head>',['service-layouts.css',...(themes[file]||[]),'brand.css?v=opaque-header-1','home-bottom.css?v=4','inner-pages.css?v=company-experience-2','service-sections.css?v=nr-revisions-1'].map(css=>`<link rel="stylesheet" href="${css}">`).join('')+'</head>');
  await mkdir(path.dirname(file),{recursive:true});await writeFile(file,relative(cleanCopyHTML(themedHtml),base));
 }
 for(const s of services){
  if(s.id==='people'){
-   await page(s.path,s.title,s.lead,peoplePage(s,{esc,heading,catalogCard,byId}),s.title);
+   await page(s.path,s.title,s.lead,peoplePage(s,{esc,heading}),s.title);
    continue;
  }
  if(s.id==='accounting') {
-   await page(s.path,s.title,s.lead,accountingPage(s,{esc,heading,processBlock:()=>serviceProcess('ledger',{esc,heading})}),s.title);
+   await page(s.path,s.title,s.lead,accountingPage(s,{esc,heading}),s.title);
    continue;
  }
  if(s.id==='management') {
-   await page(s.path,s.title,s.lead,managementPage(s,{esc,heading,processBlock:()=>serviceProcess('metrics',{esc,heading})}),s.title);
+   await page(s.path,s.title,s.lead,managementPage(s,{esc,heading}),s.title);
    continue;
  }
- await page(s.path,s.title,s.lead,servicePage(s,{esc,heading,catalogCard,byId}),s.title);
+ await page(s.path,s.title,s.lead,servicePage(s,{esc,heading}),s.title);
 }
 const catalogLead='Учет, сопровождение, развитие бизнеса и отдельные услуги по разработке 1С, сайтов и чат-ботов.';
 const categories=[...new Set(catalogServices.map(s=>s.category))];
 await page('uslugi.html','Наши услуги',catalogLead,hero('Для каждой задачи — свое решение',catalogLead,'КАТАЛОГ УСЛУГ')+`<section class="section container catalog-section" id="catalog">${heading('НАПРАВЛЕНИЯ ЭКСПЕРТИЗЫ','Найдем точку приложения усилий','Выберите направление или найдите конкретную услугу.')}<div class="catalog-tools" hidden><label class="catalog-search">Поиск услуги<input type="search" id="catalog-search" placeholder="Например, учет, 1С или регистрация"></label><div class="catalog-filters" role="group" aria-label="Направление услуг"><button class="filter-button active" type="button" data-filter="all" aria-pressed="true">Все услуги</button>${categories.map(c=>`<button class="filter-button" type="button" data-filter="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join('')}</div></div><p class="catalog-count" role="status">Всего ${catalogServices.length} услуг</p><div class="catalog-grid">${catalogServices.map(catalogCard).join('')}</div><div class="catalog-empty" hidden><h3>Услуга не найдена</h3><p>Попробуйте другое название или расскажите нам о задаче.</p><button type="button" class="button button-outline" id="catalog-reset">Показать все услуги</button></div></section>`);
 const aboutLead='Команда бухгалтеров, экономистов, юристов, маркетологов, технологов и программистов. Комплексные решения для уверенного развития.';
-await page('o-kompanii.html','О компании',aboutLead,hero('Новые решения. Системный подход.',aboutLead,'О КОМПАНИИ')+`${companyExpertise()}<section class="scope-section"><div class="section container">${heading('НАШ ПОДХОД','Собираем задачи в работающую систему')}${featureCards([['Начинаем с ситуации','Разбираемся в текущих процессах и целях компании, прежде чем предлагать изменения.'],['Объединяем экспертизу','Подключаем специалистов разных направлений к общей бизнес-задаче.'],['Помогаем внедрить','Сопровождаем работу с процессами, инструментами и командой.']])}</div></section>`+processBlock()+`<section class="section container">${heading('НАШИ НАПРАВЛЕНИЯ','От учета до развития бизнеса')}<div class="catalog-grid">${directions.map(catalogCard).join('')}</div></section>`);
+await page('o-kompanii.html','О компании',aboutLead,hero('Новые решения. Системный подход.',aboutLead,'О КОМПАНИИ')+`${companyExpertise()}<section class="scope-section"><div class="section container">${heading('НАШ ПОДХОД','Собираем задачи в работающую систему')}${featureCards([['Начинаем с ситуации','Разбираемся в текущих процессах и целях компании, прежде чем предлагать изменения.'],['Объединяем экспертизу','Подключаем специалистов разных направлений к общей бизнес-задаче.'],['Помогаем внедрить','Сопровождаем работу с процессами, инструментами и командой.']])}</div></section>`+processBlock());
 const workLead='Изучаем вашу ситуацию, согласуем план, внедряем решения и помогаем поддерживать результат.';
-await page('kak-my-rabotaem.html','Как мы работаем',workLead,hero('От задачи — к результату',workLead,'НАШ ПОДХОД')+`<section class="section container">${heading('ПОСЛЕДОВАТЕЛЬНО И ПОНЯТНО','Четыре этапа работы','Состав этапов и глубина участия зависят от вашей задачи.')}<div class="workflow-list">${process.map(([t,p],i)=>`<article class="workflow-item"><span>0${i+1}</span><div><h2>${t}</h2><p>${p}</p></div><ul>${[['Ваша задача и цели','Текущие процессы и исходные данные'],['Состав и границы работ','Формат, стоимость и результат'],['Настройка процессов и инструментов','Инструкции и работа с командой'],['Контроль показателей','Поддержка и дальнейшие улучшения']][i].map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('')}</div></section><section class="scope-section"><div class="section container">${heading('С ЧЕГО НАЧАТЬ','Подготовьте короткое описание задачи')}${featureCards([['Что хотите изменить','Какая проблема мешает работе или какая цель сейчас важнее всего.'],['Как устроен бизнес','Сфера деятельности, масштаб, команда и используемые инструменты.'],['Что уже есть','Текущие отчеты, документы, программы и решения, которые вы пробовали.']])}</div></section>`+prices);
-const priceLead='Разовая задача, проект под ключ или регулярное сопровождение. Стоимость рассчитываем под объем и особенности работы.';
-await page('ceny.html','Цены и форматы работы',priceLead,hero('Ваши задачи. Ваш формат работы.',priceLead,'СТОИМОСТЬ').replace('href="#request">Обсудить задачу','href="#service-prices">Услуги и стоимость')+servicePriceList(catalogServices)+prices+`<section class="section container">${heading('ИНДИВИДУАЛЬНЫЙ РАСЧЕТ','Из чего складывается стоимость')}${featureCards([['Объем задач','Количество участков, документов, операций и направлений работы.'],['Состояние данных','Готовность исходной информации и необходимость восстановления или систематизации.'],['Глубина сопровождения','Консультация, разработка решения, внедрение, обучение и постоянная поддержка.']])}</section><section class="page-result container"><div><div class="eyebrow">ДЛЯ РАСЧЕТА</div><h2>Начнем с вашей ситуации</h2></div><div><p>Расскажите о компании и задаче. Определим необходимые работы и подготовим предложение. Объем, результат и стоимость согласуем до начала работы.</p><a class="text-link" href="#request">Запросить расчет <span aria-hidden="true">⟶</span></a></div></section>`);
+await page('kak-my-rabotaem.html','Как мы работаем',workLead,hero('От задачи — к результату',workLead,'НАШ ПОДХОД')+`<section class="section container">${heading('ПОСЛЕДОВАТЕЛЬНО И ПОНЯТНО','Четыре этапа работы','Состав этапов и глубина участия зависят от вашей задачи.')}<div class="workflow-list">${process.map(([t,p],i)=>`<article class="workflow-item"><span>0${i+1}</span><div><h2>${t}</h2><p>${p}</p></div><ul>${[['Ваша задача и цели','Текущие процессы и исходные данные'],['Состав и границы работ','Формат, стоимость и результат'],['Настройка процессов и инструментов','Инструкции и работа с командой'],['Контроль показателей','Поддержка и дальнейшие улучшения']][i].map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('')}</div></section><section class="scope-section"><div class="section container">${heading('С ЧЕГО НАЧАТЬ','Подготовьте короткое описание задачи')}${featureCards([['Что хотите изменить','Какая проблема мешает работе или какая цель сейчас важнее всего.'],['Как устроен бизнес','Сфера деятельности, масштаб, команда и используемые инструменты.'],['Что уже есть','Текущие отчеты, документы, программы и решения, которые вы пробовали.']])}</div></section>`);
+// The former price page redirects to the service catalog for existing bookmarks.
+await writeFile('ceny.html','<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0;url=uslugi.html"><link rel="canonical" href="uslugi.html"><title>Услуги — Новые решения</title></head><body><p>Стоимость указана на страницах услуг. <a href="uslugi.html">Перейти к услугам</a></p></body></html>');
 const contactLead='Позвоните, напишите или оставьте заявку. Наш офис: Барнаул, ул. Ярных, 6.';
 await page('kontakty.html','Контакты',contactLead,hero('Давайте обсудим ваш бизнес',contactLead,'МЫ НА СВЯЗИ')+`<section class="container contact-routing"><div><div class="eyebrow">КАК НАС НАЙТИ</div><h2>Барнаул, ул. Ярных, 6</h2><p>Перед визитом свяжитесь с нами, чтобы согласовать встречу.</p></div><a class="button button-outline" href="https://yandex.ru/maps/?text=${encodeURIComponent('Барнаул ул. Ярных 6')}" target="_blank" rel="noopener">Открыть на карте <span aria-hidden="true">↗</span></a></section>`);
 console.log(`Created ${services.length+5} pages; ${catalogServices.length} listed services, ${directions.length} primary directions.`);

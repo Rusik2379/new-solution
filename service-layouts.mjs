@@ -1,4 +1,5 @@
 import {process} from './content.mjs';
+import {serviceTopics,scopeRows} from './service-sections.mjs';
 
 // Layout follows the nature of the work rather than the position in the catalog.
 export const serviceLayouts = {
@@ -12,7 +13,6 @@ export const serviceLayouts = {
 };
 const motion = {editorial:'left',team:'up',campaign:'zoom',document:'wipe',systems:'right',journey:'left',analysis:'soft',focus:'up',ledger:'up',metrics:'wipe'};
 const n = i => String(i+1).padStart(2,'0');
-const content = (body,esc) => Array.isArray(body)?`<ul>${body.map(item=>`<li>${esc(item)}</li>`).join('')}</ul>`:`<p>${esc(body)}</p>`;
 const profile = {
   editorial:{hero:'Рабочие процессы.<br>Понятная экономика.',scope:'Разбираем работу<br>по направлениям',intro:'Смотрим на повседневные процессы и связываем их с учетом и финансовым результатом.',result:'Система, на которую<br>можно опереться'},
   team:{hero:'Люди. Роли.<br>Согласованная работа.',scope:'Организуем работу<br>без разрозненных задач',intro:'Соединяем структуру, обязанности и документы в понятный порядок работы.',result:'Понятные процессы.<br>Распределенная ответственность.'},
@@ -48,13 +48,8 @@ function situation(s,layout,esc,heading){
 
 function scope(s,layout,esc,heading){
   const p=profile[layout];
-  const head=heading('СОСТАВ РАБОТЫ',s.scopeTitle||p.scope,s.scopeIntro||p.intro);
-  let blocks;
-  if(layout==='document'||layout==='focus'){
-    blocks=`<div class="scope-disclosures">${s.features.map(([title,body],i)=>`<details class="scope-disclosure"${i===0?' open':''} data-reveal="${motion[layout]}"><summary><span class="scope-order">${n(i)}</span><h3>${esc(title)}</h3><span class="scope-plus" aria-hidden="true">+</span></summary><div class="scope-disclosure-body">${content(body,esc)}</div></details>`).join('')}</div>`;
-  }else{
-    blocks=`<div class="scope-layout scope-${layout}">${s.features.map(([title,body],i)=>`<article class="scope-item" data-reveal="${layout==='analysis'?(i%2?'right':'left'):motion[layout]}"><span class="scope-order">${n(i)}</span><div class="scope-item-copy"><h3>${esc(title)}</h3>${content(body,esc)}</div>${layout==='journey'?'<span class="journey-marker" aria-hidden="true"></span>':''}</article>`).join('')}</div>`;
-  }
+  const head=heading('СОСТАВ РАБОТЫ',s.scopeTitle||p.scope,s.id==='legal'?'Объем сопровождения согласуем под вашу ситуацию.':s.scopeIntro||p.intro);
+  const blocks=scopeRows(s.features);
   return `<section class="service-scope service-scope-${layout}" id="scope"><div class="section container">${head}${blocks}</div></section>`;
 }
 
@@ -68,14 +63,12 @@ function result(s,layout,esc){
   return `<section class="service-outcome service-outcome-${layout} wide" id="result"><div class="container" data-reveal="${layout==='campaign'?'zoom':'soft'}"><div><div class="eyebrow">ВАШ РЕЗУЛЬТАТ</div><h2>${s.resultTitle||profile[layout].result}</h2></div><div class="outcome-copy"><p>${esc(s.result)}</p><a class="text-link" href="#request">Расскажите о вашей задаче <span aria-hidden="true">⟶</span></a></div></div></section>`;
 }
 
-export function servicePage(s,{esc,heading,catalogCard,byId}){
+export function servicePage(s,{esc,heading}){
   const layout=serviceLayouts[s.id];
   if(!profile[layout])throw Error('Missing service layout: '+s.id);
   const questions=[...s.questions,['Как определяется стоимость и формат работы?','Они зависят от объема задачи, состояния исходных данных и глубины сопровождения. После обсуждения согласуем разовую работу, проект или регулярную поддержку.']];
   const faq=`<section class="section container faq-section">${heading('ВОПРОСЫ И ОТВЕТЫ','Перед началом работы')}<div class="faq-list">${questions.map(([q,a])=>`<details class="faq"><summary>${esc(q)}<span aria-hidden="true">+</span></summary><p>${esc(a)}</p></details>`).join('')}</div></section>`;
-  const subnav=`<nav class="page-subnav container" aria-label="На этой странице"><a href="#scope">Что входит в работу</a><a href="#result">Ваш результат</a><a href="ceny.html">Стоимость и форматы ↗</a><a href="#request">Оформить заявку</a></nav>`;
-  const sections=[scope(s,layout,esc,heading),result(s,layout,esc),serviceProcess(layout,{esc,heading})];
-  // Journey pages explain the route first, while analytical pages lead with the expected output.
-  const order=layout==='journey'?[2,0,1]:layout==='analysis'?[1,0,2]:[0,1,2];
-  return serviceHero(s,layout,esc)+subnav+situation(s,layout,esc,heading)+order.map(i=>sections[i]).join('')+faq;
+  const hideSituation=['horeca','marketing','vnedrenie-1c','sites-bots'].includes(s.id);
+  const hideResult=['horeca','marketing','vnedrenie-1c','sites-bots'].includes(s.id);
+  return serviceHero(s,layout,esc)+serviceTopics(s.features)+(hideSituation?'':situation(s,layout,esc,heading))+scope(s,layout,esc,heading)+(hideResult?'':result(s,layout,esc))+faq;
 }

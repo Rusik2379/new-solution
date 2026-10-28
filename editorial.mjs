@@ -2,6 +2,7 @@
 // The original Word extraction remains unchanged for reference.
 export function applyEditorialChanges(services) {
   const legal=services.find(service=>service.id==='legal');
+  legal.hideSituationIntro=true;
   const old=legal.features;
   legal.features=[
     old[0],

@@ -117,8 +117,8 @@
 .motion-enabled .accounting-hero-copy>*{animation:none}}
 /* Isometric accounting illustration shares the site's mint, teal and navy palette. */
 .bookkeeping-hero{background:radial-gradient(ellipse at 84% 36%,#c6eeee 0%,transparent 52%),#f2f8f7;color:#1f2430}
-.bookkeeping-hero .accounting-hero-inner{min-height:660px}
-.bookkeeping-hero .accounting-hero-image{z-index:0;inset:auto;right:-12px;top:60px;width:43%;height:calc(100% - 235px);filter:none;object-fit:contain;object-position:center;pointer-events:none}
+.bookkeeping-hero .accounting-hero-inner{min-height:520px}
+.bookkeeping-hero .accounting-hero-image{z-index:0;inset:auto;right:-12px;top:60px;width:43%;height:calc(100% - 110px);filter:none;object-fit:contain;object-position:center;pointer-events:none}
 .bookkeeping-hero .accounting-hero-shade{background:none}
 .bookkeeping-hero .breadcrumbs{color:#617789}
 .bookkeeping-hero .breadcrumbs>span:last-child{color:#1f2430}
@@ -139,7 +139,7 @@
 .motion-enabled .bookkeeping-hero .accounting-hero-image{animation:accountingIllustration .9s .18s both cubic-bezier(.2,.8,.2,1)}
 @keyframes accountingIllustration{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:none}}
 @media(min-width:1500px){
-.bookkeeping-hero .accounting-hero-inner{min-height:710px}}
+.bookkeeping-hero .accounting-hero-inner{min-height:560px}}
 @media(max-width:1100px) and (min-width:761px){
 .bookkeeping-hero h1{font-size:38px;letter-spacing:-1.3px}
 .bookkeeping-hero .accounting-hero-copy{width:60%}
