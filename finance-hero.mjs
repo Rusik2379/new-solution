@@ -5,7 +5,7 @@ export function financeHero(esc, {title, prefix, titleId, description, className
     ${illustration?'':visual}
     <div class="accounting-hero-shade" aria-hidden="true"></div>
     <div class="container accounting-hero-inner">
-      <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="uslugi.html">Услуги</a><span aria-hidden="true">/</span><span>${esc(title)}</span></nav>
+      <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="index.html#services">Услуги</a><span aria-hidden="true">/</span><span>${esc(title)}</span></nav>
       <div class="accounting-hero-copy">
         <div class="eyebrow light">${esc(eyebrow)}</div>
         <h1 id="${titleId}">${headline?headline.map(esc).join('<br> '):`<span class="accounting-title-prefix">${esc(prefix)}</span><span class="accounting-title-main">учет<span class="accounting-title-dot">.</span></span>`}</h1>

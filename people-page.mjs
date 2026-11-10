@@ -10,7 +10,7 @@ export function peoplePage(service,{esc,heading}){
   ];
   if(items.length!==16||chapters.flatMap(({start,end})=>items.slice(start,end)).length!==items.length)throw Error('Incomplete personnel scope');
   return `<section class="people-hero wide" aria-labelledby="people-title"><div class="container">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="uslugi.html">Услуги</a><span aria-hidden="true">/</span><span>${esc(service.title)}</span></nav>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="index.html#services">Услуги</a><span aria-hidden="true">/</span><span>${esc(service.title)}</span></nav>
     <div class="people-hero-grid"><div class="people-hero-copy"><div class="eyebrow">ОРГАНИЗАЦИЯ КОМАНДЫ И КАДРОВЫЙ КОНСАЛТИНГ</div><h1 id="people-title">Персонал<br>и кадровый учет<span class="blue-dot">.</span></h1><p>${esc(service.lead)}</p><div class="people-hero-actions"><a class="button" href="#request">Обсудить задачу <span aria-hidden="true">↗</span></a><a class="text-link" href="#scope">Что входит в работу <span aria-hidden="true">↓</span></a></div></div>
     <div class="people-hero-art"><img src="assets/people-isometric-v1.png" width="1024" height="1024" alt="" fetchpriority="high"></div></div>
   </div></section>

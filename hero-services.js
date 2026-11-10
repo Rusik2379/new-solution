@@ -78,6 +78,17 @@ function initializeServiceCarousel() {
   }
   function resize() {
     clearTimeout(finishTimer); moving = false;
+    // Keep long words inside the panel, including after phone rotation or text zoom.
+    for (const row of rows) {
+      const name = row.querySelector('.hero-service-name');
+      if (!name) continue;
+      name.style.fontSize = '';
+      const available = carousel.clientWidth;
+      if (available > 0 && name.scrollWidth > available) {
+        const size = parseFloat(getComputedStyle(name).fontSize);
+        name.style.fontSize = `${Math.floor(size * available / name.scrollWidth * 10) / 10}px`;
+      }
+    }
     rowHeight = Math.ceil(Math.max(...slides.map(slide => slide.querySelector('a').offsetHeight)));
     track.style.setProperty('--service-row-height',`${rowHeight}px`);
     fitDescription(false);

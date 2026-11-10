@@ -38,7 +38,7 @@ function visual(s,layout,esc){
 }
 
 function serviceHero(s,layout,esc){
-  return `<section class="service-hero service-hero-${layout} wide"><div class="container"><nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="uslugi.html">Услуги</a><span aria-hidden="true">/</span><span>${esc(s.title)}</span></nav><div class="service-hero-grid"><div class="service-hero-copy"><div class="eyebrow">${esc(s.category)}</div><h1>${esc(s.title)}<span class="blue-dot">.</span></h1><p>${esc(s.lead)}</p><a class="button" href="#request">Обсудить задачу <span aria-hidden="true">↗</span></a></div>${visual(s,layout,esc)}</div></div></section>`;
+  return `<section class="service-hero service-hero-${layout} wide"><div class="container"><nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span aria-hidden="true">/</span><a href="index.html#services">Услуги</a><span aria-hidden="true">/</span><span>${esc(s.title)}</span></nav><div class="service-hero-grid"><div class="service-hero-copy"><div class="eyebrow">${esc(s.category)}</div><h1>${esc(s.title)}<span class="blue-dot">.</span></h1><p>${esc(s.lead)}</p><a class="button" href="#request">Обсудить задачу <span aria-hidden="true">↗</span></a></div>${visual(s,layout,esc)}</div></div></section>`;
 }
 
 function situation(s,layout,esc,heading){

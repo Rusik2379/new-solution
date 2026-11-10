@@ -29,7 +29,7 @@ export function companyApproach() {
 }
 
 export function companyHero(title,lead,category,{esc,core}){
- const kind={'КАТАЛОГ УСЛУГ':'catalog','О КОМПАНИИ':'about','НАШ ПОДХОД':'work','СТОИМОСТЬ':'prices','МЫ НА СВЯЗИ':'contacts'}[category];
+ const kind={'РЕГИСТРАЦИЯ И ЛИКВИДАЦИЯ':'catalog','О КОМПАНИИ':'about','НАШ ПОДХОД':'work','СТОИМОСТЬ':'prices','МЫ НА СВЯЗИ':'contacts'}[category];
  if(!kind)throw Error('Missing company cover: '+category);
  const art={
   catalog:`<nav class="cover-catalog" aria-label="Основные направления">${core.map((s,i)=>`<a href="${s.path}"><span>0${i+1}</span>${esc(s.title)}<i aria-hidden="true">↗</i></a>`).join('')}</nav>`,

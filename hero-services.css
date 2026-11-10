@@ -19,7 +19,7 @@
 .hero-service-track{display:flex;flex-direction:column;transform:translateY(0);transition:transform .48s cubic-bezier(.22,.8,.28,1.04);will-change:transform}
 .hero-service-slide{display:flex;align-items:center;justify-content:flex-start;flex:0 0 var(--service-row-height);height:var(--service-row-height);min-height:0;opacity:.2;transition:opacity .42s,color .42s;color:var(--ink)}
 .hero-service-slide.is-current{opacity:1;color:var(--turquoise-dark)}
-.hero-service-link{display:inline-flex;align-items:center;justify-content:flex-start;max-width:100%;padding:8px 0;color:inherit;text-decoration:none;border-radius:5px;outline-offset:-2px}
+.hero-service-link{display:inline-flex;align-items:center;justify-content:flex-start;max-width:100%;flex-shrink:0;padding:8px 0;color:inherit;text-decoration:none;border-radius:5px;outline-offset:-2px}
 .hero-service-name{font-size:clamp(44px,4.4vw,76px);line-height:1.14;letter-spacing:-1.8px;font-weight:550;white-space:normal;text-wrap:balance;text-decoration:underline;text-decoration-color:#187a772c;text-decoration-thickness:1.5px;text-underline-offset:.15em;transition:text-decoration-color .2s}
 .hero-service-link:hover .hero-service-name{text-decoration-color:#187a77}
 .hero-service-link:focus-visible{outline:2px solid var(--turquoise-dark)}
@@ -37,12 +37,13 @@
 @media(max-width:760px){
   .home-hero-services{margin-top:14px}
   .home-hero-services .home-hero-inner{display:block;width:100%;min-height:calc(100svh - 108px);padding:10px 10px 175px}
-  .home-hero-services .hero-content{width:100%;max-width:none;min-height:calc(100svh - 300px);padding:30px 24px;border-radius:12px}
+  .home-hero-services .hero-content{width:100%;max-width:none;min-height:0;padding:clamp(32px,7svh,60px) 24px;border-radius:12px;container-type:inline-size}
+  .home-hero-services .hero-content>*{flex-shrink:0}
   .hero-pattern-image{object-position:65% center}
-  .home-hero-services h1{font-size:clamp(31px,8vw,44px);letter-spacing:-1.1px;line-height:1.2}
+  .home-hero-services h1{font-size:clamp(28px,10.8cqi,44px);letter-spacing:-1.1px;line-height:1.2}
   .home-hero-services .hero-service-carousel{--service-row-height:132px;margin-block:6px}
-  .hero-service-name{font-size:clamp(33px,8.5vw,48px);line-height:1.16;letter-spacing:-.8px}
-  .home-hero-services .hero-sentence-end{font-size:clamp(27px,7vw,36px);line-height:1.25;letter-spacing:-.8px;max-width:460px}
+  .hero-service-name{font-size:clamp(29px,11.4cqi,48px);line-height:1.16;letter-spacing:-.8px}
+  .home-hero-services .hero-sentence-end{font-size:clamp(25px,9.4cqi,36px);line-height:1.25;letter-spacing:-.8px;max-width:460px}
   .hero-service-description{font-size:16px;line-height:1.6;margin-top:24px}
   .home-hero-services .hero-services-actions{margin-top:26px;gap:10px}
   .home-hero-services .hero-services-actions .button{font-size:14px;padding:14px 18px;gap:14px;min-height:54px;flex:1 1 auto;justify-content:space-between}

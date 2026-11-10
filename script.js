@@ -137,34 +137,7 @@ form.addEventListener('submit', event => {
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-// The full catalog is usable without JavaScript; filtering is progressive enhancement.
-const searchInput = document.querySelector('#catalog-search');
-if (searchInput) {
-  document.querySelector('.catalog-tools').hidden = false;
-  const cards = [...document.querySelectorAll('.catalog-card')];
-  const filters = [...document.querySelectorAll('[data-filter]')];
-  let category = 'all';
-  const normalize = text => text.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();
-  function filterCatalog() {
-    const query = normalize(searchInput.value);
-    let count = 0;
-    cards.forEach(card => {
-      const visible = (category === 'all' || card.dataset.category === category) && normalize(card.dataset.search).includes(query);
-      card.hidden = !visible;
-      if (visible) count++;
-    });
-    document.querySelector('.catalog-count').textContent = `Найдено услуг: ${count}`;
-    document.querySelector('.catalog-empty').hidden = count > 0;
-    filters.forEach(button => {
-      const active = button.dataset.filter === category;
-      button.classList.toggle('active', active);
-      button.setAttribute('aria-pressed', String(active));
-    });
-  }
-  filters.forEach(button => button.addEventListener('click', () => { category = button.dataset.filter; filterCatalog(); }));
-  searchInput.addEventListener('input', filterCatalog);
-  document.querySelector('#catalog-reset').addEventListener('click', () => { category = 'all'; searchInput.value = ''; filterCatalog(); searchInput.focus(); });
-}
+
 
 // Reveal once, with different directions and a short stagger within card groups.
 // Without JS/IntersectionObserver, all content stays visible.
