@@ -10,49 +10,50 @@
 @keyframes patternSheen{0%,20%{transform:translateX(-150%) skewX(-20deg);opacity:0}30%{opacity:.6}70%{opacity:.4}85%,100%{transform:translateX(560%) skewX(-20deg);opacity:0}}
 .home-hero-services .home-hero-inner{display:flex;align-items:stretch;justify-content:flex-start;width:100%;min-height:calc(100svh - 133px);padding:18px}
 .home-hero-services .hero-content{display:flex;flex-direction:column;justify-content:center;width:49%;max-width:690px;min-width:0;padding:clamp(32px,3.3vw,62px);text-align:left;background:#fff;border:1px solid #e8eeee;border-radius:14px;box-shadow:0 18px 45px #153a3b29,0 3px 10px #153a3b12}
-.home-hero-services h1{font-size:clamp(32px,3vw,48px);font-weight:500;line-height:1.15;letter-spacing:-1.7px;margin:0;color:var(--ink)}
+.home-hero-services h1{font-size:clamp(40px,3.5vw,58px);font-weight:500;line-height:1.15;letter-spacing:-1.7px;margin:0;color:var(--ink)}
 .home-hero-services h1>span{white-space:normal}
 .hero-sentence-start,.hero-sentence-end{display:block}
-.home-hero-services .hero-sentence-end{font-size:clamp(26px,2.3vw,36px);letter-spacing:-1px;font-weight:450;line-height:1.25;max-width:480px;text-wrap:balance}
+.home-hero-services .hero-sentence-end{font-size:clamp(30px,2.8vw,44px);letter-spacing:-1px;font-weight:450;line-height:1.25;max-width:540px;text-wrap:balance}
 .home-hero-services .hero-service-carousel{--service-row-height:clamp(136px,11.5vw,170px);position:relative;display:block;width:100%;min-width:0;margin:8px 0 11px}
 .hero-service-stage{position:relative;display:block;height:var(--service-row-height);overflow:hidden;transition:height .48s cubic-bezier(.22,.8,.28,1);mask-image:linear-gradient(transparent,#000 8%,#000 92%,transparent)}
 .hero-service-track{display:flex;flex-direction:column;transform:translateY(0);transition:transform .48s cubic-bezier(.22,.8,.28,1.04);will-change:transform}
 .hero-service-slide{display:flex;align-items:center;justify-content:flex-start;flex:0 0 var(--service-row-height);height:var(--service-row-height);min-height:0;opacity:.2;transition:opacity .42s,color .42s;color:var(--ink)}
 .hero-service-slide.is-current{opacity:1;color:var(--turquoise-dark)}
 .hero-service-link{display:inline-flex;align-items:center;justify-content:flex-start;max-width:100%;padding:8px 0;color:inherit;text-decoration:none;border-radius:5px;outline-offset:-2px}
-.hero-service-name{font-size:clamp(36px,3.6vw,62px);line-height:1.14;letter-spacing:-1.6px;font-weight:550;white-space:normal;text-wrap:balance;text-decoration:underline;text-decoration-color:#187a772c;text-decoration-thickness:1.5px;text-underline-offset:.15em;transition:text-decoration-color .2s}
+.hero-service-name{font-size:clamp(44px,4.4vw,76px);line-height:1.14;letter-spacing:-1.8px;font-weight:550;white-space:normal;text-wrap:balance;text-decoration:underline;text-decoration-color:#187a772c;text-decoration-thickness:1.5px;text-underline-offset:.15em;transition:text-decoration-color .2s}
 .hero-service-link:hover .hero-service-name{text-decoration-color:#187a77}
 .hero-service-link:focus-visible{outline:2px solid var(--turquoise-dark)}
-.hero-service-description{margin:24px 0 0;font-size:16px;line-height:1.65;letter-spacing:-.1px;color:var(--muted);text-wrap:balance}
-.home-hero-services .hero-services-actions{justify-content:flex-start;gap:10px;margin-top:24px}
-.home-hero-services .hero-services-actions .button{min-width:0;padding-inline:19px;gap:18px;font-size:12px}
+.hero-service-description{margin:28px 0 0;font-size:18px;line-height:1.65;letter-spacing:-.1px;color:var(--muted);text-wrap:balance}
+.home-hero-services .hero-services-actions{justify-content:flex-start;gap:12px;margin-top:30px}
+.home-hero-services .hero-services-actions .button{min-width:0;min-height:58px;padding:15px 24px;gap:22px;font-size:15px}
 @media(max-width:1100px) and (min-width:761px){
   .home-hero-services .hero-content{width:58%;padding:30px}
   .home-hero-services .hero-service-carousel{--service-row-height:146px}
-  .hero-service-name{font-size:clamp(36px,3.9vw,43px)}
-  .home-hero-services .hero-sentence-end{font-size:28px}
-  .home-hero-services .hero-services-actions .button{padding-inline:16px;gap:14px}
+  .home-hero-services h1{font-size:clamp(36px,3.8vw,44px)}
+  .hero-service-name{font-size:clamp(42px,4.4vw,50px)}
+  .home-hero-services .hero-sentence-end{font-size:32px}
+  .home-hero-services .hero-services-actions .button{font-size:14px;padding-inline:20px;gap:16px;min-height:56px}
 }
 @media(max-width:760px){
   .home-hero-services{margin-top:14px}
   .home-hero-services .home-hero-inner{display:block;width:100%;min-height:calc(100svh - 108px);padding:10px 10px 175px}
   .home-hero-services .hero-content{width:100%;max-width:none;min-height:calc(100svh - 300px);padding:30px 24px;border-radius:12px}
   .hero-pattern-image{object-position:65% center}
-  .home-hero-services h1{font-size:clamp(28px,7.5vw,42px);letter-spacing:-1.1px;line-height:1.2}
+  .home-hero-services h1{font-size:clamp(31px,8vw,44px);letter-spacing:-1.1px;line-height:1.2}
   .home-hero-services .hero-service-carousel{--service-row-height:132px;margin-block:6px}
-  .hero-service-name{font-size:clamp(29px,8vw,44px);line-height:1.16;letter-spacing:-.8px}
-  .home-hero-services .hero-sentence-end{font-size:clamp(25px,6.4vw,34px);line-height:1.25;letter-spacing:-.8px;max-width:460px}
-  .hero-service-description{font-size:15px;line-height:1.6;margin-top:22px}
-  .home-hero-services .hero-services-actions{margin-top:22px;gap:8px}
-  .home-hero-services .hero-services-actions .button{font-size:12px;padding-inline:12px;gap:9px;min-height:48px}
+  .hero-service-name{font-size:clamp(33px,8.5vw,48px);line-height:1.16;letter-spacing:-.8px}
+  .home-hero-services .hero-sentence-end{font-size:clamp(27px,7vw,36px);line-height:1.25;letter-spacing:-.8px;max-width:460px}
+  .hero-service-description{font-size:16px;line-height:1.6;margin-top:24px}
+  .home-hero-services .hero-services-actions{margin-top:26px;gap:10px}
+  .home-hero-services .hero-services-actions .button{font-size:14px;padding:14px 18px;gap:14px;min-height:54px;flex:1 1 auto;justify-content:space-between}
   .home-hero-services .hero-services-actions .button>span{font-size:20px}
 }
 @media(max-width:390px){
   .home-hero-services .hero-content{padding-inline:20px}
-  .home-hero-services .hero-services-actions .button{font-size:11px;padding-inline:9px;gap:8px}
 }
 @media(max-width:360px){
-  .home-hero-services .hero-services-actions .button{flex:1 1 100%;font-size:12px;padding-inline:16px;justify-content:space-between}
+  .hero-service-name{font-size:clamp(29px,8.5vw,33px)}
+  .home-hero-services .hero-services-actions .button{flex:1 1 100%;padding-inline:16px}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-service-stage,.hero-service-track,.hero-service-slide{transition:none}
