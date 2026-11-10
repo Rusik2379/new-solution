@@ -23,6 +23,7 @@ const serviceHighlights = {
   'razovye-uslugi': ['Консультации', 'Документы и сверки', 'Отчетность', 'Исправление учета'],
   'vnedrenie-1c': ['Разработка и доработки', 'Интеграции', 'Сопровождение 1С', 'Поддержка пользователей'],
   'sites-bots': ['Создание сайтов', 'Разработка чат-ботов', 'Интеграции', 'Поддержка и развитие'],
+  registration: ['Регистрация ООО', 'Ликвидация ООО', 'Регистрация ИП', 'Закрытие ИП'],
   'registraciya-ip': ['Регистрация ИП', 'Виды деятельности', 'Налоговый режим', 'Начало работы'],
   'registraciya-ooo': ['Регистрация ООО', 'Учредительные документы', 'Учет и налоги', 'Запуск компании'],
   'zakrytie-ip': ['Закрытие ИП', 'Документы', 'Отчетность', 'Завершение расчетов'],
@@ -40,8 +41,8 @@ export function serviceTopics(service) {
   </section>`;
 }
 
-export function scopeRows(features){
- return `<div class="service-scope-list">${features.map(([title,body],index)=>`<article class="service-scope-row" id="work-${index+1}"><span class="service-scope-number" aria-hidden="true">${String(index+1).padStart(2,'0')}</span><h3>${esc(title)}</h3><div class="service-scope-copy">${Array.isArray(body)?`<ul>${body.map(item=>`<li>${esc(item)}</li>`).join('')}</ul>`:`<p>${esc(body)}</p>`}</div></article>`).join('')}</div>`;
+export function scopeRows(features,links=[]){
+ return `<div class="service-scope-list">${features.map(([title,body],index)=>`<article class="service-scope-row" id="work-${index+1}"><span class="service-scope-number" aria-hidden="true">${String(index+1).padStart(2,'0')}</span><h3>${esc(title)}</h3><div class="service-scope-copy">${Array.isArray(body)?`<ul>${body.map(item=>`<li>${esc(item)}</li>`).join('')}</ul>`:`<p>${esc(body)}</p>`}${links[index]?`<a class="text-link" href="${esc(links[index])}">Подробнее об услуге <span aria-hidden="true">⟶</span></a>`:''}</div></article>`).join('')}</div>`;
 }
 
 export function servicePrice(service){

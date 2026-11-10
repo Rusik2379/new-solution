@@ -9,7 +9,7 @@ export const serviceLayouts = {
   medical:'team', food:'editorial', 'biznes-klining':'analysis',
   'razovye-uslugi':'focus', 'vnedrenie-1c':'systems', 'sites-bots':'campaign',
   'registraciya-ip':'journey', 'registraciya-ooo':'document',
-  'zakrytie-ip':'focus', 'likvidaciya-ooo':'journey', 'deklaraciya-3-ndfl':'document'
+  'zakrytie-ip':'focus', 'likvidaciya-ooo':'journey', 'deklaraciya-3-ndfl':'document', registration:'document'
 };
 const motion = {editorial:'left',team:'up',campaign:'zoom',document:'wipe',systems:'right',journey:'left',analysis:'soft',focus:'up',ledger:'up',metrics:'wipe'};
 const n = i => String(i+1).padStart(2,'0');
@@ -49,7 +49,7 @@ function situation(s,layout,esc,heading){
 function scope(s,layout,esc,heading){
   const p=profile[layout];
   const head=heading('СОСТАВ РАБОТЫ',s.scopeTitle||p.scope,s.id==='legal'?'Объем сопровождения согласуем под вашу ситуацию.':s.scopeIntro||p.intro);
-  const blocks=scopeRows(s.features);
+  const blocks=scopeRows(s.features,s.featureLinks);
   return `<section class="service-scope service-scope-${layout}" id="scope"><div class="section container">${head}${blocks}</div></section>`;
 }
 
@@ -66,7 +66,7 @@ function result(s,layout,esc){
 export function servicePage(s,{esc,heading}){
   const layout=serviceLayouts[s.id];
   if(!profile[layout])throw Error('Missing service layout: '+s.id);
-  const hideSituation=['horeca','marketing','vnedrenie-1c','sites-bots'].includes(s.id);
-  const hideResult=['horeca','marketing','vnedrenie-1c','sites-bots'].includes(s.id);
+  const hideSituation=['horeca','marketing','vnedrenie-1c','sites-bots','registration'].includes(s.id);
+  const hideResult=['horeca','marketing','vnedrenie-1c','sites-bots','registration'].includes(s.id);
   return serviceHero(s,layout,esc)+serviceTopics(s)+(hideSituation?'':situation(s,layout,esc,heading))+scope(s,layout,esc,heading)+(hideResult?'':result(s,layout,esc));
 }

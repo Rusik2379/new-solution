@@ -7,7 +7,7 @@ import {serviceLayouts,servicePage} from './service-layouts.mjs';
 import {companyHero,companyExpertise,companyApproach} from './company-layouts.mjs';
 import {peoplePage} from './people-page.mjs';
 import {applyEditorialChanges,cleanCopyHTML} from './editorial.mjs';
-import {catalogCard,servicePrice} from './service-sections.mjs';
+import {servicePrice} from './service-sections.mjs';
 import {faqSection,questionsForPage} from './page-faq.mjs';
 
 const esc = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -51,9 +51,9 @@ function hero(title,lead,category='НОВЫЕ РЕШЕНИЯ',icon='',sub='Од�
 const heading=(n,title,desc='')=>`<div class="section-heading"><div><div class="eyebrow">${n}</div><h2>${title}</h2></div>${desc?`<p class="section-intro">${esc(desc)}</p>`:''}</div>`;
 const featureCards=features=>`<div class="feature-grid">${features.map(([title,body],i)=>`<article class="service-feature"><span class="feature-number">${String(i+1).padStart(2,'0')} <i aria-hidden="true">↗</i></span><h3>${esc(title)}</h3>${Array.isArray(body)?`<ul>${body.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:`<p>${esc(body)}</p>`}</article>`).join('')}</div>`;
 
-async function page(file,title,lead,body,selected=''){
+async function page(file,title,lead,body,selected='',serviceOverride=null){
  const base=file.includes('/')?'../':'';
- const service=services.find(s=>s.path===file);
+ const service=serviceOverride||services.find(s=>s.path===file);
  if(service)body+=servicePrice(service);
  body+=faqSection(questionsForPage(file,service));
  let contacts=contact;
@@ -82,7 +82,8 @@ for(const s of services){
 }
 const registrationServices=['registraciya-ooo','likvidaciya-ooo','registraciya-ip','zakrytie-ip'].map(id=>services.find(s=>s.id===id));
 const registrationLead='Помогаем открыть компанию или завершить деятельность: готовим документы, разбираемся с учетом и сопровождаем необходимые процедуры. Отдельно помогаем с регистрацией и закрытием ИП.';
-await page('registraciya-i-likvidaciya.html','Регистрация и ликвидация юрлиц',registrationLead,companyHero('Регистрация и ликвидация компаний',registrationLead,'РЕГИСТРАЦИЯ И ЛИКВИДАЦИЯ',{esc,core:registrationServices})+`<section class="section container" id="catalog">${heading('ООО И ИП','Выберите нужную задачу','Подключаем юридическую и бухгалтерскую экспертизу в согласованном объеме.')}<div class="catalog-grid">${registrationServices.map(catalogCard).join('')}</div></section>`);
+const registration={id:'registration',title:'Регистрация и ликвидация юрлиц',category:'Учет и финансы',lead:registrationLead,heroTopics:['Документы','Учет и обязательства','Сопровождение'],features:registrationServices.map(s=>[s.title,s.lead]),featureLinks:registrationServices.map(s=>s.path),scopeTitle:'Регистрация и закрытие ООО и ИП',scopeIntro:'Выберите нужную задачу. Состав документов, объем работы и стоимость согласуем после знакомства с ситуацией.',questions:[]};
+await page('registraciya-i-likvidaciya.html',registration.title,registration.lead,servicePage(registration,{esc,heading}),registration.title,registration);
 // Preserve old bookmarks while the directory now lives on the homepage.
 const servicesRedirect='<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0;url=index.html#services"><link rel="canonical" href="index.html#services"><title>Услуги — Новые решения</title></head><body><p><a href="index.html#services">Перейти к услугам на главной</a></p></body></html>';
 await writeFile('uslugi.html',servicesRedirect);
