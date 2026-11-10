@@ -13,11 +13,7 @@ export function accountingPage(service, {esc, heading}) {
   return `
     ${financeHero(esc,{title:service.title,prefix:'Бухгалтерский',titleId:'accounting-title',className:'bookkeeping-hero',image:'assets/accounting-isometric-v1.png',illustration:true,eyebrow:'НОВЫЕ РЕШЕНИЯ / БУХГАЛТЕРСКИЙ УЧЕТ',headline:['Порядок в цифрах —','свобода в решениях'],description:'Бухгалтерский и налоговый учет,\nотчетность и сопровождение бизнеса.'})}
 
-    ${serviceTopics(mainFeatures)}
-    <section class="section container accounting-intro" aria-labelledby="accounting-intro-title">
-      <div><div class="eyebrow">01 / СИСТЕМНЫЙ ПОДХОД</div><h2 id="accounting-intro-title">Учет, на который<br> <span class="muted">можно опереться.</span></h2></div>
-      <div class="accounting-intro-copy"><p class="accounting-intro-lead">${esc(service.lead)}</p><p>${esc(service.intro)}</p></div>
-    </section>
+    ${serviceTopics(service)}
 
     <section class="scope-section accounting-scope" id="scope" aria-labelledby="accounting-scope-title"><div class="section container">
       ${heading('02 / ЧТО ВХОДИТ В КОНСАЛТИНГ','<span id="accounting-scope-title">Ежедневные задачи.<br> <span class="muted">Профессиональная поддержка.</span></span>','От текущих операций и отчетности до взаимодействия с государственными органами и восстановления учета.')}

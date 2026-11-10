@@ -5,7 +5,7 @@ export function managementPage(service,{esc,heading}) {
   return `
     ${financeHero(esc,{title:service.title,prefix:'Управленческий',titleId:'management-title',className:'management-hero bookkeeping-hero',image:'assets/management-banknote-v1.png',illustration:true,eyebrow:'НОВЫЕ РЕШЕНИЯ / УПРАВЛЕНЧЕСКИЙ УЧЕТ',description:'Выручка растет, а прибыль — нет?\nРазберемся, сколько бизнес зарабатывает на самом деле'})}
 
-    ${serviceTopics(service.features)}
+    ${serviceTopics(service)}
 
     <section class="scope-section" id="scope" aria-labelledby="management-scope-title"><div class="section container">
       ${heading('02 / МЫ ПРЕДЛАГАЕМ','<span id="management-scope-title">Выстраиваем систему.<br> <span class="muted">Настраиваем показатели.</span></span>','От анализа текущего учета до отчетности для собственника и сопровождения вашей команды.')}

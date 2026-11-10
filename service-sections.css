@@ -1,12 +1,9 @@
-/* Shared service navigation, readable scope lists and a compact price section. */
+/* Service highlights, readable scope lists and a compact price section. */
 .service-topics{padding-block:34px 24px}
-.service-topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:22px}
-.service-topics-grid>a{position:relative;min-width:0;display:flex;flex-direction:column;gap:12px;padding:15px 22px 10px 0;border-top:1px solid #d4e2df;color:var(--ink)}
+.service-topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:22px;list-style:none;margin:0;padding:0}
+.service-topics-grid>li{min-width:0;display:flex;flex-direction:column;gap:12px;padding:15px 0 10px;border-top:1px solid #d4e2df;color:var(--ink)}
 .service-topic-number{font-size:27px;font-weight:500;line-height:1.2;letter-spacing:-1px}
-.service-topic-label{font-size:12px;font-weight:550;line-height:1.6}
-.service-topic-arrow{position:absolute;right:0;top:18px;font-size:17px;color:var(--turquoise-dark)}
-.service-topic-links{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:18px}
-.service-topic-links>a{min-height:44px;display:inline-flex;align-items:center;gap:12px;color:var(--turquoise-dark);font-size:13px}
+.service-topic-label{font-size:14px;font-weight:500;line-height:1.6}
 .service-scope-list{display:grid;gap:14px}
 .service-scope-row{display:grid;grid-template-columns:40px minmax(180px,.9fr) minmax(0,1.4fr);align-items:start;gap:24px;padding:28px 30px;border:1px solid #d9e6e1;border-radius:20px;background:#fff;box-shadow:0 5px 18px #173f3c04;scroll-margin-top:115px;min-width:0}
 .service-scope-number{font-size:26px;font-weight:400;line-height:1.4;color:var(--turquoise-dark);letter-spacing:-.8px}
@@ -21,7 +18,6 @@
 .service-rate p{font-size:14px;line-height:1.7;color:var(--muted)}
 .service-rate>strong{font-size:20px;font-weight:500;color:var(--turquoise-dark);line-height:1.4}
 .service-rate .button{font-size:13px;min-height:46px;white-space:nowrap}
-.service-topics a:focus-visible{outline:2px solid var(--turquoise-dark);outline-offset:4px;border-radius:4px}
 .people-result .container{display:block}
 .people-result-heading{display:flex;justify-content:space-between;align-items:center;gap:30px}
 .people-result .people-result-heading h2{font-size:clamp(30px,3.2vw,42px);font-weight:550;line-height:1.2;letter-spacing:-1.2px;margin-top:0}
@@ -30,7 +26,6 @@
 .people-result-points h3{font-size:20px;font-weight:500;line-height:1.35;letter-spacing:-.4px;margin-bottom:10px}
 .people-result-points p,.people-result-summary{font-size:16px;line-height:1.8;color:var(--muted)}
 .people-result-summary{max-width:850px;padding-top:24px;border-top:1px solid #d4e3dc}
-@media(hover:hover) and (pointer:fine){.service-topics-grid>a:hover{border-color:var(--turquoise-dark)}.service-topics a:hover{color:var(--turquoise-dark)}}
 @media(max-width:1000px){
  .service-scope-row{grid-template-columns:32px minmax(150px,.85fr) minmax(0,1.4fr);gap:19px;padding:25px}
  .service-scope-row h3{font-size:21px}
@@ -42,8 +37,6 @@
  .service-topics{padding-block:26px 14px}
  .service-topics-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}
  .service-topic-number{font-size:24px}
- .service-topic-links{gap:4px 22px;margin-top:14px}
- .service-topic-links>a{font-size:12px}
  .service-scope-row{grid-template-columns:30px minmax(0,1fr);gap:12px 14px;padding:24px 22px;border-radius:18px;scroll-margin-top:94px}
  .service-scope-number{font-size:24px}
  .service-scope-row h3{font-size:21px}

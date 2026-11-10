@@ -66,9 +66,7 @@ function result(s,layout,esc){
 export function servicePage(s,{esc,heading}){
   const layout=serviceLayouts[s.id];
   if(!profile[layout])throw Error('Missing service layout: '+s.id);
-  const questions=[...s.questions,['Как определяется стоимость и формат работы?','Они зависят от объема задачи, состояния исходных данных и глубины сопровождения. После обсуждения согласуем разовую работу, проект или регулярную поддержку.']];
-  const faq=`<section class="section container faq-section">${heading('ВОПРОСЫ И ОТВЕТЫ','Перед началом работы')}<div class="faq-list">${questions.map(([q,a])=>`<details class="faq"><summary>${esc(q)}<span aria-hidden="true">+</span></summary><p>${esc(a)}</p></details>`).join('')}</div></section>`;
   const hideSituation=['horeca','marketing','vnedrenie-1c','sites-bots'].includes(s.id);
   const hideResult=['horeca','marketing','vnedrenie-1c','sites-bots'].includes(s.id);
-  return serviceHero(s,layout,esc)+serviceTopics(s.features)+(hideSituation?'':situation(s,layout,esc,heading))+scope(s,layout,esc,heading)+(hideResult?'':result(s,layout,esc))+faq;
+  return serviceHero(s,layout,esc)+serviceTopics(s)+(hideSituation?'':situation(s,layout,esc,heading))+scope(s,layout,esc,heading)+(hideResult?'':result(s,layout,esc));
 }

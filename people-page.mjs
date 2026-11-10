@@ -15,7 +15,7 @@ export function peoplePage(service,{esc,heading}){
     <div class="people-hero-art"><img src="assets/people-isometric-v1.png" width="1024" height="1024" alt="" fetchpriority="high"></div></div>
   </div></section>
 
-  ${serviceTopics(chapters.map(chapter=>[chapter.title]))}
+  ${serviceTopics(service)}
 
   <section class="people-scope" id="scope"><div class="section container">${heading('ЧТО ВХОДИТ В КОНСАЛТИНГ','От штатной структуры<br>до кадровых документов','Разбираем работу с персоналом по четырем направлениям. Необходимый объем участия определяем под вашу задачу.')}
     ${scopeRows(chapters.map(chapter=>[chapter.title,items.slice(chapter.start,chapter.end)]))}
@@ -23,6 +23,5 @@ export function peoplePage(service,{esc,heading}){
 
   <section class="people-result wide" id="result" aria-labelledby="people-result-title"><div class="container"><div class="people-result-heading"><h2 id="people-result-title">Команда работает<br><span>как система.</span></h2><a class="button" href="#request">Обсудим вашу команду <span aria-hidden="true">↗</span></a></div><ul class="people-result-points"><li><h3>Понятные обязанности</h3><p>Оптимальная штатная структура и распределение ответственности</p></li><li><h3>Эффективные графики</h3><p>Загрузка и рабочее время соответствуют задачам бизнеса</p></li><li><h3>Контроль затрат</h3><p>Прозрачные расходы на персонал и фонд оплаты труда</p></li><li><h3>Порядок в документах</h3><p>Системный кадровый учет и актуальные документы</p></li></ul><p class="people-result-summary">Снижаем административную нагрузку на руководителя, повышаем эффективность команды и делаем управление персоналом более прозрачным и контролируемым</p></div></section>
 
-  <section class="section container faq-section">${heading('ВОПРОСЫ И ОТВЕТЫ','Перед началом работы')}<div class="faq-list">${service.questions.map(([q,a])=>`<details class="faq"><summary>${esc(q)}<span aria-hidden="true">+</span></summary><p>${esc(a)}</p></details>`).join('')}</div></section>
   `;
 }
