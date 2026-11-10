@@ -12,6 +12,7 @@ function initializeServiceCarousel() {
   const interval = 1200, duration = 500, offset = 2;
   let current = 0, timer = 0, finishTimer = 0, visible = true, hovering = false, focused = false;
   let moving = false, ordering = false, orderFocused = false;
+  let rowHeight = 0;
   function clone(slide) {
     const copy = slide.cloneNode(true);
     copy.setAttribute('aria-hidden','true'); copy.inert = true;
@@ -28,9 +29,26 @@ function initializeServiceCarousel() {
     carousel.dataset.running = 'true'; timer = setTimeout(()=>select(current+1),interval);
   }
   function position(index,animated) {
+    const activeHeight = Math.ceil(slides[current].querySelector('a').offsetHeight);
+    stage.style.transition = animated && !reduced.matches ? '' : 'none';
+    stage.style.height = `${activeHeight}px`;
     track.style.transition = animated && !reduced.matches ? '' : 'none';
-    const y = (stage.clientHeight-slides[0].offsetHeight)/2-index*slides[0].offsetHeight;
+    const y = (activeHeight - rowHeight) / 2 - index * rowHeight;
     track.style.transform = `translateY(${y}px)`;
+  }
+  function fitDescription(animated) {
+    if (!description) return;
+    const previousHeight = description.offsetHeight;
+    description.getAnimations?.().forEach(animation => animation.cancel());
+    description.style.height = 'auto';
+    const nextHeight = description.offsetHeight;
+    description.style.height = `${nextHeight}px`;
+    if (animated && !reduced.matches && typeof description.animate === 'function') {
+      description.animate([
+        {height:`${previousHeight}px`,opacity:0,transform:'translateY(6px)'},
+        {height:`${nextHeight}px`,opacity:1,transform:'translateY(0)'}
+      ],{duration,easing:'cubic-bezier(.22,.8,.28,1)'});
+    }
   }
   function highlight(index) { rows.forEach((row,i)=>row.classList.toggle('is-current',i === index)); }
   function updateLinks() {
@@ -42,10 +60,7 @@ function initializeServiceCarousel() {
     if (hero) hero.dataset.serviceIndex = String(current);
     if (description) {
       description.textContent = slides[current].dataset.serviceDescription;
-      if (!reduced.matches && typeof description.animate === 'function') {
-        description.getAnimations().forEach(animation=>animation.cancel());
-        description.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
-      }
+      fitDescription(true);
     }
   }
   function select(index) {
@@ -63,6 +78,9 @@ function initializeServiceCarousel() {
   }
   function resize() {
     clearTimeout(finishTimer); moving = false;
+    rowHeight = Math.ceil(Math.max(...slides.map(slide => slide.querySelector('a').offsetHeight)));
+    track.style.setProperty('--service-row-height',`${rowHeight}px`);
+    fitDescription(false);
     position(current+offset,false);highlight(current+offset);schedule();
   }
   carousel.addEventListener('pointerenter',event=>{if(event.pointerType !== 'touch'){hovering = true;schedule();}});
@@ -87,7 +105,15 @@ function initializeServiceCarousel() {
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries=>{visible = entries[0].isIntersecting;schedule();},{threshold:0});observer.observe(carousel);
   }
-  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(stage);
+  if ('ResizeObserver' in window) {
+    let observedWidth = carousel.clientWidth;
+    new ResizeObserver(entries => {
+      const width = entries[0].contentRect.width;
+      if (width === observedWidth) return;
+      observedWidth = width;
+      resize();
+    }).observe(carousel);
+  }
   if (hero) {
     let artVisible = true;
     const updateArt = ()=>{hero.dataset.artRunning = String(artVisible && !document.hidden);};
@@ -98,6 +124,7 @@ function initializeServiceCarousel() {
     updateArt();
   }
   window.addEventListener('resize',resize,{passive:true});
+  document.fonts?.ready.then(resize);
   updateLinks();resize();
 }
 

@@ -15,7 +15,7 @@
 .hero-sentence-start,.hero-sentence-end{display:block}
 .home-hero-services .hero-sentence-end{font-size:clamp(26px,2.3vw,36px);letter-spacing:-1px;font-weight:450;line-height:1.25;max-width:480px;text-wrap:balance}
 .home-hero-services .hero-service-carousel{--service-row-height:clamp(136px,11.5vw,170px);position:relative;display:block;width:100%;min-width:0;margin:8px 0 11px}
-.hero-service-stage{position:relative;display:block;height:var(--service-row-height);overflow:hidden;mask-image:linear-gradient(transparent,#000 8%,#000 92%,transparent)}
+.hero-service-stage{position:relative;display:block;height:var(--service-row-height);overflow:hidden;transition:height .48s cubic-bezier(.22,.8,.28,1);mask-image:linear-gradient(transparent,#000 8%,#000 92%,transparent)}
 .hero-service-track{display:flex;flex-direction:column;transform:translateY(0);transition:transform .48s cubic-bezier(.22,.8,.28,1.04);will-change:transform}
 .hero-service-slide{display:flex;align-items:center;justify-content:flex-start;flex:0 0 var(--service-row-height);height:var(--service-row-height);min-height:0;opacity:.2;transition:opacity .42s,color .42s;color:var(--ink)}
 .hero-service-slide.is-current{opacity:1;color:var(--turquoise-dark)}
@@ -23,7 +23,7 @@
 .hero-service-name{font-size:clamp(36px,3.6vw,62px);line-height:1.14;letter-spacing:-1.6px;font-weight:550;white-space:normal;text-wrap:balance;text-decoration:underline;text-decoration-color:#187a772c;text-decoration-thickness:1.5px;text-underline-offset:.15em;transition:text-decoration-color .2s}
 .hero-service-link:hover .hero-service-name{text-decoration-color:#187a77}
 .hero-service-link:focus-visible{outline:2px solid var(--turquoise-dark)}
-.hero-service-description{min-height:56px;margin:24px 0 0;font-size:16px;line-height:1.65;letter-spacing:-.1px;color:var(--muted);text-wrap:balance}
+.hero-service-description{margin:24px 0 0;font-size:16px;line-height:1.65;letter-spacing:-.1px;color:var(--muted);text-wrap:balance}
 .home-hero-services .hero-services-actions{justify-content:flex-start;gap:10px;margin-top:24px}
 .home-hero-services .hero-services-actions .button{min-width:0;padding-inline:19px;gap:18px;font-size:12px}
 @media(max-width:1100px) and (min-width:761px){
@@ -42,7 +42,7 @@
   .home-hero-services .hero-service-carousel{--service-row-height:132px;margin-block:6px}
   .hero-service-name{font-size:clamp(29px,8vw,44px);line-height:1.16;letter-spacing:-.8px}
   .home-hero-services .hero-sentence-end{font-size:clamp(25px,6.4vw,34px);line-height:1.25;letter-spacing:-.8px;max-width:460px}
-  .hero-service-description{font-size:15px;line-height:1.6;min-height:48px;margin-top:22px}
+  .hero-service-description{font-size:15px;line-height:1.6;margin-top:22px}
   .home-hero-services .hero-services-actions{margin-top:22px;gap:8px}
   .home-hero-services .hero-services-actions .button{font-size:12px;padding-inline:12px;gap:9px;min-height:48px}
   .home-hero-services .hero-services-actions .button>span{font-size:20px}
@@ -55,6 +55,6 @@
   .home-hero-services .hero-services-actions .button{flex:1 1 100%;font-size:12px;padding-inline:16px;justify-content:space-between}
 }
 @media(prefers-reduced-motion:reduce){
-  .hero-service-track,.hero-service-slide{transition:none}
+  .hero-service-stage,.hero-service-track,.hero-service-slide{transition:none}
   .hero-pattern-image,.hero-pattern-sheen{animation:none;will-change:auto}
 }
