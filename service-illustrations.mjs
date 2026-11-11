@@ -2,7 +2,7 @@ const primary={
   accounting:{src:'assets/accounting-isometric-v2.webp',alt:'Калькулятор, документы и расчеты — бухгалтерский учет'},
   management:{src:'assets/management-isometric-v2.webp',alt:'Доходы, расходы и прибыль — управленческий учет'},
   people:{src:'assets/people-isometric-v2.webp',alt:'Карточки сотрудников, график и документы — работа с персоналом'},
-  horeca:{src:'assets/horeca-isometric-v2.webp',alt:'Сервировка, кофе и показатели — управление заведением HoReCa'},
+  horeca:{src:'assets/horeca-typographic-brand-v2.webp',alt:'Надпись HORECA с поварским колпаком, вилкой и бутылкой в фирменных цветах'},
   marketing:{src:'assets/marketing-isometric-v2.webp',alt:'Мегафон, календарь публикаций и цель — маркетинг и PR'},
   registration:{src:'assets/registration-isometric-v1.webp',alt:'Документы, печать и компания — регистрация и завершение деятельности'},
   legal:{src:'assets/legal-isometric-v1.webp',alt:'Весы, договор и защитный щит — юридическая поддержка'},
