@@ -1,3 +1,4 @@
+import {serviceArtwork} from './service-illustrations.mjs';
 // Accounting has its own editorial layout; content still comes from the Word source.
 import {financeHero} from './finance-hero.mjs';
 import {serviceTopics,scopeRows} from './service-sections.mjs';
@@ -11,7 +12,7 @@ export function accountingPage(service, {esc, heading}) {
   const mainFeatures=mainServices.map(({title,description})=>[title,description]);
   const resultParts = service.result.split(/(?=Наша задача —)/);
   return `
-    ${financeHero(esc,{title:service.title,prefix:'Бухгалтерский',titleId:'accounting-title',className:'bookkeeping-hero',image:'assets/accounting-isometric-v1.png',illustration:true,eyebrow:'НОВЫЕ РЕШЕНИЯ / БУХГАЛТЕРСКИЙ УЧЕТ',headline:['Порядок в цифрах —','свобода в решениях'],description:'Бухгалтерский и налоговый учет,\nотчетность и сопровождение бизнеса.'})}
+    ${financeHero(esc,{title:service.title,prefix:'Бухгалтерский',titleId:'accounting-title',className:'bookkeeping-hero',image:serviceArtwork.accounting.src,imageAlt:serviceArtwork.accounting.alt,illustration:true,eyebrow:'НОВЫЕ РЕШЕНИЯ / БУХГАЛТЕРСКИЙ УЧЕТ',headline:['Порядок в цифрах —','свобода в решениях'],description:'Бухгалтерский и налоговый учет,\nотчетность и сопровождение бизнеса.'})}
 
     ${serviceTopics(service)}
 

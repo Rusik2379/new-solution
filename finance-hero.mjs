@@ -1,6 +1,6 @@
 // Shared first-screen composition for the two financial service pages.
-export function financeHero(esc, {title, prefix, titleId, description, className='', image='assets/accounting-eye.png', illustration=false, headline, eyebrow='НОВЫЕ РЕШЕНИЯ / УЧЕТ И ФИНАНСЫ'}) {
-  const visual = `<img class="accounting-hero-image" src="${esc(image)}" width="${illustration?1024:1672}" height="${illustration?1024:941}" alt="" fetchpriority="high">`;
+export function financeHero(esc, {title, prefix, titleId, description, className='', image='assets/accounting-eye.png', imageAlt='', illustration=false, headline, eyebrow='НОВЫЕ РЕШЕНИЯ / УЧЕТ И ФИНАНСЫ'}) {
+  const visual = `<img class="accounting-hero-image" src="${esc(image)}" width="${illustration?1000:1672}" height="${illustration?1000:941}" alt="${esc(imageAlt)}" fetchpriority="high">`;
   return `<section class="accounting-hero ${className} wide" aria-labelledby="${titleId}">
     ${illustration?'':visual}
     <div class="accounting-hero-shade" aria-hidden="true"></div>

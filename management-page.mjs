@@ -1,9 +1,10 @@
+import {serviceArtwork} from './service-illustrations.mjs';
 import {financeHero} from './finance-hero.mjs';
 import {serviceTopics,scopeRows} from './service-sections.mjs';
 
 export function managementPage(service,{esc,heading}) {
   return `
-    ${financeHero(esc,{title:service.title,prefix:'Управленческий',titleId:'management-title',className:'management-hero bookkeeping-hero',image:'assets/management-banknote-v1.png',illustration:true,eyebrow:'НОВЫЕ РЕШЕНИЯ / УПРАВЛЕНЧЕСКИЙ УЧЕТ',description:'Выручка растет, а прибыль — нет?\nРазберемся, сколько бизнес зарабатывает на самом деле'})}
+    ${financeHero(esc,{title:service.title,prefix:'Управленческий',titleId:'management-title',className:'management-hero bookkeeping-hero',image:serviceArtwork.management.src,imageAlt:serviceArtwork.management.alt,illustration:true,eyebrow:'НОВЫЕ РЕШЕНИЯ / УПРАВЛЕНЧЕСКИЙ УЧЕТ',description:'Выручка растет, а прибыль — нет?\nРазберемся, сколько бизнес зарабатывает на самом деле'})}
 
     ${serviceTopics(service)}
 

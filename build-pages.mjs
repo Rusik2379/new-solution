@@ -8,6 +8,7 @@ import {companyHero,companyExpertise,companyApproach} from './company-layouts.mj
 import {peoplePage} from './people-page.mjs';
 import {applyEditorialChanges,cleanCopyHTML} from './editorial.mjs';
 import {servicePrice} from './service-sections.mjs';
+import {startingPrice} from './service-prices.mjs';
 import {faqSection,questionsForPage} from './page-faq.mjs';
 
 const esc = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -34,6 +35,7 @@ infrastructure.lead='Организуем IT-инфраструктуру, си�
 infrastructure.questions[1]=['Как заказать сайт, чат-бота или доработку 1С?','Создание сайтов и чат-ботов и разработка и сопровождение 1С — отдельные услуги. Их можно заказать самостоятельно или объединить с задачами инфраструктуры и интеграций.'];
 webDevelopment.features=[webDevelopment.features[0],['Разработка сайтов',webScope.slice(0,2)],['Создание чат-ботов',webScope.slice(3)],['Доработки и сопровождение',[webScope[2]]],webDevelopment.features[4],webDevelopment.features[5]];
 const services=[...core,...additional];
+for(const service of services)service.price=startingPrice(service.id);
 const catalogServices=services.filter(service=>!service.hiddenFromCatalog);
 const directions=[...core.filter(service=>!service.hiddenFromCatalog),...additional.filter(service=>['vnedrenie-1c','sites-bots'].includes(service.id))];
 const home=await readFile('index.html','utf8');
@@ -83,6 +85,7 @@ for(const s of services){
 const registrationServices=['registraciya-ooo','likvidaciya-ooo','registraciya-ip','zakrytie-ip'].map(id=>services.find(s=>s.id===id));
 const registrationLead='Помогаем открыть компанию или завершить деятельность: готовим документы, разбираемся с учетом и сопровождаем необходимые процедуры. Отдельно помогаем с регистрацией и закрытием ИП.';
 const registration={id:'registration',title:'Регистрация и ликвидация юридических лиц',category:'Учет и финансы',lead:registrationLead,heroTopics:['Документы','Учет и обязательства','Сопровождение'],features:registrationServices.map(s=>[s.title,s.lead]),featureLinks:registrationServices.map(s=>s.path),scopeTitle:'Регистрация и закрытие ООО и ИП',scopeIntro:'Выберите нужную задачу. Состав документов, объем работы и стоимость согласуем после знакомства с ситуацией.',questions:[]};
+registration.price=startingPrice(registration.id);
 await page('registraciya-i-likvidaciya.html',registration.title,registration.lead,servicePage(registration,{esc,heading}),registration.title,registration);
 // Preserve old bookmarks while the directory now lives on the homepage.
 const servicesRedirect='<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0;url=index.html#services"><link rel="canonical" href="index.html#services"><title>Услуги — Новые решения</title></head><body><p><a href="index.html#services">Перейти к услугам на главной</a></p></body></html>';
