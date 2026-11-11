@@ -1,4 +1,10 @@
 /* Shared white surfaces and glass accents; individual service compositions stay intact. */
+.service-isometric-art{min-width:0;display:grid;place-items:center}
+.service-isometric-art img{display:block;width:100%;max-width:500px;height:430px;object-fit:contain}
+.motion-enabled .service-isometric-art{animation:marketingArtEntrance .9s .15s both cubic-bezier(.2,.8,.2,1)}
+@media(max-width:1000px){.service-isometric-art img{height:355px}}
+@media(max-width:760px){.service-isometric-art img{height:clamp(250px,70vw,340px);max-width:380px}}
+@media(prefers-reduced-motion:reduce){.motion-enabled .service-isometric-art{animation:none}}
 .inner-page{--inner-line:#dfe9e5;--inner-soft:#f7faf9;background:#fff;color:var(--ink)}
 .inner-page .service-hero,.inner-page .company-cover,.inner-page .people-hero,.inner-page .bookkeeping-hero{position:relative;isolation:isolate;background:#fff;color:var(--ink);border:1px solid var(--inner-line);border-radius:26px;margin-top:22px;box-shadow:0 10px 36px #173f3c07}
 .inner-page .service-hero::after,.inner-page .company-cover::after,.inner-page .people-hero::after{content:"";position:absolute;z-index:-1;right:-35px;top:-40px;width:260px;height:260px;background:url('assets/glass-quarter-people-v2.webp') center/contain no-repeat;opacity:.15;pointer-events:none}

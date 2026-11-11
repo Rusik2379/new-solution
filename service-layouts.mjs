@@ -25,8 +25,16 @@ const profile = {
 };
 
 function visual(s,layout,esc){
-  if(s.id==='sites-bots')return '<div class="digital-studio"><div class="studio-browser"><div class="studio-toolbar"><span></span><span></span><span></span><b>Сайт вашего бизнеса</b></div><div class="studio-screen"><strong>Понятный сайт.<br>Удобный сервис.</strong><div class="studio-lines"><i></i><i></i></div><a class="studio-action" href="#request">Обсудить задачу ↗</a></div></div><div class="studio-chat"><span>Чат-бот</span><p>Здравствуйте! Чем можем помочь?</p><p>Хочу узнать об услугах</p><div>Заявка · Запись · Поддержка</div></div></div>';
-  if(s.id==='vnedrenie-1c')return '<div class="one-c-workspace"><div class="one-c-mark">1С</div><p>Разработка<br>и сопровождение</p><ul><li>Доработки под ваши процессы</li><li>Обмен данными и интеграции</li><li>Поддержка пользователей</li></ul><a class="text-link" href="sozdanie-saytov-i-botov.html">Нужен сайт или бот? ⟶</a></div>';
+  const illustrations={
+    registration:['registration-isometric-v1.webp','Документы, печать и компания — регистрация и завершение деятельности'],
+    legal:['legal-isometric-v1.webp','Весы, договор и защитный щит — юридическая поддержка'],
+    'vnedrenie-1c':['one-c-isometric-v1.webp','Рабочая система, база данных и интеграции — разработка и сопровождение 1С'],
+    'sites-bots':['web-bots-isometric-v1.webp','Сайт, мобильный интерфейс и чат-бот — цифровые сервисы для бизнеса']
+  };
+  if(illustrations[s.id]){
+    const [file,alt]=illustrations[s.id];
+    return `<div class="service-isometric-art"><img src="assets/${file}" width="1000" height="1000" alt="${esc(alt)}" fetchpriority="high"></div>`;
+  }
   if(s.id==='horeca')return '<div class="horeca-typographic-art"><img src="assets/horeca-typographic-v1.png" width="1024" height="1024" alt="" fetchpriority="high"></div>';
   if(s.id==='marketing')return '<div class="marketing-isometric-art"><img src="assets/marketing-isometric-v1.png" width="1254" height="1254" alt="Мегафон, план публикаций и цель — продвижение и коммуникации" fetchpriority="high"></div>';
   if(s.id==='it')return '<div class="it-workspace-art"><img src="assets/it-workspace-v1.png" width="1254" height="1254" alt="Цифровая инфраструктура бизнеса" fetchpriority="high"><ul class="it-directions" aria-label="Отдельные IT-услуги"><li><a href="sozdanie-saytov-i-botov.html">Сайты и чат-боты ↗</a></li><li>Системное администрирование</li><li><a href="vnedrenie-1c.html">Разработка и сопровождение 1С ↗</a></li></ul></div>';

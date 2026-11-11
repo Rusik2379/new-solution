@@ -1,6 +1,9 @@
 // Copy changes from «сайт поправки.docx», 20 October 2026.
 // The original Word extraction remains unchanged for reference.
 export function applyEditorialChanges(services) {
+  const accounting=services.find(service=>service.id==='accounting');
+  accounting.price='от 5 000 ₽';
+  accounting.features=accounting.features.map(([title,items])=>[title,items.map(item=>item.replace('кадровую документацию','кадровая документация'))]);
   const legal=services.find(service=>service.id==='legal');
   legal.hideSituationIntro=true;
   const old=legal.features;
